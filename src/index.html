@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Fatimah's Portfolio - Home</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-        <main class='bg-red-600'>
-            Main Stuff is here
-        </main>
-    </body>
+
+<head>
+    <title>Fatimah's Portfolio - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <main class='bg-azure h-screen'>
+        <nav id="main-nav"
+            class="fixed right-0 top-0 h-screen w-20 bg-ghostwhite shadow-lg transition-all duration-300 ease-in-out z-50">
+            <div id="links"
+                class="flex flex-col justify-center items-center h-full opacity-0 transition-opacity duration-300">
+                <ul class="text-center space-y-8">
+                    <div>
+                        <li class="text-xl cursor-pointer hover:text-red transition-colors">Projects</li>
+                        <span class="block w-0 h-1 bg-red transition-all duration-300 mt-2  ease-in rounded"></span>
+                    </div>
+
+                    <div>
+                        <li class="text-xl cursor-pointer hover:text-red transition-colors">About Me</li>
+                        <span class="block w-0 h-1 bg-red transition-all duration-300 mt-2 ease-in rounded"></span>
+                    </div>
+
+                    <div>
+                        <li class="text-xl cursor-pointer hover:text-red transition-colors">Blog</li>
+                        <span class="block w-0 h-1 bg-red transition-all duration-300 ease-in mt-2 rounded"></span>
+                    </div>
+
+                </ul>
+            </div>
+
+            <div id="menu-toggle" class="absolute top-5 right-5 w-8 h-6 cursor-pointer space-y-1.5">
+                <span class="block w-full h-0.5 bg-black transition-all duration-300"></span>
+                <span class="block w-full h-0.5 bg-black transition-all duration-300"></span>
+                <span class="block w-full h-0.5 bg-black transition-all duration-300"></span>
+            </div>
+
+
+            <section class="container mx-auto px-4">
+            </section>
+    </main>
+</body>
+
 </html>

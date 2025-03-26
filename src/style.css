@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-azure: #ECF8F8;
+  --color-ghostwhite: #F4FFFF;
+  --color-red: #D64933;
+}
+
 body {
     font-family: "Montserrat", sans-serif;
     /* font-family: "Comfortaa", sans-serif; */

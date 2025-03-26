@@ -28,6 +28,7 @@
     "author": "Fatimah",
     "dependencies": {
         "@tailwindcss/postcss": "^4.0.15",
+        "feather-icons": "^4.29.2",
         "tailwindcss": "^4.0.15"
     }
 }
