@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = {
     mode: "none",
-    entry: { index: "./src/index.js", projects: "./src/projects/projects.js", about: "./src/about/about.js", blog: "./src/blog/blog.js" },
+    entry: { index: "./src/index.js", projects: "./src/projects/projects.js", about: "./src/about/about.js", blog: "./src/blog/blog.js", logo: "./src/asset" },
     output: {
         path: path.resolve(__dirname + '/dist'),
         filename: "[name].js"
@@ -30,6 +30,10 @@ module.exports = {
                 test: /\.css$/i,
                 include: path.resolve(__dirname, 'src'),
                 use: ['style-loader', 'css-loader', 'postcss-loader']
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
             }
         ]
     }
