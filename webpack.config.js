@@ -1,12 +1,18 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-    mode: "none",
-    entry: { index: "./src/index.js", projects: "./src/projects/projects.js", about: "./src/about/about.js", blog: "./src/blog/blog.js", logo: "./src/asset" },
+    mode: "development",
+    entry: {
+        index: "./src/index.ts",
+        projects: "./src/projects/projects.ts",
+        about: "./src/about/about.ts",
+        blog: "./src/blog/blog.ts"
+    },
     output: {
-        path: path.resolve(__dirname + '/dist'),
-        filename: "[name].js"
+        path: path.resolve(__dirname, 'dist'),
+        filename: "[name].[contenthash].js",
+        clean: true
     },
     plugins: [
         new HtmlWebpackPlugin({ title: 'Home Page', template: './src/index.html', filename: 'index.html', chunks: ['index'] }),
@@ -34,7 +40,19 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource'
+            },
+            { 
+                test: /\.tsx?$/,
+                use: 'ts-loader', 
+                exclude: /node_modules/
             }
         ]
-    }
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
+    },
+    devtool: 'source-map'
 }
