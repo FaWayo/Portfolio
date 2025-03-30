@@ -5,11 +5,12 @@ feather.replace();
 
 //NAVIGATION
 document.addEventListener('DOMContentLoaded', () => {
+    //get elements
     const nav = document.getElementById('main-nav') as HTMLElement;
     const menuToggle = document.getElementById('menu-toggle') as HTMLElement;
     const links = document.getElementById('links') as HTMLElement;
 
-
+    //open and close menu
     function toggleNavMenu(): void {
         nav.classList.toggle('w-20');
         nav.classList.toggle('w-64');
@@ -17,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         transformMenuIcon();
         addOutsideClickListener();
-        addLinkClickListeners();
+        // addLinkClickListeners();
         setupLinkInteractions();
     }
 
+    //convert menu icon to x and vice verse when clicked
     function transformMenuIcon(): void {
         menuToggle.querySelectorAll('span').forEach((span, index) => {
             const isExpanded = nav.classList.contains('w-64');
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    //if clicked outside close the menu side
     function addOutsideClickListener(): void {
         document.addEventListener('click', (event: MouseEvent) => {
             const isMenuOpen = nav.classList.contains('w-64');
@@ -48,12 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function addLinkClickListeners(): void {
-        document.querySelectorAll('#links li').forEach((link: Element) => {
-            link.addEventListener('click', closeNavMenu);
-        });
-    }
 
+    // function addLinkClickListeners(): void {
+    //     document.querySelectorAll('#links li').forEach((link: Element) => {
+    //         link.addEventListener('click', closeNavMenu);
+    //     });
+    // }
+
+    //close nav menu
     function closeNavMenu(): void {
         nav.classList.remove('w-64');
         nav.classList.add('w-20');
@@ -66,9 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    //interactions with nav links
     function setupLinkInteractions(): void {
         const linkContainers = document.querySelectorAll('#links > ul > div');
 
+        //tske all links but to default.. ie. inactive
         function resetLinks(): void {
             linkContainers.forEach((container: Element) => {
                 const li = container.querySelector('li') as HTMLElement;
@@ -80,12 +87,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        //for each link apply these interactions
         linkContainers.forEach((container: Element) => {
             const li = container.querySelector('li') as HTMLElement;
             const underline = container.querySelector('span') as HTMLElement;
 
-            underline.classList.add('w-0');
-
+            //hover
             li.addEventListener('mouseenter', () => {
                 if (!li.classList.contains('text-red')) {
                     underline.classList.remove('w-0');
@@ -93,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            //unhover
             li.addEventListener('mouseleave', () => {
                 if (!li.classList.contains('text-red')) {
                     underline.classList.remove('w-full');
@@ -100,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
+            //click ie. active
             li.addEventListener('click', () => {
                 resetLinks();
                 li.classList.add('text-red');

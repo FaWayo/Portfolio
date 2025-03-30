@@ -39,13 +39,20 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource'
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/[name][ext]'
+                }
             },
-            { 
+            {
                 test: /\.tsx?$/,
-                use: 'ts-loader', 
+                use: 'ts-loader',
                 exclude: /node_modules/
-            }
+            },
+            {
+                test: /\.html$/,
+                use: ['html-loader']
+              }
         ]
     },
     resolve: {

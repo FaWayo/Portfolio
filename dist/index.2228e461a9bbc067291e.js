@@ -5132,18 +5132,21 @@ __webpack_require__.r(__webpack_exports__);
 feather_icons__WEBPACK_IMPORTED_MODULE_1___default().replace();
 //NAVIGATION
 document.addEventListener('DOMContentLoaded', function () {
+    //get elements
     var nav = document.getElementById('main-nav');
     var menuToggle = document.getElementById('menu-toggle');
     var links = document.getElementById('links');
+    //open and close menu
     function toggleNavMenu() {
         nav.classList.toggle('w-20');
         nav.classList.toggle('w-64');
         links.classList.toggle('opacity-0');
         transformMenuIcon();
         addOutsideClickListener();
-        addLinkClickListeners();
+        // addLinkClickListeners();
         setupLinkInteractions();
     }
+    //convert menu icon to x and vice verse when clicked
     function transformMenuIcon() {
         menuToggle.querySelectorAll('span').forEach(function (span, index) {
             var isExpanded = nav.classList.contains('w-64');
@@ -5160,6 +5163,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+    //if clicked outside close the menu side
     function addOutsideClickListener() {
         document.addEventListener('click', function (event) {
             var isMenuOpen = nav.classList.contains('w-64');
@@ -5169,11 +5173,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    function addLinkClickListeners() {
-        document.querySelectorAll('#links li').forEach(function (link) {
-            link.addEventListener('click', closeNavMenu);
-        });
-    }
+    // function addLinkClickListeners(): void {
+    //     document.querySelectorAll('#links li').forEach((link: Element) => {
+    //         link.addEventListener('click', closeNavMenu);
+    //     });
+    // }
+    //close nav menu
     function closeNavMenu() {
         nav.classList.remove('w-64');
         nav.classList.add('w-20');
@@ -5182,8 +5187,10 @@ document.addEventListener('DOMContentLoaded', function () {
             span.classList.remove('rotate-45', '-rotate-45', 'translate-y-2', '-translate-y-2', 'opacity-0');
         });
     }
+    //interactions with nav links
     function setupLinkInteractions() {
         var linkContainers = document.querySelectorAll('#links > ul > div');
+        //tske all links but to default.. ie. inactive
         function resetLinks() {
             linkContainers.forEach(function (container) {
                 var li = container.querySelector('li');
@@ -5193,22 +5200,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 underline.classList.add('w-0');
             });
         }
+        //for each link apply these interactions
         linkContainers.forEach(function (container) {
             var li = container.querySelector('li');
             var underline = container.querySelector('span');
-            underline.classList.add('w-0');
+            //hover
             li.addEventListener('mouseenter', function () {
                 if (!li.classList.contains('text-red')) {
                     underline.classList.remove('w-0');
                     underline.classList.add('w-full');
                 }
             });
+            //unhover
             li.addEventListener('mouseleave', function () {
                 if (!li.classList.contains('text-red')) {
                     underline.classList.remove('w-full');
                     underline.classList.add('w-0');
                 }
             });
+            //click ie. active
             li.addEventListener('click', function () {
                 resetLinks();
                 li.classList.add('text-red');
@@ -5228,4 +5238,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=index.48f8a0b9493797800f95.js.map
+//# sourceMappingURL=index.2228e461a9bbc067291e.js.map

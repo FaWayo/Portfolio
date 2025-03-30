@@ -9,6 +9,7 @@
         "@types/node": "^22.13.14",
         "@types/webpack": "^5.28.5",
         "css-loader": "^7.1.2",
+        "html-loader": "^5.1.0",
         "html-webpack-plugin": "^5.6.3",
         "postcss": "^8.5.3",
         "postcss-loader": "^8.1.1",
