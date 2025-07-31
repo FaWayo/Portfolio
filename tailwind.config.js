@@ -1,12 +1,13 @@
 module.exports = {
     content: [
         './src/*.html',
-        './src/**/*.{html,js}'
+        './src/**/*.{html,js,ts,tsx,css}' 
     ],
     theme: {
         extend: {
             animation: {
-                'drop-in': 'dropIn 0.6s ease-out forwards',
+             //   'drop-in': 'dropIn 0.6s ease-out forwards',
+                'drop-in': 'drop-in 1s ease-out forwards',
             },
             keyframes: {
                 dropIn: {
@@ -19,6 +20,14 @@ module.exports = {
                         opacity: '1',
                     },
                 },
+                'drop-in': {
+                    '0%': { transform: 'translateY(-100%)', opacity: '0' },
+                    '100%': { transform: 'translateY(0)', opacity: '1' },
+                  }
+            },
+            fontFamily: {
+                'montserrat': ['Montserrat', 'sans-serif'],
+                'comfortaa': ['Comfortaa', 'sans-serif'],
             },
         },
         variants: {
