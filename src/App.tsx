@@ -1,21 +1,25 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import Arrow from '@/doodles/Arrow';
+import { MUTED } from '@/doodles/shared';
 import Intro from '@/components/Intro';
-import Nav from '@/components/Nav';
+import Opening from '@/components/Opening';
+import RoomIndex from '@/components/RoomIndex';
 import { ROOMS } from '@/data/rooms';
+import Reveal from '@/primitives/Reveal';
 import Room from '@/primitives/Room';
-import Hero from '@/rooms/Hero';
 import Me from '@/rooms/Me';
 
 /** How long the gate takes to fade. Matches the CSS transition. */
 const LEAVE_MS = 700;
 
 /**
- * Phase 4 — intro gate in place. The rooms are still placeholders; ME carries
- * §19 and the rest fill in from Phase 6.
+ * Intro gate + the whole site as one continuous scroll.
  *
- * The gate replays on every fresh load by design (PLAN Phase 4), so there is
- * deliberately no sessionStorage or localStorage here.
+ * The gate and the top of the page share the `Opening` component, so entering
+ * reveals the screen that was just dismissed rather than a second layout that
+ * resembles it. There is no sticky nav bar — navigation is the room index
+ * directly under the opening screen.
  */
 export default function App() {
     const [entered, setEntered] = useState(false);
@@ -30,15 +34,14 @@ export default function App() {
         }, LEAVE_MS);
     }, [entered, leaving]);
 
-    /** Nav wordmark — returns to the gate. */
+    /** The wordmark / "back to start" — returns to the gate. */
     const backToIntro = useCallback(() => {
         setLeaving(false);
         setEntered(false);
         window.scrollTo({ top: 0, behavior: 'auto' });
     }, []);
 
-    // Lock scrolling behind the gate so the page behind cannot be moved by
-    // wheel or scrollbar while it is still covered.
+    // Lock scrolling behind the gate so the page cannot be moved underneath it.
     useEffect(() => {
         if (entered) return;
         const previous = document.body.style.overflow;
@@ -53,10 +56,8 @@ export default function App() {
             {!entered && <Intro onEnter={enter} leaving={leaving} />}
 
             {/*
-             * `inert` while the gate is up: the site behind must not be
-             * tabbable or reachable by a screen reader before it has been
-             * entered. Fading it with opacity alone would leave it fully
-             * operable underneath the overlay.
+             * `inert` while the gate is up: the site behind must not be tabbable
+             * or reachable by a screen reader before it has been entered.
              */}
             <div inert={!entered ? true : undefined}>
                 <a
@@ -68,11 +69,20 @@ export default function App() {
 
                 <div id="top" />
 
-                <Nav onWordmarkClick={backToIntro} />
-
                 <main id="rooms">
                     <Room id="me" variant="hero" label="Me">
-                        <Hero />
+                        <Opening
+                            note="hello →"
+                            action={
+                                <span className="flex items-center gap-3 font-sans text-[0.65rem] uppercase tracking-[0.3em] text-muted">
+                                    Scroll
+                                    <Arrow direction="down" width={40} height={40} color={MUTED} />
+                                </span>
+                            }
+                        />
+
+                        <RoomIndex onWordmarkClick={backToIntro} />
+
                         <Me />
                     </Room>
 
