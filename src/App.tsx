@@ -5,6 +5,7 @@ import Nav from '@/components/Nav';
 import { ROOMS } from '@/data/rooms';
 import Room from '@/primitives/Room';
 import Hero from '@/rooms/Hero';
+import Me from '@/rooms/Me';
 
 /** How long the gate takes to fade. Matches the CSS transition. */
 const LEAVE_MS = 700;
@@ -72,6 +73,7 @@ export default function App() {
                 <main id="rooms">
                     <Room id="me" variant="hero" label="Me">
                         <Hero />
+                        <Me />
                     </Room>
 
                     {ROOMS.slice(1).map((room) => (
