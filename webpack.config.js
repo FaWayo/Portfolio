@@ -4,10 +4,7 @@ const path = require('path');
 module.exports = {
     mode: "development",
     entry: {
-        index: "./src/index.ts",
-        projects: "./src/projects/projects.ts",
-        about: "./src/about/about.ts",
-        blog: "./src/blog/blog.ts"
+        index: "./src/index.tsx"
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -15,10 +12,7 @@ module.exports = {
         clean: true
     },
     plugins: [
-        new HtmlWebpackPlugin({ title: 'Home Page', template: './src/index.html', filename: 'index.html', chunks: ['index'] }),
-        new HtmlWebpackPlugin({ title: 'Projects Page', template: './src/projects/projects.html', filename: 'projects.html', chunks: ['projects'] }),
-        new HtmlWebpackPlugin({ title: 'About Page', template: './src/about/about.html', filename: 'about.html', chunks: ['about'] }),
-        new HtmlWebpackPlugin({ title: 'Blog Page', template: './src/blog/blog.html', filename: 'blog.html', chunks: ['blog'] })
+        new HtmlWebpackPlugin({ title: 'Fatimah Wayo', template: './src/index.html', filename: 'index.html', chunks: ['index'] })
     ],
     devServer: {
         static: {
@@ -38,10 +32,10 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'postcss-loader']
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif|webp|avif)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'assets/[name][ext]'
+                    filename: 'assets/[name].[contenthash][ext]'
                 }
             },
             {
@@ -52,11 +46,11 @@ module.exports = {
             {
                 test: /\.html$/,
                 use: ['html-loader']
-              }
+            }
         ]
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js'],
         alias: {
             '@': path.resolve(__dirname, 'src')
         }

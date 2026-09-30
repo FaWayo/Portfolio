@@ -1,77 +1,199 @@
 @import "tailwindcss";
 
+/* ============================================================================
+   FIXED PALETTE
+   Raw brand colours from context/brand-direction.md §07. These never change
+   with room tone — bg-charcoal, text-rose and friends are stable across the
+   whole site. Use the SEMANTIC tokens below inside components instead.
+   ========================================================================= */
+
 @theme {
-  --color-azure: #ECF8F8;
-  --color-ghostwhite: #F4FFFF;
-  --color-red: #D64933;
+    --color-charcoal: #242222;
+    --color-ivory: #F3EFEB;
+    --color-grey: #B5AEAA;
+    --color-rule-dark: #46413F;
+    --color-rose: #B88D98;
+    --color-muted-rose: #392F32;
+
+    /* Three voices only. See design-system.md §5. */
+    --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+    --font-hand: "Beth Ellen", ui-serif, cursive;
+
+    --text-display: clamp(3rem, 9vw, 7rem);
+    --text-title: clamp(2rem, 5vw, 3.5rem);
 }
 
-body {
-    font-family: "Montserrat", sans-serif;
-    /* font-family: "Comfortaa", sans-serif; */
-  }
+/* ============================================================================
+   SEMANTIC TOKENS
+   `inline` makes utilities emit var(--room-*) directly instead of
+   var(--color-surface), so flipping one class repaints an entire room.
+   A <Room tone="dark" | "paper"> wrapper sets it. See design-system.md §1.
+   ========================================================================= */
 
-.font-comfortaa {
-  font-family: "Comfortaa", sans-serif;
-}
-  
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+@theme inline {
+    --color-surface: var(--room-bg);
+    --color-ink: var(--room-ink);
+    --color-muted: var(--room-muted);
+    --color-rule: var(--room-rule);
+    --color-accent: var(--room-accent);
 }
 
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* The brand palette. Dark is the default across the whole site. */
+:root,
+.tone-dark {
+    --room-bg: #242222;
+    --room-ink: #F3EFEB;
+    --room-muted: #B5AEAA;
+    --room-rule: #46413F;
+    --room-accent: #B88D98;
 }
 
-.animate-delay-100.visible {
-  transition-delay: 0.1s;
+/*
+ * Paper tone — DERIVED, NEEDS SIGN-OFF.
+ * Not in the brand direction, which defines only a dark palette. Exists so
+ * LIFE's photography isn't sunk into charcoal. Grey and rose are darkened
+ * because the brand values collapse on light: #B88D98 on #F2F2F2 is 2.6:1 and
+ * #B5AEAA is 1.9:1, both failing AA. See design-system.md §3 and §4.
+ */
+.tone-paper {
+    --room-bg: #F2F2F2;
+    --room-ink: #242222;
+    --room-muted: #6B6560;
+    --room-rule: #D5CFCB;
+    --room-accent: #7A4A56;
 }
 
-.animate-delay-200.visible {
-  transition-delay: 0.2s;
+/* ============================================================================
+   BASE
+   ========================================================================= */
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--room-bg);
+        color: var(--room-ink);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+        background-color: var(--room-accent);
+        color: var(--room-bg);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--room-accent);
+        outline-offset: 3px;
+    }
+
+    /* Pure white is banned. Ivory keeps the dark interface soft. */
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-weight: inherit;
+    }
 }
 
-.animate-delay-300.visible {
-  transition-delay: 0.3s;
+/* ============================================================================
+   DOODLE MOTION
+   Ported from context/doodle-components.jsx, which injected these at runtime.
+   Now static. Drawing paths carry pathLength="1000" so the dashoffset maths is
+   correct regardless of real path length — that was a bug in the original.
+   ========================================================================= */
+
+@keyframes drawPath {
+    from {
+        stroke-dashoffset: 1000;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
-.animate-delay-400.visible {
-  transition-delay: 0.4s;
+@keyframes floatCloud {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(1deg);
+    }
 }
 
-.animate-delay-500.visible {
-  transition-delay: 0.5s;
+@keyframes settlePhoto {
+    from {
+        transform: var(--photo-rotate, 0deg) translateY(14px);
+        opacity: 0;
+    }
+
+    to {
+        transform: var(--photo-rotate, 0deg) translateY(0);
+        opacity: 1;
+    }
 }
 
-.timeline-dot {
-  border-radius: 50%;
-  display: block;
-  width: 1.25rem;
-  height: 1.25rem;
-  min-width: 1.25rem;
-  min-height: 1.25rem;
-  background-color: #D64933;
-  box-shadow: 0 0 4px 0 rgba(255,255,255,1);
-  position: relative;
-  z-index: 10;
-  transform-origin: center;
-  transition: transform 0.5s ease;
+.draw-doodle {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawPath 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.timeline-dot.visible {
-  animation: popIn 0.5s ease-out forwards;
+.drift-cloud {
+    animation: floatCloud 6s ease-in-out infinite;
 }
 
-@keyframes popIn {
-  0% { transform: scale(0); }
-  70% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+/* A rotated photograph settling into place. --photo-rotate is set inline by the
+   Photo primitive so the rotation survives the transform in the keyframes. */
+.settle-photo {
+    animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ============================================================================
+   REVEAL
+   Content entering after scroll. Motion must never delay access to the content,
+   so anything already on screen is shown by Reveal's layout effect before paint,
+   and this rule unconditionally shows everything when motion is reduced.
+   ========================================================================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Motion must never delay access to content. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
