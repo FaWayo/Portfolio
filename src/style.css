@@ -2,25 +2,29 @@
 
 /* ============================================================================
    FIXED PALETTE
-   Raw brand colours from context/brand-direction.md §07. These never change
-   with room tone — bg-charcoal, text-rose and friends are stable across the
-   whole site. Use the SEMANTIC tokens below inside components instead.
+   "Black Champagne", five values plus one derived cream. These never change
+   with room tone — bg-noir, text-mauve and friends are stable across the whole
+   site. Use the SEMANTIC tokens below inside components instead.
+   See decision-log.md §26.
    ========================================================================= */
 
 @theme {
-    --color-charcoal: #242222;
-    --color-ivory: #F3EFEB;
-    --color-grey: #B5AEAA;
-    --color-rule-dark: #46413F;
-    --color-rose: #B88D98;
-    --color-muted-rose: #392F32;
+    --color-noir: #0E0B0B;
+    --color-cocoa: #2B1B1B;
+    --color-wine: #5B3A3A;
+    --color-mauve: #876A6A;
+    --color-champagne: #CDB8A6;
+    /* Derived, not in the palette: the light rooms need a ground lighter than
+       champagne, which is 1.6:1 against itself as a background for wine. */
+    --color-cream: #F4EDE4;
 
-    /* Three voices only. See design-system.md §5. */
-    --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-    --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
-    --font-hand: "Beth Ellen", ui-serif, cursive;
+    /* Three voices, one job each. Fraunces is the display, Jost is the read,
+       Beth Ellen is the only hand and is never set below 18px.
+       See design-system.md §5. */
+    --font-display: "Fraunces", ui-serif, Georgia, serif;
+    --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+    --font-hand: "Beth Ellen", cursive;
 
-    --text-display: clamp(3rem, 9vw, 7rem);
     --text-title: clamp(2rem, 5vw, 3.5rem);
 }
 
@@ -39,29 +43,33 @@
     --color-accent: var(--room-accent);
 }
 
-/* The brand palette. Dark is the default across the whole site. */
+/*
+ * Dark is the default across the whole site.
+ * cream on noir 16.9:1 · champagne on noir 10.3:1 · mauve on noir 4.0:1.
+ * Mauve is under 4.5:1, so it is for large type, marks and doodles only —
+ * never body copy. Wine as a rule is 2.0:1, which is right for a hairline.
+ */
 :root,
 .tone-dark {
-    --room-bg: #242222;
-    --room-ink: #F3EFEB;
-    --room-muted: #B5AEAA;
-    --room-rule: #46413F;
-    --room-accent: #B88D98;
+    --room-bg: #0E0B0B;
+    --room-ink: #F4EDE4;
+    --room-muted: #CDB8A6;
+    --room-rule: #5B3A3A;
+    --room-accent: #876A6A;
 }
 
 /*
- * Paper tone — DERIVED, NEEDS SIGN-OFF.
- * Not in the brand direction, which defines only a dark palette. Exists so
- * LIFE's photography isn't sunk into charcoal. Grey and rose are darkened
- * because the brand values collapse on light: #B88D98 on #F2F2F2 is 2.6:1 and
- * #B5AEAA is 1.9:1, both failing AA. See design-system.md §3 and §4.
+ * Paper tone — cream.
+ * noir on cream 16.9:1 · wine on cream 8.6:1 · mauve on cream 4.2:1.
+ * The same mauve works in both tones, so the accent does not shift colour as
+ * you scroll from one room to the next. See design-system.md §3 and §4.
  */
 .tone-paper {
-    --room-bg: #F2F2F2;
-    --room-ink: #242222;
-    --room-muted: #6B6560;
-    --room-rule: #D5CFCB;
-    --room-accent: #7A4A56;
+    --room-bg: #F4EDE4;
+    --room-ink: #0E0B0B;
+    --room-muted: #5B3A3A;
+    --room-rule: #CDB8A6;
+    --room-accent: #876A6A;
 }
 
 /* ============================================================================
@@ -74,8 +82,8 @@
     }
 
     body {
-        background-color: var(--room-bg);
-        color: var(--room-ink);
+        background-color: var(--color-noir);
+        color: var(--color-cream);
         font-family: var(--font-sans);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -83,21 +91,70 @@
     }
 
     ::selection {
-        background-color: var(--room-accent);
-        color: var(--room-bg);
+        background-color: var(--room-accent, var(--color-mauve));
+        color: var(--room-bg, var(--color-noir));
     }
 
     :focus-visible {
-        outline: 2px solid var(--room-accent);
+        outline: 2px solid var(--room-accent, var(--color-mauve));
         outline-offset: 3px;
     }
 
-    /* Pure white is banned. Ivory keeps the dark interface soft. */
+    /* Pure white is banned. Cream keeps the dark interface soft. */
     h1,
     h2,
     h3,
     h4 {
         font-weight: inherit;
+    }
+}
+
+/* ============================================================================
+   PILLS
+   The one container shape on the site. Fully rounded, outlined, no fill and no
+   shadow. Room labels, stack tags, LET'S TALK intents, the CV link and the
+   floating room pill are all this shape. See design-system.md §9.
+
+   Labels are small Jost capitals, tracked wide — the editorial register, and
+   straight, because a tilted chip next to a straight serif reads as a mistake.
+   Hover moves the border to the accent and leaves the text in ink: mauve is
+   4.0:1, too low for 12px type.
+   ========================================================================= */
+
+@layer components {
+    .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 999px;
+        border: 1px solid var(--room-rule, var(--color-wine));
+        padding: 0.45rem 1.05rem;
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        line-height: 1.2;
+        color: var(--room-ink, var(--color-cream));
+        background-color: transparent;
+        transition: border-color 0.3s ease;
+    }
+
+    .pill:hover {
+        border-color: var(--room-accent, var(--color-mauve));
+    }
+
+    /* The display face. Fraunces's SOFT axis rounds the terminals, which is
+       what lets it sit next to a signature script without looking stiff. */
+    .font-display {
+        font-variation-settings: "SOFT" 50, "WONK" 0;
+    }
+
+    /* Beth Ellen is single-weight and light: below 18px it looks weak rather
+       than intimate. Callers set the size; anything smaller belongs in
+       Fraunces italic. */
+    .font-hand {
+        line-height: 1.1;
     }
 }
 
@@ -115,17 +172,6 @@
 
     to {
         stroke-dashoffset: 0;
-    }
-}
-
-@keyframes floatCloud {
-    0%,
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-
-    50% {
-        transform: translateY(-6px) rotate(1deg);
     }
 }
 
@@ -147,38 +193,263 @@
     animation: drawPath 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.drift-cloud {
-    animation: floatCloud 6s ease-in-out infinite;
+/* --- Nav mark ---------------------------------------------------------------
+   The one hand-drawn underline every word shares, invisible until needed.
+
+   It is revealed with a left-to-right clip wipe, not the library's dash draw.
+   The nav path is stretched to each word with `vector-effect:
+   non-scaling-stroke`, and Chrome measures dashes on such a path in screen
+   pixels rather than in `pathLength` units — so a 1000-unit dash drew a fixed
+   ~20px stub under every word and never finished. A clip on the wrapper is
+   independent of the path, so the line always spans the whole word.
+
+   Hover and focus wipe the line in, and wipe it back out on leave. The current
+   room's line is simply there: it does not redraw when hovered, and moving
+   between rooms cross-fades it rather than replaying the wipe as you scroll.
+   Focus is in the selector deliberately — a mark only reachable with a mouse is
+   a mark keyboard users never see. See `Nav.tsx`.
+   ------------------------------------------------------------------------- */
+
+.nav-mark {
+    opacity: 0;
+    clip-path: inset(-4px 100% -4px -4px);
+    transition:
+        clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.2s ease-out;
 }
 
+.nav-mark[data-active],
+.nav-group:hover > .nav-mark,
+.nav-group:focus-visible > .nav-mark {
+    opacity: 1;
+    clip-path: inset(-4px -4px -4px -4px);
+}
+
+/* The current room's line must not wipe in from nothing when you arrive —
+   it fades, so only hover reads as "drawing". */
+.nav-mark[data-active] {
+    transition: opacity 0.2s ease-out;
+}
+
+/* Reduced motion: the same states, no movement. Only the current and hovered
+   words are marked — never all six. */
+@media (prefers-reduced-motion: reduce) {
+    .nav-mark {
+        transition: none;
+    }
+}
+
+
 /* A rotated photograph settling into place. --photo-rotate is set inline by the
-   Photo primitive so the rotation survives the transform in the keyframes. */
+   Photo primitive so the rotation survives the transform in the keyframes.
+   Kept under 2° per §9 — past that a photo stops reading as hand-placed. */
 .settle-photo {
     animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* ============================================================================
-   REVEAL
-   Content entering after scroll. Motion must never delay access to the content,
-   so anything already on screen is shown by Reveal's layout effect before paint,
-   and this rule unconditionally shows everything when motion is reduced.
+   MOTION
+   Two things, and nothing else. A room fades in as it enters view, and a title
+   writes itself once and then stays still forever. See design-system.md §8.
+
+   The doodle keyframes above are existing doodle behaviour and are deliberately
+   left untouched — stroke-draw and photo settle are not new motion.
    ========================================================================= */
 
 .reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    transition: opacity 0.7s ease-out;
 }
 
 .reveal.is-visible {
     opacity: 1;
-    transform: translateY(0);
+}
+
+/* --- Write on ---------------------------------------------------------------
+   A title being written by hand.
+
+   A live-text stroke-draw would mean moving the title into an <svg><text>, and
+   that forces either a fixed font size or `lengthAdjust` stretching the glyphs —
+   which wrecks a script face. So this reveals the real text along a hand-drawn
+   edge instead: a clip-path inset sweeping left to right, with a slight skew,
+   using the same easing as drawPath so it sits with the doodles.
+
+   The visible state is the DEFAULT, and the clipped state is opt-in via
+   `.is-waiting`. That ordering is deliberate and load-bearing. The first version
+   had it backwards — clipped by default, revealed by an IntersectionObserver —
+   and the hero heading came up invisible, because `clip-path` on the observed
+   element zeroes out its own intersection rect, so a `threshold` ratio could
+   never be met and the observer never fired. Motion here must be able to fail
+   without taking the text with it: if JS never runs, no `.is-waiting` is ever
+   added and the title is simply there.
+
+   It fires once on first appearance. It does not loop and it does not replay.
+   ------------------------------------------------------------------------- */
+
+.write-on {
+    transform: skewX(0deg);
+}
+
+.write-on.is-waiting {
+    clip-path: inset(-0.25em 100% -0.15em -0.05em);
+    transform: skewX(-3deg);
+    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.write-on.is-written {
+    clip-path: inset(-0.25em -0.05em -0.15em -0.05em);
+    transform: skewX(0deg);
+}
+
+/* --- Typewriter caret ------------------------------------------------------
+   A 1px bar, zero-width in the flow so typing never shifts the line. Solid
+   while the text is being typed; once it is done it blinks three times and
+   goes. See Typewriter.tsx.
+   ------------------------------------------------------------------------- */
+
+.typewriter-caret {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 1em;
+    vertical-align: -0.12em;
+}
+
+.typewriter-caret::after {
+    content: "";
+    position: absolute;
+    left: 0.08em;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    background: currentColor;
+}
+
+.typewriter-caret.is-done::after {
+    animation: caretBlink 0.9s steps(1, end) 3 forwards;
+}
+
+@keyframes caretBlink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* --- The hero ---------------------------------------------------------------
+   The name written by hand, very large, with a portrait standing in front of
+   it. See Opening.tsx and decision-log.md §29.
+
+   `Fatimah.` in Beth Ellen advances **5.112em** (decision-log.md §25), so
+   14.5vw spans ~74% of the viewport; the 280px cap holds it at 1431px (75%) at
+   1920. On a phone 14.5vw is 57px — 289px of 390. The F carries a 0.04em left
+   side bearing, which is why the name is optically centred with a nudge.
+
+   `--hero-top` sits the name well below the nav — the F's top flourish rises
+   ~0.2em above the line box, so 27svh leaves roughly 150px of clear air under
+   the nav at 1440×900 — and lets the name and the figure read as one group in
+   the middle of the screen rather than a banner.
+
+   The portrait is sized *from the name*, so the overlap is the same at every
+   viewport. `--hero-crown` is where the top of the hair should land: 0.85em
+   below the name's top, which is about a quarter of the way up from the
+   name's lowest ink (the line box is 1.1em and Beth Ellen's `t` hangs
+   ~0.085em below the baseline, decision-log.md §25). So the crown tucks
+   *behind* the feet of the middle letters and stops — the name stays readable,
+   the figure reads as standing in front of it.
+
+   The photo's crown sits 7.5% down its 4:5 frame (see `HERO_PHOTO` in
+   data/me.ts), so a bottom-anchored box of height `(100svh - crown) / 0.925`
+   puts the hair exactly on that line.
+   ------------------------------------------------------------------------- */
+
+.hero {
+    --hero-top: max(27svh, 150px);
+    --text-hero-name: clamp(58px, 14.5vw, 280px);
+    --hero-crown: calc(var(--hero-top) + var(--text-hero-name) * 0.85);
+}
+
+.hero-portrait {
+    height: calc((100svh - var(--hero-crown)) / 0.925);
+}
+
+/* The studio frame was cropped at the shoulders, so the jacket and the outer
+   curls end in straight vertical lines — on desktop, where the frame is
+   narrower than the screen, those read as the edge of a rectangle pasted onto
+   the page. Two mask layers, intersected, dissolve the frame into the room:
+   the sides fade over their outer 14%, the bottom over its last 22%. The
+   bottom fade is also what keeps the faith line readable where it crosses the
+   jacket on a phone. The file itself is untouched; this is display only.
+
+   `--fade` scales both fades from 1 (the hero) to 0 (a crisp print). The
+   static hero image never sets it, so it stays fully faded; the travelling
+   portrait animates it to 0 as it lands in ME. See TravellingPortrait.tsx. */
+.portrait-fade {
+    --fade: 1;
+    -webkit-mask-image:
+        linear-gradient(to right,
+            transparent 0%,
+            #000 calc(var(--fade) * 14%),
+            #000 calc(100% - var(--fade) * 14%),
+            transparent 100%),
+        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(to right,
+            transparent 0%,
+            #000 calc(var(--fade) * 14%),
+            #000 calc(100% - var(--fade) * 14%),
+            transparent 100%),
+        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);
+    mask-composite: intersect;
+}
+
+/* While the print is in flight its landing slot must be invisible — a tinted
+   empty frame reads as a placeholder waiting to be filled. */
+.portrait-travel [data-portrait-to] {
+    background: transparent;
+}
+
+/* The traveller only exists once it has measured both slots; until then, and
+   for reduced motion or no JS, the two static images are the portrait. */
+.portrait-traveller {
+    display: none;
+}
+
+.portrait-travel .portrait-traveller {
+    display: block;
+}
+
+.portrait-travel [data-portrait-from] img,
+.portrait-travel [data-portrait-to] img {
+    opacity: 0;
+}
+
+
+.hero-name {
+    font-size: var(--text-hero-name);
+    line-height: 1.1;
+    white-space: nowrap;
 }
 
 @media (prefers-reduced-motion: reduce) {
 
     .reveal {
         opacity: 1;
+    }
+
+    /* Must out-specify `.write-on.is-waiting`, or a title still below the fold
+       would stay clipped for a reduced-motion visitor. */
+    .write-on,
+    .write-on.is-waiting,
+    .write-on.is-written {
+        clip-path: none;
         transform: none;
     }
 }

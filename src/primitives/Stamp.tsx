@@ -18,7 +18,7 @@ const TONE_CLASS: Record<StampTone, string> = {
 
 /**
  * A small technical stamp — issue tag, date badge, location.
- * Metadata register: DM Sans, small, uppercase, warm grey.
+ * Metadata register: Jost, small, uppercase, warm grey.
  */
 export function Stamp({
     children,

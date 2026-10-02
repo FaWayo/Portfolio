@@ -33,7 +33,7 @@ src/
   primitives/                 Room, Reveal, Photo, Stamp, Barcode,
                               MetricTable, HoverNote        (.tsx)
   rooms/                      Portal, Me, Work, Writings, Life,
-                              Becoming, Talk               (.tsx)
+                              Journal, Talk               (.tsx)
   data/                       typed content, one file per room
 ```
 
@@ -91,41 +91,49 @@ weight, whether 9 doodles is too many.
 
 ---
 
-## Phase 3 — Nav + scroll
+## Phase 3 — Opening screen and wayfinding
 
-**Goal:** The skeleton you navigate by.
+*(Merges the old Phase 3 "Nav + scroll" and Phase 4 "Intro gate". There is no
+intro gate and no top navigation bar.)*
 
-- Six-room nav: `ME WORK WRITINGS LIFE STILL BECOMING LET'S TALK`
-- `HoverNote` on each nav item (three notes are proposals — see
-  `decision-log.md` §14)
-- Scroll-spy: active room reflected in nav
-- Smooth scroll, correct focus handling on jump
-- `Fatimah Wayo` wordmark top-left, returns to the intro
-- Rooms render as empty `min-h-screen` sections so scrolling is testable
+**Goal:** The site opens on the first screen, and you can always find your way.
 
-**Gate:** nav reads correctly, scroll-spy tracks, wordmark works.
+**First screen** — the page itself, no gate in front of it:
 
----
-
-## Phase 4 — Intro gate
-
-**Goal:** The north star, literally.
-
-- Section 19 copy **verbatim**
-- `Still becoming.` in Instrument Serif
-- `[ enter ]`
+- `Hi, I'm Fatimah.` in Beth Ellen, written on once
+- The one short paragraph, verbatim
+- No tagline under the name. `Still becoming.` is removed, not replaced
 - Handwritten `hello ->` or `you're here.` in Beth Ellen rose
 - A small cloud
-- Reveal transition into the site — "walking through it"
-- Replays on every fresh load; wordmark returns to it
-- No motion may block reading or clicking
+- One photo if there is one
+- Warm and wholesome: generous space, no dividers, no boxes
+- The six rooms underneath as a loose list, each with its handwritten note —
+  `ME` *where I come from* · `WORK` *things I've actually built* ·
+  `WRITINGS` *things I've been writing about ->* · `LIFE` *the other parts of
+  me* · `IN PROGRESS` *notes, mostly* · `LET'S TALK` *no reason needed*
+- They read like part of the welcome, not like a menu
+- **No eyebrow label anywhere.** A heading stands on its own
 
-**Gate:** does it feel like almost ridiculously simple, or did it creep toward a
-landing page?
+**Wayfinding** — after the first screen:
+
+- A small quiet floating pill at the bottom centre showing the room you are in
+- Tapping it opens the six rooms in a soft overlay
+- The pill is a real `<button>`; the overlay traps focus and closes on `Escape`
+- It must never cover photographs in the LIFE room on mobile
+- A small `Fatimah` in Beth Ellen at the top left of each room, scrolling to top
+- Smooth scroll, correct focus handling on jump, skip link
+- Scroll-spy drives the pill label and the list's active state
+
+**Gate:** the first screen feels warm and plain rather than empty, the room list
+reads as welcome rather than menu, the pill stays out of the way of LIFE photos
+on a small screen, and the overlay is fully keyboard operable.
 
 ---
 
 ## Phase 5 — ME  *(needs 1–2 portraits)*
+
+**Goal:** Quiet and personal. A large portrait bleeding to the edge, text beside
+it. Not a résumé.
 
 Copy verbatim from the brand direction, "A little about me".
 
@@ -137,24 +145,27 @@ facts are not:
 - Software Developer, PCES, 2023–2025 · National Service Personnel, PCES, 2022–2023
 - Summer Intern, Nokwary Technologies, 2021 · Bootcamp, MEST + Soronko Academy, 2020
 
-Skills have no room of their own in the brand direction. Proposed: an editorial
-ruled column here, not pill tags — HTML/CSS, JavaScript, TypeScript, C#, SQL,
-React, .NET, Express, Node.js, Git, Figma, Azure, Problem Solving.
+**ME must not read like a résumé.** Experience, education and skills are shrunk
+to a compact block, or move behind a small `CV` pill linking the PDF at
+`src/data/me.ts` → `cvUrl`. No `EXPERIENCE` / `EDUCATION` / `SKILLS` labels
+above them.
 
-Mood: quiet, personal. More typography and portrait.
+Layout: large portrait bleeding to the edge, text beside it. Mobile first.
 
-**Gate:** portrait frame and photo slots in place. Expect to rewrite the copy —
-the brand direction's register is not a résumé.
+**Gate:** portrait frame and photo slots in place, the facts are present but
+quiet, and the room does not read as a CV. Expect to rewrite the copy — the
+brand direction's register is not a résumé.
 
 ---
 
 ## Phase 6 — WORK
 
-**Goal:** "Things I've built" + four case studies, shipping on placeholders.
+**Goal:** One card per project, shipping on placeholders.
 
 `OMAYA CARE` · `PCES` · `MEST` · `SMS GATEWAY`
 
-Each gets "What I actually did" — contributions, not company descriptions.
+Each card carries an image placeholder and a pill label. Each gets "What I
+actually did" — contributions, not company descriptions.
 
 Content arrives incrementally, so the data file is typed and partial-safe:
 
@@ -162,23 +173,29 @@ Content arrives incrementally, so the data file is typed and partial-safe:
   `contributions[]`, `stack[]`, optional `metrics[]`, optional `href`
 - Projects render from data; a project with empty `contributions` still renders
   without breaking the layout
+- Stack entries render as small rounded pills
 
-`MetricTable` and `Stamp` get their first real use here.
+`MetricTable` and `Stamp` get their first real use here. Pill shapes only — no
+drop shadows, no gradients.
 
-**Open:** the PCES ambiguity — project versus employer (see `decision-log.md` §14).
+**Open:** the PCES ambiguity — project versus employer (see `decision-log.md`
+open item 4).
 
-**Gate:** layout holds with partial content. Confirm the WORK visual language is
-"structured, confident".
+**Gate:** layout holds with partial content, cards read as one repeated shape
+rather than four layouts, and the pills stay small.
 
 ---
 
 ## Phase 7 — WRITINGS
 
+**Goal:** Visually very quiet. The quietest room on the site.
+
 Header line verbatim: *"Sometimes I understand what I'm thinking only after I've
 written it down."* Then `Things I've written`, then Medium posts — dates, titles,
 short descriptions.
 
-Mood: reading desk. Visually very quiet. Occasional clouds and annotations.
+Mood: reading desk. Resist adding visual interest it does not need. A single
+list, generous space, almost nothing else.
 
 **Gate:** quiet enough? Resist adding visual interest it doesn't need.
 
@@ -186,26 +203,34 @@ Mood: reading desk. Visually very quiet. Occasional clouds and annotations.
 
 ## Phase 8 — LIFE  *(needs 10–20 candid frames)*
 
-**The paper tone room.** `When I'm not working` — not "My Hobbies".
+**A paper tone room.** `When I'm not working` — not "My Hobbies".
+
+A photo grid beside the title, and one short line. Photo-led and the most
+visually interesting section.
 
 Categories: books, fashion, music, fitness, travel, food, new places, learning
 random things, good conversations, quiet moments, trying something I've never
 done before.
 
-Photo-led and the most visually interesting section. Rotated frames, uneven
-spacing, overlap, tape. Photographs used **unedited**.
+Rotated frames, uneven spacing, overlap. Photographs used **unedited**. Drop the
+photo drop shadow and the tape blur — no shadows anywhere now.
 
-**Gate:** first real test of the paper tone — this is where the derived palette
-either works or needs adjusting.
+**Gate:** the grid holds its shape with partial content, and the floating room
+pill never covers a photograph here on a small screen.
 
 ---
 
-## Phase 9 — STILL BECOMING
+## Phase 9 — Journal room  *(no title)*
 
-**The emotional centre.** Must feel different from everything else — almost a
-personal journal.
+**The most different room on the site.** It must not look like any other room —
+almost a personal journal, like flipping to a page.
 
-Title `Still Becoming` in large Instrument Serif. Opening copy verbatim:
+**The room has no title.** `Still Becoming` is removed, not renamed, and nothing
+anywhere says "becoming", "journey" or "evolving". In the first-screen list and
+the overlay it reads `IN PROGRESS` with the note *notes, mostly* (pending
+Fatimah's confirmation).
+
+The opening lines stand in for a title, in large Beth Ellen:
 
 > There are things I know I want.
 > Things I'm still figuring out.
@@ -216,16 +241,17 @@ Six entry types: **Currently learning** · **Something I've changed my mind abou
 · **Something I want to get better at** · **Something I'm grateful for** ·
 **Something I'm praying about** · **Something I'm excited about**
 
-Structure it as a typed `BecomingEntry[]` so it can evolve over time — that is
-the point of the section.
+Structure it as a typed `JournalEntry[]` so it can grow over time.
 
-**Gate:** does it feel reflective rather than inspirational-poster?
+**Gate:** does it feel reflective rather than inspirational-poster, and is it
+visibly the most different room rather than a recoloured ME?
 
 ---
 
 ## Phase 10 — LET'S TALK
 
-`Why are you here?` — six intents, each a prompt and a label:
+A large heading, then one small rounded pill per intent. `Why are you here?` —
+six intents, each a prompt and a label:
 
 | Prompt | Label |
 |---|---|
@@ -248,15 +274,42 @@ infrastructure decided.
 
 ## Phase 11 — Polish
 
-- Audit against §23 anti-patterns
+- Audit against §23 anti-patterns, including **no eyebrow labels above headings**
+  and **no shadows or gradients**
 - §24 as the final checklist
 - Remove the scratch route from Phase 2
 - Performance: image sizing, font loading, `contenthash` review
-- Keyboard navigation, focus states, skip link
+- Keyboard navigation, focus states, skip link, overlay focus trap and `Escape`
 - `prefers-reduced-motion` verified end to end
 - Check rose stays near 3% across every viewport
+- Check dark/paper tones alternate cleanly down the page
+- Confirm the floating room pill never covers LIFE photographs on mobile
+- Grep for `becoming`, `journey`, `evolving`, and the old `enter` gate strings —
+  all should return nothing
 - Remove dead code and unused dependencies
 - Decide what happens with the committed `dist/`
+
+---
+
+## Build order after the redesign
+
+The build runs **one room at a time**, and each step is verified in the browser
+before the next one starts. Do not batch them.
+
+| Step | Work | Stop and review |
+|---|---|---|
+| 1 | Tokens, tones, fonts, motion, pills | Yes |
+| 2 | First screen and wayfinding (pill, overlay, signature, skip link) | Yes |
+| 3 | ME | Yes |
+| 4 | WORK | Yes |
+| 5 | WRITINGS | Yes |
+| 6 | LIFE | Yes |
+| 7 | Journal room | Yes |
+| 8 | LET'S TALK | Yes |
+| 9 | Phase 11 polish | Yes |
+
+Routing and doodle behaviour are preserved throughout, except where this plan
+explicitly retires them.
 
 ---
 
@@ -264,8 +317,9 @@ infrastructure decided.
 
 | Needed | By |
 |---|---|
-| Paper palette sign-off | Phase 8 |
+| Paper palette sign-off | Phase 8, more urgent now paper is used on more rooms |
 | Nav hover note approval (ME, WORK, LET'S TALK) | Phase 3 |
+| Journal room label approval (`IN PROGRESS`) | Phase 3 |
 | 1–2 portraits | Phase 5 |
 | WORK project content | Phase 6, incremental |
 | PCES clarification | Phase 6 |

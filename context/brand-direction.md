@@ -19,7 +19,7 @@ It should feel like Fatimah's personal space on the internet.
 A place where professional work, writing, faith, interests, photographs, questions, ideas and growth can exist together without needing to be neatly separated into "professional" and "personal."
 
 The visual idea is:
-A notebook that happens to contain software, products, writing, photographs, faith, questions, and a person still becoming.
+A notebook that happens to contain software, products, writing, photographs, faith, questions, and a person still working it out.
 
 The site should feel like someone opened your notebook and found something unexpectedly beautiful and interesting inside.
 
@@ -171,24 +171,27 @@ Someone should gradually realise: *"Oh, that's her colour."*
 
 ## 08. Typography
 
-The typography has three voices.
+The typography has **two** voices. There is no third.
 
-**01. DM Sans — the structured voice**
+**01. DM Sans — the reading voice**
 
-Use for: navigation, body text, buttons, labels, project descriptions, dates, metadata, technical information. It keeps the professional side clean and contemporary.
+Use for: the opening paragraph, body text, project descriptions, long-form
+writing, anything a visitor actually has to sit and read. It keeps the
+professional side clean and contemporary.
 
-**02. Instrument Serif — the editorial voice**
+**02. Beth Ellen — the hand**
 
-Use for: large section titles, major statements, reflective phrases, occasional emphasis, large pull quotes. It gives the site elegance and contrast.
+This is the site's main voice, not a marginal annotation. Use it for: the
+greeting, room titles, room list, pills and buttons, captions, short statements,
+and the handwritten margin notes. It should feel like your handwriting appearing
+inside the website.
 
-Example: *Still Becoming* could be large Instrument Serif while the supporting text stays DM Sans.
+Beth Ellen is **never** the reading face: a paragraph in a script font is a
+struggle, so anything past a sentence or two is DM Sans. It is also never set
+below 18px — a script face under 18px looks weak, not intimate.
 
-**03. Beth Ellen — the notebook voice**
-
-This is the handwritten typeface. Use it for: marginal notes, little thoughts, annotations, captions, arrows, doodle labels, personal comments, tiny observations.
-
-Beth Ellen should feel like your handwriting appearing inside the website.
-It should never become the main body font.
+No display font. Instrument Serif is retired; nothing replaces it. See
+`context/decision-log.md` §16.
 
 ---
 
@@ -196,11 +199,11 @@ It should never become the main body font.
 
 | Level | Example | Font | Colour |
 |---|---|---|---|
-| Major title | Still Becoming | Instrument Serif, Large | Warm ivory |
-| Section title | Things I've built | DM Sans or Instrument Serif | context dependent |
+| Major title | In progress | Beth Ellen, large, writes on once | Warm ivory |
+| Room title | Things I've built | Beth Ellen | Warm ivory |
 | Body | I'm a software engineer and product builder, rooted in faith and curious about what I can create with the life I've been given. | DM Sans | Warm ivory, comfortable line height |
-| Metadata | 2026 - ACCRA - GHANA | DM Sans, Small, Uppercase | Warm grey |
-| Notebook annotation | still figuring this one out | Beth Ellen | Dusty rose |
+| Metadata | 2026 - Accra - Ghana | DM Sans, small | Warm grey |
+| Notebook annotation | still figuring this one out | Beth Ellen, 18px min | Dusty rose |
 
 ---
 
@@ -239,7 +242,7 @@ Just something that appears throughout the site.
 
 For example:
 
-*Still Becoming* with a little cloud nearby containing: *"things I'm thinking about"*
+*IN PROGRESS* with a little cloud nearby containing: *"things I'm thinking about"*
 
 Or: *WRITINGS* with: *"things I've been thinking about lately"* inside a small cloud.
 
@@ -255,7 +258,7 @@ The handwritten layer should add commentary, not repeat the main content.
 | Main copy | Margin note |
 |---|---|
 | I've worked across banking software, healthcare products and early-stage startups. | *quite the collection.* |
-| Still Becoming | *yes, still.* |
+| In Progress | *no title, just notes.* |
 | Things I've built | *this is where things get serious ->* |
 
 That little bit of commentary is what makes the site feel like you, rather than a designer's interpretation of you.
@@ -291,6 +294,15 @@ Use: asymmetric columns, oversized headings, offset images, overlapping photogra
 
 This prevents "unconventional" from becoming "someone forgot to align the divs."
 
+**Slide-deck structure**
+
+Each room is a **full-width block**, and consecutive blocks **alternate
+between the dark tone and the paper tone**, so scrolling feels like flipping
+through slides. The alternation is part of the structure, not decoration.
+
+**Mobile first.** Everything stacks cleanly on a small screen before anything is
+designed for a wide one.
+
 ---
 
 ## 16. Motion direction
@@ -322,6 +334,9 @@ Animations should be:
 - Subtle enough to feel natural.
 - Meaningful enough to justify existing.
 
+**One animation only.** As a room comes into view, use a single, very simple
+fade. Respect `prefers-reduced-motion` at all times.
+
 **Motion should never delay access to the content.**
 The site is a portfolio, not an amusement park.
 
@@ -329,24 +344,31 @@ The site is a portfolio, not an amusement park.
 
 ## 18. Navigation
 
-Primary navigation:
+**There is no navigation bar.** No top bar, no divided row of links, no fixed
+header. The site is one long page and you move through it by scrolling.
 
-`ME  WORK  WRITINGS  LIFE  STILL BECOMING  LET'S TALK`
+Navigation lives in the page instead, in three small pieces:
 
-Keep it simple.
+**1. On the first screen.** Under the opening paragraph, the six rooms appear as
+a loose list. Each is a link that scrolls to that room, with its handwritten
+note beside it. It should read like part of the welcome, not like a menu.
 
-**Potential interaction**
-
-| Room | Handwritten hover note |
+| Room | Handwritten note |
 |---|---|
 | ME | *where I come from* |
 | WORK | *things I've actually built* |
 | WRITINGS | *things I've been writing about ->* |
 | LIFE | *the other parts of me* |
-| STILL BECOMING | *still, obviously.* |
+| IN PROGRESS | *notes, mostly* |
 | LET'S TALK | *no reason needed* |
 
-Those little notes can use Beth Ellen.
+**2. A floating pill.** After the first screen, a small quiet pill sits at the
+bottom centre showing the name of the room you are in. Tapping it opens the six
+rooms in a soft overlay. It must never cover photographs in the LIFE room on
+mobile.
+
+**3. A signature.** A small `Fatimah` in Beth Ellen at the top left of each
+room, scrolling back to the top. A signature, not a bar.
 
 ---
 
@@ -354,21 +376,26 @@ Those little notes can use Beth Ellen.
 
 The homepage should introduce you immediately.
 
+**The site opens directly on this.** There is no separate intro page, no
+`[ enter ]` button, no reveal transition, and nothing replays on load. The
+first screen *is* the page.
+
 **Main copy**
 
 > Hi, I'm Fatimah.
 >
 > I'm a software engineer and product builder, rooted in faith and curious about what I can create with the life I've been given.
->
-> I build software, work on products, write about things I'm learning, and like taking an idea from "what if?" to something people can actually use.
->
-> Still becoming.
+
+There is no tagline under the name.
 
 Then a handwritten note somewhere nearby:
 
 `hello ->` or `you're here.`
 
 ...with a small cloud.
+
+The first screen should feel warm and wholesome. Generous space, one photo if
+there is one, no dividers, no boxes.
 
 The homepage should not contain your entire biography.
 It should make someone want to keep exploring.
@@ -385,7 +412,7 @@ It should make someone want to keep exploring.
 
 **LIFE** — Mood: visual scrapbook. Photography, interests, small fragments, little captions, minimal explanation.
 
-**STILL BECOMING** — Mood: reflective. More whitespace, Instrument Serif, handwritten notes, questions. Things you're learning, things you've changed your mind about, things you're praying about, things you're becoming.
+**IN PROGRESS** — Mood: reflective. More whitespace, a large Beth Ellen title, handwritten notes, questions. Things you're learning, things you've changed your mind about, things you're praying about.
 
 **LET'S TALK** — Mood: warm and open.
 
@@ -400,9 +427,9 @@ And somewhere: *you don't need a very good reason.* — Beth Ellen, dusty rose, 
 Don't create a complicated logo.
 Your name is enough.
 
-**Primary** — *Fatimah Wayo* in DM Sans or Instrument Serif.
+**Primary** — *Fatimah Wayo* in DM Sans.
 
-**Secondary personal mark** — You could eventually create a handwritten `FW`, or simply *Fatimah* in Beth Ellen. But use it sparingly.
+**Secondary personal mark** — *Fatimah* in Beth Ellen, handwritten and slightly rotated. This is the signature that returns to the top from each room. Use it sparingly.
 
 The site shouldn't look like it belongs to a fashion label.
 
@@ -457,9 +484,8 @@ Whenever you're adding something new, ask:
 | Borders | `#46413F` |
 | Accent | `#B88D98` |
 | Deep accent | `#392F32` |
-| Primary font | DM Sans |
-| Editorial font | Instrument Serif |
-| Handwritten font | Beth Ellen |
+| Primary font | DM Sans (reading) |
+| Handwritten font | Beth Ellen (main voice: titles, labels, notes) |
 | Photography | Personal, candid, editorial |
 | Doodles | Clouds, arrows, ?, !, circles, scribbles |
 | Motion | Hand-drawn, subtle, physical |
@@ -496,7 +522,7 @@ A personal space, with enough craft that people remember they've been there.
 
 **LIFE** — The parts of me that don't belong on a CV. Hobbies, interests, places, style, little obsessions, photographs.
 
-**STILL BECOMING** — What I'm learning, changing, questioning, hoping for, and growing into.
+**IN PROGRESS** — What I'm learning, questioning, hoping for, and still working out.
 
 **LET'S TALK** — Work, mentorship, collaboration, ideas, friendship.
 
@@ -517,15 +543,9 @@ Something more like:
 > Hi, I'm Fatimah.
 >
 > I'm a software engineer and product builder, rooted in faith and curious about what I can create with the life I've been given.
->
-> I build software, work on products, write about things I'm learning, and like taking an idea from "what if?" to something people can actually use.
->
-> Still becoming.
->
-> `[ enter ]`
 
-Then the page opens up.
-And `enter` could reveal the rest of the site almost like you're walking through it.
+The page opens on this. There is no `[ enter ]` and no separate screen in
+front of it — the first screen is the page, and the rooms follow underneath.
 
 ## ME
 
@@ -544,6 +564,16 @@ This is where we go deeper. Not a biography. Something like:
 That's important.
 Because the site shouldn't make you feel like your entire existence is a GitHub repository.
 
+**Layout:** a large portrait bleeding to the edge, text beside it.
+
+**The facts are present but quiet.** Experience, education and skills are shrunk
+to a compact block, or sit behind a small `CV` pill linking your résumé:
+
+`https://drive.google.com/file/d/1QZa7OBHapcTPIZW0hVTr-EeA6Kp4PLtO/preview`
+
+No `EXPERIENCE` / `EDUCATION` / `SKILLS` labels above them. ME should not read
+like a CV.
+
 ## WORK
 
 This is where we get specific.
@@ -559,6 +589,9 @@ Each one gets its own story.
 And crucially: **What I actually did.**
 Not just what the company does.
 That's where your portfolio becomes much stronger than your CV.
+
+**Layout:** one card per project, same shape each time, with an image placeholder
+and a small pill label.
 
 ## WRITINGS
 
@@ -582,6 +615,8 @@ Not "My Hobbies" — because that sounds like a school application.
 
 Instead: **When I'm not working**
 
+**Layout:** a photo grid beside the title, and one short line.
+
 Then photographs, little fragments and categories. **Things I enjoy:**
 
 books, fashion, music, fitness, travel, food, new places, learning random things, good conversations, quiet moments, trying something I've never done before.
@@ -589,12 +624,14 @@ books, fashion, music, fitness, travel, food, new places, learning random things
 And don't explain every one.
 A photograph of you somewhere interesting can say more than 150 words about "my passion for exploration."
 
-## STILL BECOMING
+## IN PROGRESS
 
 This is the emotional centre of the site.
 It should feel different from everything else. Maybe almost like a personal journal.
 
-**Still Becoming**
+It has **no title.** The room keeps its journal feel and its entry types, but
+the phrase is gone — not renamed, just gone. Nothing here says "becoming",
+"journey" or "evolving". In the navigation list it is simply `IN PROGRESS`.
 
 > There are things I know I want.
 > Things I'm still figuring out.
@@ -610,7 +647,7 @@ Then little entries:
 - **Something I'm praying about**
 - **Something I'm excited about**
 
-This section can evolve throughout your life. That's the point.
+This section changes as the notes do. That's the point.
 
 ## LET'S TALK
 
@@ -628,3 +665,5 @@ Instead of one boring "CONTACT ME":
 - I just want to say hi -> **Hello**
 
 That last one makes the entire site feel more human.
+
+**Layout:** a large heading, then one small rounded pill per intent.

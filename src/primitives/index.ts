@@ -1,5 +1,7 @@
 export { Room } from './Room';
 export { Reveal } from './Reveal';
+export { WriteOn } from './WriteOn';
+export { Typewriter } from './Typewriter';
 export { Photo } from './Photo';
 export { Stamp } from './Stamp';
 export { Barcode } from './Barcode';

@@ -25,8 +25,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
-    --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-    --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+    --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(0.637 0.237 25.331);
@@ -36,8 +36,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
+    --container-xs: 20rem;
     --container-md: 28rem;
     --container-2xl: 42rem;
+    --container-3xl: 48rem;
     --container-6xl: 72rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
@@ -65,6 +67,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --text-8xl--line-height: 1;
     --font-weight-light: 300;
     --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
     --leading-tight: 1.25;
     --leading-snug: 1.375;
     --leading-relaxed: 1.625;
@@ -77,14 +81,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --color-charcoal: #242222;
-    --color-ivory: #F3EFEB;
-    --color-grey: #B5AEAA;
-    --color-rule-dark: #46413F;
-    --color-rose: #B88D98;
-    --color-muted-rose: #392F32;
-    --font-hand: "Beth Ellen", ui-serif, cursive;
-    --text-display: clamp(3rem, 9vw, 7rem);
+    --color-noir: #0E0B0B;
+    --color-cocoa: #2B1B1B;
+    --color-wine: #5B3A3A;
+    --color-mauve: #876A6A;
+    --color-champagne: #CDB8A6;
+    --color-cream: #F4EDE4;
+    --font-display: "Fraunces", ui-serif, Georgia, serif;
+    --font-hand: "Beth Ellen", cursive;
     --text-title: clamp(2rem, 5vw, 3.5rem);
     --color-surface: var(--room-bg);
     --color-ink: var(--room-ink);
@@ -290,11 +294,23 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .inset-0 {
     inset: calc(var(--spacing) * 0);
   }
+  .-inset-x-1 {
+    inset-inline: calc(var(--spacing) * -1);
+  }
   .inset-x-0 {
     inset-inline: calc(var(--spacing) * 0);
   }
+  .-inset-y-1 {
+    inset-block: calc(var(--spacing) * -1);
+  }
+  .inset-y-0 {
+    inset-block: calc(var(--spacing) * 0);
+  }
   .-top-3 {
     top: calc(var(--spacing) * -3);
+  }
+  .-top-6 {
+    top: calc(var(--spacing) * -6);
   }
   .top-0 {
     top: calc(var(--spacing) * 0);
@@ -308,8 +324,20 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .top-5 {
     top: calc(var(--spacing) * 5);
   }
+  .top-8 {
+    top: calc(var(--spacing) * 8);
+  }
   .top-16 {
     top: calc(var(--spacing) * 16);
+  }
+  .top-\\[45\\%\\] {
+    top: 45%;
+  }
+  .top-\\[calc\\(var\\(--hero-top\\)-8px\\)\\] {
+    top: calc(var(--hero-top) - 8px);
+  }
+  .top-\\[var\\(--hero-top\\)\\] {
+    top: var(--hero-top);
   }
   .top-full {
     top: 100%;
@@ -323,11 +351,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .right-5 {
     right: calc(var(--spacing) * 5);
   }
+  .right-\\[4vw\\] {
+    right: 4vw;
+  }
   .-bottom-0 {
     bottom: calc(var(--spacing) * -0);
   }
-  .-bottom-0\\.5 {
-    bottom: calc(var(--spacing) * -0.5);
+  .-bottom-1 {
+    bottom: calc(var(--spacing) * -1);
   }
   .-bottom-2 {
     bottom: calc(var(--spacing) * -2);
@@ -335,8 +366,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
+  .bottom-4 {
+    bottom: calc(var(--spacing) * 4);
+  }
   .bottom-full {
     bottom: 100%;
+  }
+  .-left-2 {
+    left: calc(var(--spacing) * -2);
+  }
+  .-left-16 {
+    left: calc(var(--spacing) * -16);
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
@@ -347,6 +387,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .left-1\\/2 {
     left: calc(1/2 * 100%);
   }
+  .left-2 {
+    left: calc(var(--spacing) * 2);
+  }
+  .left-6 {
+    left: calc(var(--spacing) * 6);
+  }
+  .left-\\[3vw\\] {
+    left: 3vw;
+  }
   .left-full {
     left: 100%;
   }
@@ -355,6 +404,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .isolation-auto {
     isolation: auto;
+  }
+  .z-0 {
+    z-index: 0;
   }
   .z-10 {
     z-index: 10;
@@ -385,6 +437,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .col-auto {
     grid-column: auto;
+  }
+  .col-span-8 {
+    grid-column: span 8 / span 8;
   }
   .col-span-full {
     grid-column: 1 / -1;
@@ -482,6 +537,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .mx-auto {
     margin-inline: auto;
   }
+  .-my-4 {
+    margin-block: calc(var(--spacing) * -4);
+  }
+  .-my-5 {
+    margin-block: calc(var(--spacing) * -5);
+  }
+  .-my-6 {
+    margin-block: calc(var(--spacing) * -6);
+  }
+  .-mt-3 {
+    margin-top: calc(var(--spacing) * -3);
+  }
   .mt-0 {
     margin-top: calc(var(--spacing) * 0);
   }
@@ -521,11 +588,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
+  .mt-auto {
+    margin-top: auto;
+  }
   .-mr-2 {
     margin-right: calc(var(--spacing) * -2);
   }
   .mr-0 {
     margin-right: calc(var(--spacing) * 0);
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
   }
   .mr-8 {
     margin-right: calc(var(--spacing) * 8);
@@ -548,11 +621,26 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
+  .-ml-1 {
+    margin-left: calc(var(--spacing) * -1);
+  }
+  .-ml-\\[0\\.04em\\] {
+    margin-left: calc(0.04em * -1);
+  }
+  .ml-1 {
+    margin-left: calc(var(--spacing) * 1);
+  }
+  .ml-2 {
+    margin-left: calc(var(--spacing) * 2);
+  }
   .ml-3 {
     margin-left: calc(var(--spacing) * 3);
   }
   .ml-10 {
     margin-left: calc(var(--spacing) * 10);
+  }
+  .ml-auto {
+    margin-left: auto;
   }
   .box-border {
     box-sizing: border-box;
@@ -635,6 +723,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .field-sizing-fixed {
     field-sizing: fixed;
   }
+  .aspect-\\[4\\/5\\] {
+    aspect-ratio: 4/5;
+  }
+  .aspect-\\[540\\/525\\] {
+    aspect-ratio: 540/525;
+  }
   .aspect-auto {
     aspect-ratio: auto;
   }
@@ -646,6 +740,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .h-1 {
     height: calc(var(--spacing) * 1);
+  }
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
+  .h-2\\.5 {
+    height: calc(var(--spacing) * 2.5);
   }
   .h-4 {
     height: calc(var(--spacing) * 4);
@@ -668,6 +768,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .h-28 {
     height: calc(var(--spacing) * 28);
   }
+  .h-40 {
+    height: calc(var(--spacing) * 40);
+  }
+  .h-64 {
+    height: calc(var(--spacing) * 64);
+  }
+  .h-auto {
+    height: auto;
+  }
   .h-full {
     height: 100%;
   }
@@ -683,14 +792,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .max-h-screen {
     max-height: 100vh;
   }
-  .min-h-\\[60vh\\] {
-    min-height: 60vh;
+  .min-h-0 {
+    min-height: calc(var(--spacing) * 0);
   }
   .min-h-\\[100svh\\] {
     min-height: 100svh;
-  }
-  .min-h-\\[calc\\(100svh-4rem\\)\\] {
-    min-height: calc(100svh - 4rem);
   }
   .min-h-screen {
     min-height: 100vh;
@@ -700,6 +806,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .w-1 {
     width: calc(var(--spacing) * 1);
+  }
+  .w-3 {
+    width: calc(var(--spacing) * 3);
+  }
+  .w-3\\/5 {
+    width: calc(3/5 * 100%);
   }
   .w-4 {
     width: calc(var(--spacing) * 4);
@@ -725,8 +837,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .w-28 {
     width: calc(var(--spacing) * 28);
   }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
   .w-64 {
     width: calc(var(--spacing) * 64);
+  }
+  .w-\\[calc\\(var\\(--text-hero-name\\)\\*5\\.112\\)\\] {
+    width: calc(var(--text-hero-name) * 5.112);
   }
   .w-fit {
     width: fit-content;
@@ -734,14 +852,29 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .w-full {
     width: 100%;
   }
+  .w-px {
+    width: 1px;
+  }
   .w-screen {
     width: 100vw;
   }
   .max-w-2xl {
     max-width: var(--container-2xl);
   }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
   .max-w-6xl {
     max-width: var(--container-6xl);
+  }
+  .max-w-\\[17rem\\] {
+    max-width: 17rem;
+  }
+  .max-w-\\[22rem\\] {
+    max-width: 22rem;
+  }
+  .max-w-\\[34rem\\] {
+    max-width: 34rem;
   }
   .max-w-full {
     max-width: 100%;
@@ -755,8 +888,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .max-w-screen {
     max-width: 100vw;
   }
+  .max-w-xs {
+    max-width: var(--container-xs);
+  }
+  .min-w-0 {
+    min-width: calc(var(--spacing) * 0);
+  }
   .min-w-screen {
     min-width: 100vw;
+  }
+  .flex-1 {
+    flex: 1;
   }
   .flex-auto {
     flex: auto;
@@ -875,8 +1017,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --tw-translate-y: calc(var(--spacing) * -2);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .-translate-y-\\[6px\\] {
-    --tw-translate-y: calc(6px * -1);
+  .-translate-y-full {
+    --tw-translate-y: -100%;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-1 {
+    --tw-translate-y: calc(var(--spacing) * 1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-y-2 {
@@ -885,10 +1031,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .translate-y-4 {
     --tw-translate-y: calc(var(--spacing) * 4);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-y-\\[6px\\] {
-    --tw-translate-y: 6px;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-3d {
@@ -911,17 +1053,29 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .scale-none {
     scale: none;
   }
+  .-rotate-2 {
+    rotate: calc(2deg * -1);
+  }
   .-rotate-3 {
     rotate: calc(3deg * -1);
   }
   .-rotate-45 {
     rotate: calc(45deg * -1);
   }
+  .-rotate-\\[1\\.5deg\\] {
+    rotate: calc(1.5deg * -1);
+  }
+  .-rotate-\\[3deg\\] {
+    rotate: calc(3deg * -1);
+  }
+  .rotate-12 {
+    rotate: 12deg;
+  }
   .rotate-45 {
     rotate: 45deg;
   }
-  .rotate-\\[-2deg\\] {
-    rotate: -2deg;
+  .rotate-\\[10deg\\] {
+    rotate: 10deg;
   }
   .rotate-none {
     rotate: none;
@@ -992,6 +1146,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .scroll-mt-0 {
     scroll-margin-top: calc(var(--spacing) * 0);
+  }
+  .scroll-mt-8 {
+    scroll-margin-top: calc(var(--spacing) * 8);
   }
   .scroll-mt-16 {
     scroll-margin-top: calc(var(--spacing) * 16);
@@ -1227,6 +1384,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .gap-1 {
     gap: calc(var(--spacing) * 1);
   }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-2\\.5 {
+    gap: calc(var(--spacing) * 2.5);
+  }
   .gap-3 {
     gap: calc(var(--spacing) * 3);
   }
@@ -1260,8 +1423,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .gap-\\[2px\\] {
     gap: 2px;
   }
-  .gap-\\[5px\\] {
-    gap: 5px;
+  .gap-\\[2rem\\] {
+    gap: 2rem;
   }
   .space-y-1 {
     :where(& > :not(:last-child)) {
@@ -1275,6 +1438,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       --tw-space-y-reverse: 0;
       margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
       margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-3 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
   .space-y-5 {
@@ -1298,6 +1468,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
+  .space-y-10 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 10) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 10) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
   .space-y-16 {
     :where(& > :not(:last-child)) {
       --tw-space-y-reverse: 0;
@@ -1310,22 +1487,46 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       --tw-space-y-reverse: 1;
     }
   }
+  .gap-x-3 {
+    column-gap: calc(var(--spacing) * 3);
+  }
+  .gap-x-4 {
+    column-gap: calc(var(--spacing) * 4);
+  }
   .gap-x-5 {
     column-gap: calc(var(--spacing) * 5);
   }
   .gap-x-6 {
     column-gap: calc(var(--spacing) * 6);
   }
+  .gap-x-7 {
+    column-gap: calc(var(--spacing) * 7);
+  }
   .gap-x-8 {
     column-gap: calc(var(--spacing) * 8);
   }
+  .gap-x-9 {
+    column-gap: calc(var(--spacing) * 9);
+  }
   .gap-x-10 {
     column-gap: calc(var(--spacing) * 10);
+  }
+  .gap-x-12 {
+    column-gap: calc(var(--spacing) * 12);
+  }
+  .gap-x-\\[clamp\\(2\\.75rem\\,6\\.5vw\\,7\\.5rem\\)\\] {
+    column-gap: clamp(2.75rem, 6.5vw, 7.5rem);
   }
   .space-x-reverse {
     :where(& > :not(:last-child)) {
       --tw-space-x-reverse: 1;
     }
+  }
+  .gap-y-0 {
+    row-gap: calc(var(--spacing) * 0);
+  }
+  .gap-y-0\\.5 {
+    row-gap: calc(var(--spacing) * 0.5);
   }
   .gap-y-1 {
     row-gap: calc(var(--spacing) * 1);
@@ -1333,8 +1534,26 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .gap-y-2 {
     row-gap: calc(var(--spacing) * 2);
   }
+  .gap-y-5 {
+    row-gap: calc(var(--spacing) * 5);
+  }
+  .gap-y-6 {
+    row-gap: calc(var(--spacing) * 6);
+  }
+  .gap-y-7 {
+    row-gap: calc(var(--spacing) * 7);
+  }
+  .gap-y-10 {
+    row-gap: calc(var(--spacing) * 10);
+  }
   .gap-y-12 {
     row-gap: calc(var(--spacing) * 12);
+  }
+  .gap-y-14 {
+    row-gap: calc(var(--spacing) * 14);
+  }
+  .gap-y-\\[clamp\\(2rem\\,5vh\\,2\\.75rem\\)\\] {
+    row-gap: clamp(2rem, 5vh, 2.75rem);
   }
   .divide-x {
     :where(& > :not(:last-child)) {
@@ -1413,6 +1632,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .overflow-visible {
+    overflow: visible;
   }
   .overflow-x-hidden {
     overflow-x: hidden;
@@ -1559,11 +1781,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .border-rule {
     border-color: var(--room-rule);
   }
+  .bg-\\[var\\(--room-muted\\)\\] {
+    background-color: var(--room-muted);
+  }
   .bg-accent {
     background-color: var(--room-accent);
   }
   .bg-black {
     background-color: var(--color-black);
+  }
+  .bg-cocoa {
+    background-color: var(--color-cocoa);
   }
   .bg-current {
     background-color: currentColor;
@@ -1574,17 +1802,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .bg-ink {
     background-color: var(--room-ink);
   }
-  .bg-ivory {
-    background-color: var(--color-ivory);
+  .bg-noir {
+    background-color: var(--color-noir);
   }
-  .bg-ivory\\/25 {
-    background-color: color-mix(in oklab, var(--color-ivory) 25%, transparent);
-  }
-  .bg-muted-rose {
-    background-color: var(--color-muted-rose);
-  }
-  .bg-muted-rose\\/40 {
-    background-color: color-mix(in oklab, var(--color-muted-rose) 40%, transparent);
+  .bg-noir\\/92 {
+    background-color: color-mix(in oklab, var(--color-noir) 92%, transparent);
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
@@ -1594,6 +1816,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .bg-rule {
     background-color: var(--room-rule);
+  }
+  .bg-rule\\/40 {
+    background-color: color-mix(in oklab, var(--room-rule) 40%, transparent);
   }
   .bg-surface {
     background-color: var(--room-bg);
@@ -1722,6 +1947,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .bg-origin-padding {
     background-origin: padding-box;
   }
+  .fill-cocoa {
+    fill: var(--color-cocoa);
+  }
   .fill-none {
     fill: none;
   }
@@ -1791,6 +2019,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
@@ -1799,6 +2030,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .px-20 {
     padding-inline: calc(var(--spacing) * 20);
+  }
+  .px-\\[6vw\\] {
+    padding-inline: 6vw;
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -1827,8 +2061,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .py-20 {
     padding-block: calc(var(--spacing) * 20);
   }
+  .py-24 {
+    padding-block: calc(var(--spacing) * 24);
+  }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
+  }
+  .pt-7 {
+    padding-top: calc(var(--spacing) * 7);
   }
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
@@ -1839,8 +2079,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .pt-14 {
     padding-top: calc(var(--spacing) * 14);
   }
+  .pt-16 {
+    padding-top: calc(var(--spacing) * 16);
+  }
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
+  }
+  .pt-28 {
+    padding-top: calc(var(--spacing) * 28);
   }
   .pr-4 {
     padding-right: calc(var(--spacing) * 4);
@@ -1857,6 +2103,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .pb-10 {
     padding-bottom: calc(var(--spacing) * 10);
   }
+  .pb-12 {
+    padding-bottom: calc(var(--spacing) * 12);
+  }
+  .pb-16 {
+    padding-bottom: calc(var(--spacing) * 16);
+  }
   .pb-20 {
     padding-bottom: calc(var(--spacing) * 20);
   }
@@ -1865,6 +2117,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .pb-28 {
     padding-bottom: calc(var(--spacing) * 28);
+  }
+  .pb-\\[6vh\\] {
+    padding-bottom: 6vh;
+  }
+  .pb-\\[max\\(6vh\\,36px\\)\\] {
+    padding-bottom: max(6vh, 36px);
   }
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
@@ -1916,6 +2174,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .align-top {
     vertical-align: top;
+  }
+  .font-display {
+    font-family: var(--font-display);
   }
   .font-hand {
     font-family: var(--font-hand);
@@ -1973,14 +2234,32 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .text-\\[0\\.6rem\\] {
     font-size: 0.6rem;
   }
-  .text-\\[0\\.65rem\\] {
-    font-size: 0.65rem;
+  .text-\\[0\\.8125rem\\] {
+    font-size: 0.8125rem;
   }
-  .text-\\[0\\.68rem\\] {
-    font-size: 0.68rem;
+  .text-\\[1\\.75rem\\] {
+    font-size: 1.75rem;
   }
-  .text-display {
-    font-size: var(--text-display);
+  .text-\\[11px\\] {
+    font-size: 11px;
+  }
+  .text-\\[15px\\] {
+    font-size: 15px;
+  }
+  .text-\\[17px\\] {
+    font-size: 17px;
+  }
+  .text-\\[length\\:clamp\\(1\\.375rem\\,2vw\\,2\\.25rem\\)\\] {
+    font-size: clamp(1.375rem, 2vw, 2.25rem);
+  }
+  .text-\\[length\\:clamp\\(3\\.25rem\\,7\\.5vw\\,8rem\\)\\] {
+    font-size: clamp(3.25rem, 7.5vw, 8rem);
+  }
+  .text-\\[length\\:clamp\\(11px\\,1\\.05vw\\,16px\\)\\] {
+    font-size: clamp(11px, 1.05vw, 16px);
+  }
+  .text-\\[length\\:clamp\\(15px\\,1\\.15vw\\,20px\\)\\] {
+    font-size: clamp(15px, 1.15vw, 20px);
   }
   .text-title {
     font-size: var(--text-title);
@@ -1993,9 +2272,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --tw-leading: calc(var(--spacing) * 28);
     line-height: calc(var(--spacing) * 28);
   }
+  .leading-\\[0\\.92\\] {
+    --tw-leading: 0.92;
+    line-height: 0.92;
+  }
   .leading-\\[0\\.95\\] {
     --tw-leading: 0.95;
     line-height: 0.95;
+  }
+  .leading-\\[1\\.75\\] {
+    --tw-leading: 1.75;
+    line-height: 1.75;
   }
   .leading-none {
     --tw-leading: 1;
@@ -2013,6 +2300,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --tw-leading: var(--leading-tight);
     line-height: var(--leading-tight);
   }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
   .font-light {
     --tw-font-weight: var(--font-weight-light);
     font-weight: var(--font-weight-light);
@@ -2021,29 +2312,33 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
-  .tracking-\\[-0\\.01em\\] {
-    --tw-tracking: -0.01em;
-    letter-spacing: -0.01em;
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
   }
-  .tracking-\\[0\\.3em\\] {
-    --tw-tracking: 0.3em;
-    letter-spacing: 0.3em;
+  .tracking-\\[-0\\.02em\\] {
+    --tw-tracking: -0.02em;
+    letter-spacing: -0.02em;
   }
-  .tracking-\\[0\\.16em\\] {
-    --tw-tracking: 0.16em;
-    letter-spacing: 0.16em;
+  .tracking-\\[0\\.1em\\] {
+    --tw-tracking: 0.1em;
+    letter-spacing: 0.1em;
   }
-  .tracking-\\[0\\.18em\\] {
-    --tw-tracking: 0.18em;
-    letter-spacing: 0.18em;
+  .tracking-\\[0\\.2em\\] {
+    --tw-tracking: 0.2em;
+    letter-spacing: 0.2em;
+  }
+  .tracking-\\[0\\.06em\\] {
+    --tw-tracking: 0.06em;
+    letter-spacing: 0.06em;
   }
   .tracking-\\[0\\.22em\\] {
     --tw-tracking: 0.22em;
     letter-spacing: 0.22em;
   }
-  .tracking-\\[0\\.25em\\] {
-    --tw-tracking: 0.25em;
-    letter-spacing: 0.25em;
+  .tracking-\\[0\\.24em\\] {
+    --tw-tracking: 0.24em;
+    letter-spacing: 0.24em;
   }
   .text-balance {
     text-wrap: balance;
@@ -2118,14 +2413,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .text-ink {
     color: var(--room-ink);
   }
+  .text-ink\\/70 {
+    color: color-mix(in oklab, var(--room-ink) 70%, transparent);
+  }
+  .text-mauve {
+    color: var(--color-mauve);
+  }
   .text-muted {
     color: var(--room-muted);
   }
-  .text-muted\\/70 {
-    color: color-mix(in oklab, var(--room-muted) 70%, transparent);
-  }
-  .text-rose {
-    color: var(--color-rose);
+  .text-transparent {
+    color: transparent;
   }
   .text-white {
     color: var(--color-white);
@@ -2287,6 +2585,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .opacity-60 {
     opacity: 60%;
   }
+  .opacity-70 {
+    opacity: 70%;
+  }
   .opacity-100 {
     opacity: 100%;
   }
@@ -2298,10 +2599,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\\[0_18px_40px_-24px_rgba\\(0\\,0\\,0\\,0\\.65\\)\\] {
-    --tw-shadow: 0 18px 40px -24px var(--tw-shadow-color, rgba(0,0,0,0.65));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-lg {
@@ -2367,11 +2664,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .backdrop-blur {
     --tw-backdrop-blur: blur(8px);
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-  }
-  .backdrop-blur-\\[1px\\] {
-    --tw-backdrop-blur: blur(1px);
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
@@ -2457,6 +2749,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .duration-1000 {
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
+  }
+  .duration-\\[250ms\\] {
+    --tw-duration: 250ms;
+    transition-duration: 250ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -2545,6 +2841,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --tw-outline-style: solid;
     outline-style: solid;
   }
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
+  }
   .backface-hidden {
     backface-visibility: hidden;
   }
@@ -2621,14 +2921,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       opacity: 100%;
     }
   }
-  .group-hover\\:translate-x-1 {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        --tw-translate-x: calc(var(--spacing) * 1);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
   .group-hover\\:opacity-100 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
@@ -2636,30 +2928,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       }
     }
   }
-  .last\\:border-b {
-    &:last-child {
-      border-bottom-style: var(--tw-border-style);
-      border-bottom-width: 1px;
-    }
-  }
-  .hover\\:text-accent {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--room-accent);
-      }
+  .group-focus-visible\\:opacity-100 {
+    &:is(:where(.group):focus-visible *) {
+      opacity: 100%;
     }
   }
   .hover\\:text-ink {
     &:hover {
       @media (hover: hover) {
         color: var(--room-ink);
-      }
-    }
-  }
-  .hover\\:opacity-70 {
-    &:hover {
-      @media (hover: hover) {
-        opacity: 70%;
       }
     }
   }
@@ -2732,19 +3009,34 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       outline-style: none;
     }
   }
-  .sm\\:grid-cols-2 {
+  .focus-visible\\:text-ink {
+    &:focus-visible {
+      color: var(--room-ink);
+    }
+  }
+  .sm\\:flex-row {
     @media (width >= 40rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      flex-direction: row;
     }
   }
-  .md\\:col-span-3 {
-    @media (width >= 48rem) {
-      grid-column: span 3 / span 3;
+  .sm\\:flex-wrap {
+    @media (width >= 40rem) {
+      flex-wrap: wrap;
     }
   }
-  .md\\:col-span-4 {
+  .sm\\:pb-0 {
+    @media (width >= 40rem) {
+      padding-bottom: calc(var(--spacing) * 0);
+    }
+  }
+  .md\\:right-\\[8vw\\] {
     @media (width >= 48rem) {
-      grid-column: span 4 / span 4;
+      right: 8vw;
+    }
+  }
+  .md\\:col-span-5 {
+    @media (width >= 48rem) {
+      grid-column: span 5 / span 5;
     }
   }
   .md\\:col-span-6 {
@@ -2752,49 +3044,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       grid-column: span 6 / span 6;
     }
   }
-  .md\\:col-span-7 {
+  .md\\:col-start-7 {
     @media (width >= 48rem) {
-      grid-column: span 7 / span 7;
+      grid-column-start: 7;
     }
   }
-  .md\\:col-start-2 {
+  .md\\:mt-0 {
     @media (width >= 48rem) {
-      grid-column-start: 2;
-    }
-  }
-  .md\\:col-start-6 {
-    @media (width >= 48rem) {
-      grid-column-start: 6;
-    }
-  }
-  .md\\:col-start-9 {
-    @media (width >= 48rem) {
-      grid-column-start: 9;
-    }
-  }
-  .md\\:mt-12 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 12);
-    }
-  }
-  .md\\:mt-14 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 14);
-    }
-  }
-  .md\\:mt-16 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 16);
-    }
-  }
-  .md\\:mt-20 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 20);
-    }
-  }
-  .md\\:mt-24 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 24);
+      margin-top: calc(var(--spacing) * 0);
     }
   }
   .md\\:block {
@@ -2802,24 +3059,24 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       display: block;
     }
   }
+  .md\\:flex {
+    @media (width >= 48rem) {
+      display: flex;
+    }
+  }
   .md\\:hidden {
     @media (width >= 48rem) {
       display: none;
     }
   }
-  .md\\:h-20 {
+  .md\\:max-w-none {
     @media (width >= 48rem) {
-      height: calc(var(--spacing) * 20);
+      max-width: none;
     }
   }
-  .md\\:min-h-\\[calc\\(100svh-5rem\\)\\] {
+  .md\\:flex-1 {
     @media (width >= 48rem) {
-      min-height: calc(100svh - 5rem);
-    }
-  }
-  .md\\:scroll-mt-20 {
-    @media (width >= 48rem) {
-      scroll-margin-top: calc(var(--spacing) * 20);
+      flex: 1;
     }
   }
   .md\\:grid-cols-12 {
@@ -2827,9 +3084,24 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       grid-template-columns: repeat(12, minmax(0, 1fr));
     }
   }
-  .md\\:gap-10 {
+  .md\\:gap-x-10 {
     @media (width >= 48rem) {
-      gap: calc(var(--spacing) * 10);
+      column-gap: calc(var(--spacing) * 10);
+    }
+  }
+  .md\\:gap-x-12 {
+    @media (width >= 48rem) {
+      column-gap: calc(var(--spacing) * 12);
+    }
+  }
+  .md\\:self-center {
+    @media (width >= 48rem) {
+      align-self: center;
+    }
+  }
+  .md\\:self-end {
+    @media (width >= 48rem) {
+      align-self: flex-end;
     }
   }
   .md\\:px-12 {
@@ -2837,19 +3109,19 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       padding-inline: calc(var(--spacing) * 12);
     }
   }
-  .md\\:pt-6 {
+  .md\\:pt-32 {
     @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 6);
+      padding-top: calc(var(--spacing) * 32);
     }
   }
-  .md\\:pt-16 {
+  .md\\:pt-36 {
     @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 16);
+      padding-top: calc(var(--spacing) * 36);
     }
   }
-  .md\\:pb-32 {
+  .md\\:pb-24 {
     @media (width >= 48rem) {
-      padding-bottom: calc(var(--spacing) * 32);
+      padding-bottom: calc(var(--spacing) * 24);
     }
   }
   .md\\:pb-40 {
@@ -2857,51 +3129,63 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       padding-bottom: calc(var(--spacing) * 40);
     }
   }
-  .md\\:text-3xl {
+  .md\\:text-lg {
     @media (width >= 48rem) {
-      font-size: var(--text-3xl);
-      line-height: var(--tw-leading, var(--text-3xl--line-height));
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
-  .lg\\:gap-9 {
+  .md\\:text-xs {
+    @media (width >= 48rem) {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+  .md\\:tracking-\\[0\\.4em\\] {
+    @media (width >= 48rem) {
+      --tw-tracking: 0.4em;
+      letter-spacing: 0.4em;
+    }
+  }
+  .lg\\:gap-x-9 {
     @media (width >= 64rem) {
-      gap: calc(var(--spacing) * 9);
+      column-gap: calc(var(--spacing) * 9);
     }
   }
 }
 :root,
 .tone-dark {
-  --room-bg: #242222;
-  --room-ink: #F3EFEB;
-  --room-muted: #B5AEAA;
-  --room-rule: #46413F;
-  --room-accent: #B88D98;
+  --room-bg: #0E0B0B;
+  --room-ink: #F4EDE4;
+  --room-muted: #CDB8A6;
+  --room-rule: #5B3A3A;
+  --room-accent: #876A6A;
 }
 .tone-paper {
-  --room-bg: #F2F2F2;
-  --room-ink: #242222;
-  --room-muted: #6B6560;
-  --room-rule: #D5CFCB;
-  --room-accent: #7A4A56;
+  --room-bg: #F4EDE4;
+  --room-ink: #0E0B0B;
+  --room-muted: #5B3A3A;
+  --room-rule: #CDB8A6;
+  --room-accent: #876A6A;
 }
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--room-bg);
-    color: var(--room-ink);
+    background-color: var(--color-noir);
+    color: var(--color-cream);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background-color: var(--room-accent);
-    color: var(--room-bg);
+    background-color: var(--room-accent, var(--color-mauve));
+    color: var(--room-bg, var(--color-noir));
   }
   :focus-visible {
-    outline: 2px solid var(--room-accent);
+    outline: 2px solid var(--room-accent, var(--color-mauve));
     outline-offset: 3px;
   }
   h1,
@@ -2911,21 +3195,40 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     font-weight: inherit;
   }
 }
+@layer components {
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--room-rule, var(--color-wine));
+    padding: 0.45rem 1.05rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--room-ink, var(--color-cream));
+    background-color: transparent;
+    transition: border-color 0.3s ease;
+  }
+  .pill:hover {
+    border-color: var(--room-accent, var(--color-mauve));
+  }
+  .font-display {
+    font-variation-settings: "SOFT" 50, "WONK" 0;
+  }
+  .font-hand {
+    line-height: 1.1;
+  }
+}
 @keyframes drawPath {
   from {
     stroke-dashoffset: 1000;
   }
   to {
     stroke-dashoffset: 0;
-  }
-}
-@keyframes floatCloud {
-  0%,
-    100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(1deg);
   }
 }
 @keyframes settlePhoto {
@@ -2943,24 +3246,129 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   stroke-dashoffset: 1000;
   animation: drawPath 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.drift-cloud {
-  animation: floatCloud 6s ease-in-out infinite;
+.nav-mark {
+  opacity: 0;
+  clip-path: inset(-4px 100% -4px -4px);
+  transition: clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.2s ease-out;
+}
+.nav-mark[data-active],
+.nav-group:hover > .nav-mark,
+.nav-group:focus-visible > .nav-mark {
+  opacity: 1;
+  clip-path: inset(-4px -4px -4px -4px);
+}
+.nav-mark[data-active] {
+  transition: opacity 0.2s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-mark {
+    transition: none;
+  }
 }
 .settle-photo {
   animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  transition: opacity 0.7s ease-out;
 }
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+}
+.write-on {
+  transform: skewX(0deg);
+}
+.write-on.is-waiting {
+  clip-path: inset(-0.25em 100% -0.15em -0.05em);
+  transform: skewX(-3deg);
+  transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.write-on.is-written {
+  clip-path: inset(-0.25em -0.05em -0.15em -0.05em);
+  transform: skewX(0deg);
+}
+.typewriter-caret {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 1em;
+  vertical-align: -0.12em;
+}
+.typewriter-caret::after {
+  content: "";
+  position: absolute;
+  left: 0.08em;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  background: currentColor;
+}
+.typewriter-caret.is-done::after {
+  animation: caretBlink 0.9s steps(1, end) 3 forwards;
+}
+@keyframes caretBlink {
+  0%,
+    49% {
+    opacity: 1;
+  }
+  50%,
+    100% {
+    opacity: 0;
+  }
+}
+.hero {
+  --hero-top: max(27svh, 150px);
+  --text-hero-name: clamp(58px, 14.5vw, 280px);
+  --hero-crown: calc(var(--hero-top) + var(--text-hero-name) * 0.85);
+}
+.hero-portrait {
+  height: calc((100svh - var(--hero-crown)) / 0.925);
+}
+.portrait-fade {
+  --fade: 1;
+  -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            #000 calc(var(--fade) * 14%),
+            #000 calc(100% - var(--fade) * 14%),
+            transparent 100%),
+        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right,
+            transparent 0%,
+            #000 calc(var(--fade) * 14%),
+            #000 calc(100% - var(--fade) * 14%),
+            transparent 100%),
+        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);
+  mask-composite: intersect;
+}
+.portrait-travel [data-portrait-to] {
+  background: transparent;
+}
+.portrait-traveller {
+  display: none;
+}
+.portrait-travel .portrait-traveller {
+  display: block;
+}
+.portrait-travel [data-portrait-from] img,
+.portrait-travel [data-portrait-to] img {
+  opacity: 0;
+}
+.hero-name {
+  font-size: var(--text-hero-name);
+  line-height: 1.1;
+  white-space: nowrap;
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
+  }
+  .write-on,
+    .write-on.is-waiting,
+    .write-on.is-written {
+    clip-path: none;
     transform: none;
   }
 }
@@ -3264,7 +3672,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
 @property --tw-contain-style {
   syntax: "*";
   inherits: false;
-}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["@import \"tailwindcss\";\n\n/* ============================================================================\n   FIXED PALETTE\n   Raw brand colours from context/brand-direction.md §07. These never change\n   with room tone — bg-charcoal, text-rose and friends are stable across the\n   whole site. Use the SEMANTIC tokens below inside components instead.\n   ========================================================================= */\n\n@theme {\n    --color-charcoal: #242222;\n    --color-ivory: #F3EFEB;\n    --color-grey: #B5AEAA;\n    --color-rule-dark: #46413F;\n    --color-rose: #B88D98;\n    --color-muted-rose: #392F32;\n\n    /* Three voices only. See design-system.md §5. */\n    --font-sans: \"DM Sans\", ui-sans-serif, system-ui, sans-serif;\n    --font-serif: \"Instrument Serif\", ui-serif, Georgia, serif;\n    --font-hand: \"Beth Ellen\", ui-serif, cursive;\n\n    --text-display: clamp(3rem, 9vw, 7rem);\n    --text-title: clamp(2rem, 5vw, 3.5rem);\n}\n\n/* ============================================================================\n   SEMANTIC TOKENS\n   `inline` makes utilities emit var(--room-*) directly instead of\n   var(--color-surface), so flipping one class repaints an entire room.\n   A <Room tone=\"dark\" | \"paper\"> wrapper sets it. See design-system.md §1.\n   ========================================================================= */\n\n@theme inline {\n    --color-surface: var(--room-bg);\n    --color-ink: var(--room-ink);\n    --color-muted: var(--room-muted);\n    --color-rule: var(--room-rule);\n    --color-accent: var(--room-accent);\n}\n\n/* The brand palette. Dark is the default across the whole site. */\n:root,\n.tone-dark {\n    --room-bg: #242222;\n    --room-ink: #F3EFEB;\n    --room-muted: #B5AEAA;\n    --room-rule: #46413F;\n    --room-accent: #B88D98;\n}\n\n/*\n * Paper tone — DERIVED, NEEDS SIGN-OFF.\n * Not in the brand direction, which defines only a dark palette. Exists so\n * LIFE's photography isn't sunk into charcoal. Grey and rose are darkened\n * because the brand values collapse on light: #B88D98 on #F2F2F2 is 2.6:1 and\n * #B5AEAA is 1.9:1, both failing AA. See design-system.md §3 and §4.\n */\n.tone-paper {\n    --room-bg: #F2F2F2;\n    --room-ink: #242222;\n    --room-muted: #6B6560;\n    --room-rule: #D5CFCB;\n    --room-accent: #7A4A56;\n}\n\n/* ============================================================================\n   BASE\n   ========================================================================= */\n\n@layer base {\n    html {\n        scroll-behavior: smooth;\n    }\n\n    body {\n        background-color: var(--room-bg);\n        color: var(--room-ink);\n        font-family: var(--font-sans);\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        text-rendering: optimizeLegibility;\n    }\n\n    ::selection {\n        background-color: var(--room-accent);\n        color: var(--room-bg);\n    }\n\n    :focus-visible {\n        outline: 2px solid var(--room-accent);\n        outline-offset: 3px;\n    }\n\n    /* Pure white is banned. Ivory keeps the dark interface soft. */\n    h1,\n    h2,\n    h3,\n    h4 {\n        font-weight: inherit;\n    }\n}\n\n/* ============================================================================\n   DOODLE MOTION\n   Ported from context/doodle-components.jsx, which injected these at runtime.\n   Now static. Drawing paths carry pathLength=\"1000\" so the dashoffset maths is\n   correct regardless of real path length — that was a bug in the original.\n   ========================================================================= */\n\n@keyframes drawPath {\n    from {\n        stroke-dashoffset: 1000;\n    }\n\n    to {\n        stroke-dashoffset: 0;\n    }\n}\n\n@keyframes floatCloud {\n    0%,\n    100% {\n        transform: translateY(0) rotate(0deg);\n    }\n\n    50% {\n        transform: translateY(-6px) rotate(1deg);\n    }\n}\n\n@keyframes settlePhoto {\n    from {\n        transform: var(--photo-rotate, 0deg) translateY(14px);\n        opacity: 0;\n    }\n\n    to {\n        transform: var(--photo-rotate, 0deg) translateY(0);\n        opacity: 1;\n    }\n}\n\n.draw-doodle {\n    stroke-dasharray: 1000;\n    stroke-dashoffset: 1000;\n    animation: drawPath 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;\n}\n\n.drift-cloud {\n    animation: floatCloud 6s ease-in-out infinite;\n}\n\n/* A rotated photograph settling into place. --photo-rotate is set inline by the\n   Photo primitive so the rotation survives the transform in the keyframes. */\n.settle-photo {\n    animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;\n}\n\n/* ============================================================================\n   REVEAL\n   Content entering after scroll. Motion must never delay access to the content,\n   so anything already on screen is shown by Reveal's layout effect before paint,\n   and this rule unconditionally shows everything when motion is reduced.\n   ========================================================================= */\n\n.reveal {\n    opacity: 0;\n    transform: translateY(24px);\n    transition: opacity 0.7s ease-out, transform 0.7s ease-out;\n}\n\n.reveal.is-visible {\n    opacity: 1;\n    transform: translateY(0);\n}\n\n@media (prefers-reduced-motion: reduce) {\n\n    .reveal {\n        opacity: 1;\n        transform: none;\n    }\n}\n\n/* Motion must never delay access to content. */\n@media (prefers-reduced-motion: reduce) {\n    html {\n        scroll-behavior: auto;\n    }\n\n    *,\n    *::before,\n    *::after {\n        animation-duration: 0.01ms !important;\n        animation-iteration-count: 1 !important;\n        transition-duration: 0.01ms !important;\n    }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA","sourcesContent":["@import \"tailwindcss\";\n\n/* ============================================================================\n   FIXED PALETTE\n   \"Black Champagne\", five values plus one derived cream. These never change\n   with room tone — bg-noir, text-mauve and friends are stable across the whole\n   site. Use the SEMANTIC tokens below inside components instead.\n   See decision-log.md §26.\n   ========================================================================= */\n\n@theme {\n    --color-noir: #0E0B0B;\n    --color-cocoa: #2B1B1B;\n    --color-wine: #5B3A3A;\n    --color-mauve: #876A6A;\n    --color-champagne: #CDB8A6;\n    /* Derived, not in the palette: the light rooms need a ground lighter than\n       champagne, which is 1.6:1 against itself as a background for wine. */\n    --color-cream: #F4EDE4;\n\n    /* Three voices, one job each. Fraunces is the display, Jost is the read,\n       Beth Ellen is the only hand and is never set below 18px.\n       See design-system.md §5. */\n    --font-display: \"Fraunces\", ui-serif, Georgia, serif;\n    --font-sans: \"Jost\", ui-sans-serif, system-ui, sans-serif;\n    --font-hand: \"Beth Ellen\", cursive;\n\n    --text-title: clamp(2rem, 5vw, 3.5rem);\n}\n\n/* ============================================================================\n   SEMANTIC TOKENS\n   `inline` makes utilities emit var(--room-*) directly instead of\n   var(--color-surface), so flipping one class repaints an entire room.\n   A <Room tone=\"dark\" | \"paper\"> wrapper sets it. See design-system.md §1.\n   ========================================================================= */\n\n@theme inline {\n    --color-surface: var(--room-bg);\n    --color-ink: var(--room-ink);\n    --color-muted: var(--room-muted);\n    --color-rule: var(--room-rule);\n    --color-accent: var(--room-accent);\n}\n\n/*\n * Dark is the default across the whole site.\n * cream on noir 16.9:1 · champagne on noir 10.3:1 · mauve on noir 4.0:1.\n * Mauve is under 4.5:1, so it is for large type, marks and doodles only —\n * never body copy. Wine as a rule is 2.0:1, which is right for a hairline.\n */\n:root,\n.tone-dark {\n    --room-bg: #0E0B0B;\n    --room-ink: #F4EDE4;\n    --room-muted: #CDB8A6;\n    --room-rule: #5B3A3A;\n    --room-accent: #876A6A;\n}\n\n/*\n * Paper tone — cream.\n * noir on cream 16.9:1 · wine on cream 8.6:1 · mauve on cream 4.2:1.\n * The same mauve works in both tones, so the accent does not shift colour as\n * you scroll from one room to the next. See design-system.md §3 and §4.\n */\n.tone-paper {\n    --room-bg: #F4EDE4;\n    --room-ink: #0E0B0B;\n    --room-muted: #5B3A3A;\n    --room-rule: #CDB8A6;\n    --room-accent: #876A6A;\n}\n\n/* ============================================================================\n   BASE\n   ========================================================================= */\n\n@layer base {\n    html {\n        scroll-behavior: smooth;\n    }\n\n    body {\n        background-color: var(--color-noir);\n        color: var(--color-cream);\n        font-family: var(--font-sans);\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        text-rendering: optimizeLegibility;\n    }\n\n    ::selection {\n        background-color: var(--room-accent, var(--color-mauve));\n        color: var(--room-bg, var(--color-noir));\n    }\n\n    :focus-visible {\n        outline: 2px solid var(--room-accent, var(--color-mauve));\n        outline-offset: 3px;\n    }\n\n    /* Pure white is banned. Cream keeps the dark interface soft. */\n    h1,\n    h2,\n    h3,\n    h4 {\n        font-weight: inherit;\n    }\n}\n\n/* ============================================================================\n   PILLS\n   The one container shape on the site. Fully rounded, outlined, no fill and no\n   shadow. Room labels, stack tags, LET'S TALK intents, the CV link and the\n   floating room pill are all this shape. See design-system.md §9.\n\n   Labels are small Jost capitals, tracked wide — the editorial register, and\n   straight, because a tilted chip next to a straight serif reads as a mistake.\n   Hover moves the border to the accent and leaves the text in ink: mauve is\n   4.0:1, too low for 12px type.\n   ========================================================================= */\n\n@layer components {\n    .pill {\n        display: inline-flex;\n        align-items: center;\n        gap: 0.5rem;\n        border-radius: 999px;\n        border: 1px solid var(--room-rule, var(--color-wine));\n        padding: 0.45rem 1.05rem;\n        font-family: var(--font-sans);\n        font-size: 0.75rem;\n        font-weight: 500;\n        letter-spacing: 0.12em;\n        text-transform: uppercase;\n        line-height: 1.2;\n        color: var(--room-ink, var(--color-cream));\n        background-color: transparent;\n        transition: border-color 0.3s ease;\n    }\n\n    .pill:hover {\n        border-color: var(--room-accent, var(--color-mauve));\n    }\n\n    /* The display face. Fraunces's SOFT axis rounds the terminals, which is\n       what lets it sit next to a signature script without looking stiff. */\n    .font-display {\n        font-variation-settings: \"SOFT\" 50, \"WONK\" 0;\n    }\n\n    /* Beth Ellen is single-weight and light: below 18px it looks weak rather\n       than intimate. Callers set the size; anything smaller belongs in\n       Fraunces italic. */\n    .font-hand {\n        line-height: 1.1;\n    }\n}\n\n/* ============================================================================\n   DOODLE MOTION\n   Ported from context/doodle-components.jsx, which injected these at runtime.\n   Now static. Drawing paths carry pathLength=\"1000\" so the dashoffset maths is\n   correct regardless of real path length — that was a bug in the original.\n   ========================================================================= */\n\n@keyframes drawPath {\n    from {\n        stroke-dashoffset: 1000;\n    }\n\n    to {\n        stroke-dashoffset: 0;\n    }\n}\n\n@keyframes settlePhoto {\n    from {\n        transform: var(--photo-rotate, 0deg) translateY(14px);\n        opacity: 0;\n    }\n\n    to {\n        transform: var(--photo-rotate, 0deg) translateY(0);\n        opacity: 1;\n    }\n}\n\n.draw-doodle {\n    stroke-dasharray: 1000;\n    stroke-dashoffset: 1000;\n    animation: drawPath 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;\n}\n\n/* --- Nav mark ---------------------------------------------------------------\n   The one hand-drawn underline every word shares, invisible until needed.\n\n   It is revealed with a left-to-right clip wipe, not the library's dash draw.\n   The nav path is stretched to each word with `vector-effect:\n   non-scaling-stroke`, and Chrome measures dashes on such a path in screen\n   pixels rather than in `pathLength` units — so a 1000-unit dash drew a fixed\n   ~20px stub under every word and never finished. A clip on the wrapper is\n   independent of the path, so the line always spans the whole word.\n\n   Hover and focus wipe the line in, and wipe it back out on leave. The current\n   room's line is simply there: it does not redraw when hovered, and moving\n   between rooms cross-fades it rather than replaying the wipe as you scroll.\n   Focus is in the selector deliberately — a mark only reachable with a mouse is\n   a mark keyboard users never see. See `Nav.tsx`.\n   ------------------------------------------------------------------------- */\n\n.nav-mark {\n    opacity: 0;\n    clip-path: inset(-4px 100% -4px -4px);\n    transition:\n        clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1),\n        opacity 0.2s ease-out;\n}\n\n.nav-mark[data-active],\n.nav-group:hover > .nav-mark,\n.nav-group:focus-visible > .nav-mark {\n    opacity: 1;\n    clip-path: inset(-4px -4px -4px -4px);\n}\n\n/* The current room's line must not wipe in from nothing when you arrive —\n   it fades, so only hover reads as \"drawing\". */\n.nav-mark[data-active] {\n    transition: opacity 0.2s ease-out;\n}\n\n/* Reduced motion: the same states, no movement. Only the current and hovered\n   words are marked — never all six. */\n@media (prefers-reduced-motion: reduce) {\n    .nav-mark {\n        transition: none;\n    }\n}\n\n\n/* A rotated photograph settling into place. --photo-rotate is set inline by the\n   Photo primitive so the rotation survives the transform in the keyframes.\n   Kept under 2° per §9 — past that a photo stops reading as hand-placed. */\n.settle-photo {\n    animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;\n}\n\n/* ============================================================================\n   MOTION\n   Two things, and nothing else. A room fades in as it enters view, and a title\n   writes itself once and then stays still forever. See design-system.md §8.\n\n   The doodle keyframes above are existing doodle behaviour and are deliberately\n   left untouched — stroke-draw and photo settle are not new motion.\n   ========================================================================= */\n\n.reveal {\n    opacity: 0;\n    transition: opacity 0.7s ease-out;\n}\n\n.reveal.is-visible {\n    opacity: 1;\n}\n\n/* --- Write on ---------------------------------------------------------------\n   A title being written by hand.\n\n   A live-text stroke-draw would mean moving the title into an <svg><text>, and\n   that forces either a fixed font size or `lengthAdjust` stretching the glyphs —\n   which wrecks a script face. So this reveals the real text along a hand-drawn\n   edge instead: a clip-path inset sweeping left to right, with a slight skew,\n   using the same easing as drawPath so it sits with the doodles.\n\n   The visible state is the DEFAULT, and the clipped state is opt-in via\n   `.is-waiting`. That ordering is deliberate and load-bearing. The first version\n   had it backwards — clipped by default, revealed by an IntersectionObserver —\n   and the hero heading came up invisible, because `clip-path` on the observed\n   element zeroes out its own intersection rect, so a `threshold` ratio could\n   never be met and the observer never fired. Motion here must be able to fail\n   without taking the text with it: if JS never runs, no `.is-waiting` is ever\n   added and the title is simply there.\n\n   It fires once on first appearance. It does not loop and it does not replay.\n   ------------------------------------------------------------------------- */\n\n.write-on {\n    transform: skewX(0deg);\n}\n\n.write-on.is-waiting {\n    clip-path: inset(-0.25em 100% -0.15em -0.05em);\n    transform: skewX(-3deg);\n    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1),\n        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);\n}\n\n.write-on.is-written {\n    clip-path: inset(-0.25em -0.05em -0.15em -0.05em);\n    transform: skewX(0deg);\n}\n\n/* --- Typewriter caret ------------------------------------------------------\n   A 1px bar, zero-width in the flow so typing never shifts the line. Solid\n   while the text is being typed; once it is done it blinks three times and\n   goes. See Typewriter.tsx.\n   ------------------------------------------------------------------------- */\n\n.typewriter-caret {\n    position: relative;\n    display: inline-block;\n    width: 0;\n    height: 1em;\n    vertical-align: -0.12em;\n}\n\n.typewriter-caret::after {\n    content: \"\";\n    position: absolute;\n    left: 0.08em;\n    top: 0;\n    bottom: 0;\n    width: 1.5px;\n    background: currentColor;\n}\n\n.typewriter-caret.is-done::after {\n    animation: caretBlink 0.9s steps(1, end) 3 forwards;\n}\n\n@keyframes caretBlink {\n    0%,\n    49% {\n        opacity: 1;\n    }\n\n    50%,\n    100% {\n        opacity: 0;\n    }\n}\n\n/* --- The hero ---------------------------------------------------------------\n   The name written by hand, very large, with a portrait standing in front of\n   it. See Opening.tsx and decision-log.md §29.\n\n   `Fatimah.` in Beth Ellen advances **5.112em** (decision-log.md §25), so\n   14.5vw spans ~74% of the viewport; the 280px cap holds it at 1431px (75%) at\n   1920. On a phone 14.5vw is 57px — 289px of 390. The F carries a 0.04em left\n   side bearing, which is why the name is optically centred with a nudge.\n\n   `--hero-top` sits the name well below the nav — the F's top flourish rises\n   ~0.2em above the line box, so 27svh leaves roughly 150px of clear air under\n   the nav at 1440×900 — and lets the name and the figure read as one group in\n   the middle of the screen rather than a banner.\n\n   The portrait is sized *from the name*, so the overlap is the same at every\n   viewport. `--hero-crown` is where the top of the hair should land: 0.85em\n   below the name's top, which is about a quarter of the way up from the\n   name's lowest ink (the line box is 1.1em and Beth Ellen's `t` hangs\n   ~0.085em below the baseline, decision-log.md §25). So the crown tucks\n   *behind* the feet of the middle letters and stops — the name stays readable,\n   the figure reads as standing in front of it.\n\n   The photo's crown sits 7.5% down its 4:5 frame (see `HERO_PHOTO` in\n   data/me.ts), so a bottom-anchored box of height `(100svh - crown) / 0.925`\n   puts the hair exactly on that line.\n   ------------------------------------------------------------------------- */\n\n.hero {\n    --hero-top: max(27svh, 150px);\n    --text-hero-name: clamp(58px, 14.5vw, 280px);\n    --hero-crown: calc(var(--hero-top) + var(--text-hero-name) * 0.85);\n}\n\n.hero-portrait {\n    height: calc((100svh - var(--hero-crown)) / 0.925);\n}\n\n/* The studio frame was cropped at the shoulders, so the jacket and the outer\n   curls end in straight vertical lines — on desktop, where the frame is\n   narrower than the screen, those read as the edge of a rectangle pasted onto\n   the page. Two mask layers, intersected, dissolve the frame into the room:\n   the sides fade over their outer 14%, the bottom over its last 22%. The\n   bottom fade is also what keeps the faith line readable where it crosses the\n   jacket on a phone. The file itself is untouched; this is display only.\n\n   `--fade` scales both fades from 1 (the hero) to 0 (a crisp print). The\n   static hero image never sets it, so it stays fully faded; the travelling\n   portrait animates it to 0 as it lands in ME. See TravellingPortrait.tsx. */\n.portrait-fade {\n    --fade: 1;\n    -webkit-mask-image:\n        linear-gradient(to right,\n            transparent 0%,\n            #000 calc(var(--fade) * 14%),\n            #000 calc(100% - var(--fade) * 14%),\n            transparent 100%),\n        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);\n    -webkit-mask-composite: source-in;\n    mask-image:\n        linear-gradient(to right,\n            transparent 0%,\n            #000 calc(var(--fade) * 14%),\n            #000 calc(100% - var(--fade) * 14%),\n            transparent 100%),\n        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);\n    mask-composite: intersect;\n}\n\n/* While the print is in flight its landing slot must be invisible — a tinted\n   empty frame reads as a placeholder waiting to be filled. */\n.portrait-travel [data-portrait-to] {\n    background: transparent;\n}\n\n/* The traveller only exists once it has measured both slots; until then, and\n   for reduced motion or no JS, the two static images are the portrait. */\n.portrait-traveller {\n    display: none;\n}\n\n.portrait-travel .portrait-traveller {\n    display: block;\n}\n\n.portrait-travel [data-portrait-from] img,\n.portrait-travel [data-portrait-to] img {\n    opacity: 0;\n}\n\n\n.hero-name {\n    font-size: var(--text-hero-name);\n    line-height: 1.1;\n    white-space: nowrap;\n}\n\n@media (prefers-reduced-motion: reduce) {\n\n    .reveal {\n        opacity: 1;\n    }\n\n    /* Must out-specify `.write-on.is-waiting`, or a title still below the fold\n       would stay clipped for a reduced-motion visitor. */\n    .write-on,\n    .write-on.is-waiting,\n    .write-on.is-written {\n        clip-path: none;\n        transform: none;\n    }\n}\n\n/* Motion must never delay access to content. */\n@media (prefers-reduced-motion: reduce) {\n    html {\n        scroll-behavior: auto;\n    }\n\n    *,\n    *::before,\n    *::after {\n        animation-duration: 0.01ms !important;\n        animation-iteration-count: 1 !important;\n        transition-duration: 0.01ms !important;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -37615,16 +38023,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _doodles_Arrow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/doodles/Arrow */ "./src/doodles/Arrow.tsx");
-/* harmony import */ var _doodles_shared__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/doodles/shared */ "./src/doodles/shared.ts");
-/* harmony import */ var _components_Intro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/Intro */ "./src/components/Intro.tsx");
-/* harmony import */ var _components_Opening__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/Opening */ "./src/components/Opening.tsx");
-/* harmony import */ var _components_RoomIndex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/RoomIndex */ "./src/components/RoomIndex.tsx");
-/* harmony import */ var _data_rooms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/data/rooms */ "./src/data/rooms.ts");
+/* harmony import */ var _components_Nav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/components/Nav */ "./src/components/Nav.tsx");
+/* harmony import */ var _components_Opening__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Opening */ "./src/components/Opening.tsx");
+/* harmony import */ var _components_TravellingPortrait__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/TravellingPortrait */ "./src/components/TravellingPortrait.tsx");
+/* harmony import */ var _data_rooms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/data/rooms */ "./src/data/rooms.ts");
+/* harmony import */ var _data_me__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/data/me */ "./src/data/me.ts");
+/* harmony import */ var _doodles_Handwritten__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/doodles/Handwritten */ "./src/doodles/Handwritten.tsx");
+/* harmony import */ var _rooms_Me__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/rooms/Me */ "./src/rooms/Me.tsx");
 /* harmony import */ var _primitives_Room__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/primitives/Room */ "./src/primitives/Room.tsx");
-/* harmony import */ var _rooms_Me__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/rooms/Me */ "./src/rooms/Me.tsx");
 
 
 
@@ -37634,90 +38040,260 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/** How long the gate takes to fade. Matches the CSS transition. */
-const LEAVE_MS = 700;
 /**
- * Intro gate + the whole site as one continuous scroll.
+ * The whole site as one continuous scroll.
  *
- * The gate and the top of the page share the `Opening` component, so entering
- * reveals the screen that was just dismissed rather than a second layout that
- * resembles it. There is no sticky nav bar — navigation is the room index
- * directly under the opening screen.
+ * The nav is a fixed line of words at the top — no bar, no background. The page
+ * opens on the name, and the six rooms follow as full-width slides alternating
+ * dark and paper.
  */
 function App() {
-    const [entered, setEntered] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const [leaving, setLeaving] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    const enter = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
-        if (entered || leaving)
-            return;
-        setLeaving(true);
-        window.setTimeout(() => {
-            setEntered(true);
-            setLeaving(false);
-        }, LEAVE_MS);
-    }, [entered, leaving]);
-    /** The wordmark / "back to start" — returns to the gate. */
-    const backToIntro = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
-        setLeaving(false);
-        setEntered(false);
-        window.scrollTo({ top: 0, behavior: 'auto' });
-    }, []);
-    // Lock scrolling behind the gate so the page cannot be moved underneath it.
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-        if (entered)
-            return;
-        const previous = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = previous;
-        };
-    }, [entered]);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [!entered && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Intro__WEBPACK_IMPORTED_MODULE_4__["default"], { onEnter: enter, leaving: leaving }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { inert: !entered ? true : undefined, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", { href: "#rooms", className: "sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:text-ink", children: "Skip to content" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { id: "top" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", { id: "rooms", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_Room__WEBPACK_IMPORTED_MODULE_8__["default"], { id: "me", variant: "hero", label: "Me", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Opening__WEBPACK_IMPORTED_MODULE_5__["default"], { note: "hello \u2192", action: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "flex items-center gap-3 font-sans text-[0.65rem] uppercase tracking-[0.3em] text-muted", children: ["Scroll", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Arrow__WEBPACK_IMPORTED_MODULE_2__["default"], { direction: "down", width: 40, height: 40, color: _doodles_shared__WEBPACK_IMPORTED_MODULE_3__.MUTED })] }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_RoomIndex__WEBPACK_IMPORTED_MODULE_6__["default"], { onWordmarkClick: backToIntro }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_rooms_Me__WEBPACK_IMPORTED_MODULE_9__["default"], {})] }), _data_rooms__WEBPACK_IMPORTED_MODULE_7__.ROOMS.slice(1).map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Room__WEBPACK_IMPORTED_MODULE_8__["default"], { id: room.id, title: room.label, note: room.note, tone: room.tone, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mx-auto flex min-h-[60vh] w-full max-w-6xl flex-col justify-end px-6 pb-24 md:px-12", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", { className: "font-hand text-lg text-accent rotate-[-2deg] inline-block", children: ["built in Phase ", _data_rooms__WEBPACK_IMPORTED_MODULE_7__.ROOMS.indexOf(room) + 5] }) }) }, room.id)))] })] })] }));
+    // The hero's static portrait. If HERO_PHOTO.src is ever unset the hero draws
+    // a silhouette at the same size, so nothing shifts. TravellingPortrait
+    // carries this same image into ME on scroll (decision-log.md §32).
+    const openingPhoto = _data_me__WEBPACK_IMPORTED_MODULE_5__.HERO_PHOTO.src ? { src: _data_me__WEBPACK_IMPORTED_MODULE_5__.HERO_PHOTO.src, alt: _data_me__WEBPACK_IMPORTED_MODULE_5__.HERO_PHOTO.alt } : undefined;
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", { href: "#rooms", className: "sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:text-ink", children: "Skip to content" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", { id: "rooms", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Opening__WEBPACK_IMPORTED_MODULE_2__["default"], { photo: openingPhoto }), _data_rooms__WEBPACK_IMPORTED_MODULE_4__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Room__WEBPACK_IMPORTED_MODULE_8__["default"], { id: room.id, 
+                        // The journal room has no title, and ME supplies its own
+                        // heading — "A little about me" — rather than a bare
+                        // "ME" above it. `label` names both.
+                        title: room.id === 'journal' || room.id === 'me' ? undefined : room.label, label: room.id === 'journal' || room.id === 'me' ? room.label : undefined, note: room.note, tone: room.tone, children: room.id === 'me' ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_rooms_Me__WEBPACK_IMPORTED_MODULE_7__["default"], {})) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_6__["default"], { rotate: "-1.2deg", children: ["built in Phase ", _data_rooms__WEBPACK_IMPORTED_MODULE_4__.ROOMS.indexOf(room) + 5] }) })) }, room.id)))] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_TravellingPortrait__WEBPACK_IMPORTED_MODULE_3__["default"], {})] }));
 }
 
 
 /***/ }),
 
-/***/ "./src/components/Intro.tsx":
-/*!**********************************!*\
-  !*** ./src/components/Intro.tsx ***!
-  \**********************************/
+/***/ "./src/assets/hero-portrait.png":
+/*!**************************************!*\
+  !*** ./src/assets/hero-portrait.png ***!
+  \**************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "assets/hero-portrait.0e4e2f388373b01c1790.png";
+
+/***/ }),
+
+/***/ "./src/assets/me-portrait.jpg":
+/*!************************************!*\
+  !*** ./src/assets/me-portrait.jpg ***!
+  \************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "assets/me-portrait.e95a9cac1a37a9dcb627.jpg";
+
+/***/ }),
+
+/***/ "./src/components/Nav.tsx":
+/*!********************************!*\
+  !*** ./src/components/Nav.tsx ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Intro: () => (/* binding */ Intro),
+/* harmony export */   Nav: () => (/* binding */ Nav),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Opening__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Opening */ "./src/components/Opening.tsx");
-/* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
+/* harmony import */ var _data_rooms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/data/rooms */ "./src/data/rooms.ts");
+/* harmony import */ var _hooks_useActiveRoom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/hooks/useActiveRoom */ "./src/hooks/useActiveRoom.ts");
+/* harmony import */ var _hooks_useBackdropRoom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/hooks/useBackdropRoom */ "./src/hooks/useBackdropRoom.ts");
+/* harmony import */ var _NavMark__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NavMark */ "./src/components/NavMark.tsx");
 
 
+
+
+
+
+const MENU_ID = 'room-menu';
+/** Below this the nav hides going down and returns going up. */
+const HIDE_AFTER = 120;
+/** How long the nav takes to slide away or come back. */
+const HIDE_MS = 250;
+/**
+ * The navigation, which is a line of words and nothing else.
+ *
+ * No bar, no background, no border, no divider, no dots, no pill outlines. Six
+ * short words of Jost capitals in the top right, sharing one hand-drawn
+ * underline. See design-system.md §13 and decision-log.md §30.
+ *
+ * ## Why the nav is sans and the hero is not
+ *
+ * The nav is the one place on the site that is not a piece of writing. Display
+ * serif or script up here would sit above the 270px name as a small echo of it;
+ * Jost capitals read as wayfinding instead. The type is furniture, the marks are
+ * the hand. See decision-log.md §22 and §26.
+ *
+ * ## The words rest at 70% and rise to 100%
+ *
+ * The nav is fixed and has no background, so it sits directly on the room behind
+ * it, and those alternate noir and cream. Every word therefore carries an
+ * explicit opacity: **70% at rest, 100% on hover, focus and active**, plus the
+ * mauve underline. The mark, not the colour, is what identifies the current room.
+ *
+ * Every word behaves identically: same weight, same opacity steps, same mark in
+ * the same place, same 0.4s draw. Hover draws the line on; the current room's
+ * line is already there and does not redraw when hovered.
+ *
+ * A muted grey was used here before, and it was the wrong tool: a fixed grey has
+ * to be chosen light enough for noir and dark enough for cream, so it is
+ * always a compromise on both. Inheriting the room's own cream or ink at 70%
+ * resolves per tone instead, and the `tone-*` class on the nav is what makes that
+ * possible. See design-system.md §4.
+ *
+ * There is no `Fatimah` wordmark. It duplicated the hero name one screen below
+ * it, and the one place it was worth having — telling you who the site belongs
+ * to when you are deep in a room — the nav is fixed, so it is on screen anyway.
+ *
+ * ## Why the mark is its own component
+ *
+ * The library doodles are drawn for rooms, 70–240px wide. A nav word is 13px.
+ * See `NavMark.tsx`.
+ *
+ * ## Why the nav carries a tone class
+ *
+ * The nav is fixed and has no background, so it takes the tone class of whatever
+ * room is behind it, so `--room-ink` and `--room-accent` resolve to the right
+ * pair in both tones and the words stay legible. This is the same semantic-token
+ * trick `<Room>` uses.
+ *
+ * "Behind it" is the room under the nav strip, not the room being read. Those
+ * are different rooms for most of the page — the rooms after Me are shorter than
+ * a viewport, so the 35% reading line sits in a later room than the strip the
+ * nav is actually painted on. Deriving tone from the reading line left paper
+ * links over a dark room at 1.1:1, so tone follows the backdrop and aria-current
+ * follows the reading line. See useBackdropRoom.
+ */
+function Nav() {
+    const active = (0,_hooks_useActiveRoom__WEBPACK_IMPORTED_MODULE_3__["default"])(_data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOM_IDS);
+    const backdrop = (0,_hooks_useBackdropRoom__WEBPACK_IMPORTED_MODULE_4__["default"])(_data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOM_IDS);
+    const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    // Hide on the way down, come back on the way up. Direction is read from two
+    // consecutive scroll positions rather than a wheel event, because a wheel
+    // fires far more often than the scroll actually moves and would flicker on a
+    // trackpad.
+    const [hidden, setHidden] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const triggerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const overlayRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const close = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => setOpen(false), []);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        let lastY = window.scrollY;
+        const onScroll = () => {
+            const y = window.scrollY;
+            const delta = y - lastY;
+            // Ignore sub-pixel jitter and rubber-band overscroll at either end.
+            if (Math.abs(delta) < 4)
+                return;
+            if (y <= 0) {
+                setHidden(false);
+            }
+            else {
+                setHidden(delta > 0 && y > HIDE_AFTER);
+            }
+            lastY = y;
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+    // Escape closes, Tab is trapped inside the overlay, and focus returns to the
+    // trigger so the keyboard never lands somewhere unexplained.
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        if (!open)
+            return;
+        const overlay = overlayRef.current;
+        const trigger = triggerRef.current;
+        const focusable = overlay?.querySelectorAll('a[href], button:not([disabled])');
+        focusable?.[0]?.focus();
+        const onKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                close();
+                return;
+            }
+            if (event.key !== 'Tab' || !focusable?.length)
+                return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            }
+            else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        };
+        document.addEventListener('keydown', onKeyDown);
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.removeEventListener('keydown', onKeyDown);
+            document.body.style.overflow = previousOverflow;
+            trigger?.focus();
+        };
+    }, [open, close]);
+    // Two different rooms, on purpose. `active` is the room being read and
+    // drives aria-current; `backdrop` is the room under the nav strip and drives
+    // the tone. See useBackdropRoom for why they cannot be the same value.
+    const backdropRoom = _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.find((room) => room.id === backdrop);
+    const tone = backdropRoom?.tone ?? 'dark';
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("nav", { "aria-label": "Rooms", "data-tone": tone, "data-hidden": hidden && !open ? 'true' : undefined, className: `tone-${tone} fixed inset-x-0 top-0 z-40 px-[6vw] pt-7 text-ink transition-transform duration-[250ms] ease-out ${hidden && !open ? '-translate-y-full' : ''}`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex w-full items-start justify-end gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "hidden items-center gap-[2rem] md:flex", children: _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavWord, { room: room, isActive: room.id === active }) }, room.id))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { ref: triggerRef, type: "button", onClick: () => setOpen(true), "aria-haspopup": "dialog", "aria-expanded": open, "aria-controls": MENU_ID, className: "font-sans text-sm font-semibold uppercase leading-none tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink md:hidden", children: "menu" })] }) }), open && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { ref: overlayRef, id: MENU_ID, role: "dialog", "aria-modal": "true", "aria-label": "Rooms", className: "tone-dark fixed inset-0 z-50 flex items-center justify-center bg-noir/92 px-6", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "w-full max-w-3xl", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "flex flex-col gap-x-12 gap-y-[clamp(2rem,5vh,2.75rem)] sm:flex-row sm:flex-wrap", children: _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavWord, { room: room, isActive: room.id === active, onNavigate: close, size: "overlay" }) }, room.id))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { type: "button", onClick: close, className: "mt-10 font-sans text-sm font-semibold uppercase tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink", children: "close" })] }) }))] }));
+}
+/** One word in the nav. Every word is built the same way — see the header. */
+function NavWord({ room, isActive, onNavigate, size = 'inline' }) {
+    const isOverlay = size === 'overlay';
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: `#${room.id}`, onClick: onNavigate, "aria-current": isActive ? 'true' : undefined, className: `group nav-group relative inline-block uppercase ${isOverlay ? 'text-[1.75rem] font-bold tracking-[0.06em]' : 'text-[0.8125rem] font-semibold tracking-[0.1em]'}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 ${isActive ? 'opacity-100' : 'opacity-70'}`, children: room.label }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_NavMark__WEBPACK_IMPORTED_MODULE_5__["default"], { active: isActive })] }));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Nav);
+
+
+/***/ }),
+
+/***/ "./src/components/NavMark.tsx":
+/*!************************************!*\
+  !*** ./src/components/NavMark.tsx ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   NavMark: () => (/* binding */ NavMark),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _doodles_shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/doodles/shared */ "./src/doodles/shared.ts");
 
 
 /**
- * The intro gate. brand-direction §19 and PLAN Phase 4.
+ * The mark under a nav word: one hand-drawn underline, the same for every word.
  *
- * The screen itself is `Opening`, the same component the top of the page uses,
- * so clicking enter reveals a page that begins with exactly what was just
- * dismissed rather than a second, similar-looking layout.
+ * ## One mark, not six
  *
- * `[ enter ]` is a real button and takes focus on mount — a portfolio must not
- * require a click to reach its own content.
+ * The words used to carry a different gesture each — a circle on ME, a spark
+ * on LIFE, a wave on JOURNAL, a speech-tailed circle on LET'S TALK. Each was
+ * defensible alone, but hovering along the nav meant a different shape, a
+ * different position and a different footprint on every word, which read as
+ * inconsistency rather than personality (decision-log.md §30). The hand is
+ * still here — the stroke is drawn, slightly uneven, and writes itself on — it
+ * is just the same hand every time.
+ *
+ * ## Why this is not the library `Underline`
+ *
+ * `Underline` is drawn for a room, 190–240px wide, with two staggered strokes.
+ * Under 13px caps those read as one broken line. This is a single stroke drawn
+ * for a 100-unit band, sharing the library's `stroke()` so `pathLength="1000"`,
+ * the round caps and the joins are identical.
+ *
+ * The SVG stretches to the word's width, so the path carries
+ * `vector-effect="non-scaling-stroke"`: the curve stretches, the weight does
+ * not, and "ME" and "LET'S TALK" get the same line.
  */
-function Intro({ onEnter, leaving }) {
-    const buttonRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-        if (!leaving)
-            buttonRef.current?.focus();
-    }, [leaving]);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: `tone-dark fixed inset-0 z-50 flex overflow-y-auto bg-surface transition-opacity duration-700 ${leaving ? 'pointer-events-none opacity-0' : 'opacity-100'}`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { "aria-hidden": leaving ? 'true' : undefined, className: "flex w-full flex-col", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Opening__WEBPACK_IMPORTED_MODULE_2__["default"], { action: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { ref: buttonRef, type: "button", onClick: onEnter, className: "font-sans text-sm uppercase tracking-[0.3em] text-ink transition-colors duration-300 hover:text-accent", children: "[ enter ]" }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { delay: 620, className: "mx-auto w-full max-w-6xl px-6 pb-10 md:px-12", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "font-hand text-lg text-muted rotate-[-2deg]", children: "six rooms below this one" }) })] }) }));
+const PATH = 'M3 7C22 4 44 9 64 6C76 4.5 88 6.5 97 5';
+function NavMark({ active, color = _doodles_shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, className }) {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", "data-active": active ? 'true' : undefined, className: `nav-mark pointer-events-none absolute -inset-x-1 top-full h-2.5 ${className ?? ''}`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { viewBox: "0 0 100 12", preserveAspectRatio: "none", fill: "none", className: "h-full w-full overflow-visible", focusable: "false", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: PATH, ...(0,_doodles_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, false, 2.5), vectorEffect: "non-scaling-stroke" }) }) }));
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Intro);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavMark);
 
 
 /***/ }),
@@ -37734,72 +38310,191 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _doodles_Cloud__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/doodles/Cloud */ "./src/doodles/Cloud.tsx");
-/* harmony import */ var _doodles_Handwritten__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/doodles/Handwritten */ "./src/doodles/Handwritten.tsx");
+/* harmony import */ var _doodles_MusicNote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/doodles/MusicNote */ "./src/doodles/MusicNote.tsx");
+/* harmony import */ var _doodles_TinyStar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/doodles/TinyStar */ "./src/doodles/TinyStar.tsx");
 /* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
+/* harmony import */ var _primitives_Typewriter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/primitives/Typewriter */ "./src/primitives/Typewriter.tsx");
+/* harmony import */ var _primitives_WriteOn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/primitives/WriteOn */ "./src/primitives/WriteOn.tsx");
 
 
 
 
+
+
+/** The small label under the name. One phrase — change it here. */
+const HERO_TAG = 'software engineer';
 /**
- * The opening screen. brand-direction §19.
+ * The first screen. decision-log.md §29.
  *
- * One component, two mounts: the intro gate and the top of the page. The user
- * asked for these to be the same exact way, so they are the same component
- * rather than two layouts kept in agreement by hand.
+ * The name written by hand, very large, across the upper middle; a cut-out
+ * portrait rising from the bottom edge until its head meets the underside of
+ * the signature; a small tag in Jost caps under the name's right end, typed
+ * out once the name has written itself on;
+ * the faith line bottom left; one star.
  *
- * Copy is verbatim from the brand direction. `Still becoming.` is set in
- * Instrument Serif per §9, and is deliberately not the last line — it sits under
- * the name, the way the gate had it, and the body follows it.
+ * ## Layers, back to front
+ *
+ *   1  the name   Beth Ellen, cream, mauve full stop, ~80vw. The page's `h1`.
+ *   2  portrait   bottom-anchored, centred, the head meeting the name.
+ *   3  tag, faith line, star — above the portrait so nothing is covered.
+ *
+ * Everything is absolutely placed inside a one-screen section, because the
+ * layers overlap by design.
  */
-function Opening({ action, note = "you're here." }) {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-center px-6 py-20 md:px-12", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { as: "p", className: "font-sans text-[0.65rem] uppercase tracking-[0.3em] text-muted", children: "Fatimah Wayo" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { className: "mt-6 font-serif text-display leading-[0.95] tracking-[-0.01em] text-ink", children: "Hi, I\u2019m Fatimah." }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { delay: 140, className: "mt-6", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "font-serif text-2xl leading-tight text-ink md:text-3xl", children: "Still becoming." }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "mt-10 max-w-2xl space-y-6 md:mt-12", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { as: "p", delay: 220, className: "font-sans text-lg leading-relaxed text-ink", children: "I\u2019m a software engineer and product builder, rooted in faith and curious about what I can create with the life I\u2019ve been given." }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { as: "p", delay: 320, className: "font-sans text-lg leading-relaxed text-muted", children: "I build software, work on products, write about things I\u2019m learning, and like taking an idea from \u201Cwhat if?\u201D to something people can actually use." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { delay: 420, className: "mt-10 flex items-center gap-4 md:mt-12", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_2__["default"], { fontSize: "1.35rem", rotate: "-3deg", className: "text-accent", children: note }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Cloud__WEBPACK_IMPORTED_MODULE_1__["default"], { size: 92, direction: "down-left" })] }), action && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { delay: 520, className: "mt-12 md:mt-16", children: action })] }));
+function Opening({ photo }) {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { id: "opening", tabIndex: -1, "aria-label": "Introduction", className: "hero tone-dark relative min-h-[100svh] w-full overflow-hidden bg-surface text-ink focus:outline-none", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "absolute inset-x-0 top-[var(--hero-top)] flex flex-col items-center", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_WriteOn__WEBPACK_IMPORTED_MODULE_5__["default"], { as: "h1", duration: 1.6, className: "hero-name -ml-[0.04em] font-hand text-ink", children: ["Fatimah", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-accent", children: "." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "relative z-20 mt-3 w-[calc(var(--text-hero-name)*5.112)] max-w-full text-right", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "font-sans text-[length:clamp(11px,1.05vw,16px)] font-semibold uppercase tracking-[0.24em] text-muted", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Typewriter__WEBPACK_IMPORTED_MODULE_4__["default"], { text: HERO_TAG, delay: 1500, speed: 75 }) }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "data-portrait-from": true, className: "hero-portrait pointer-events-none absolute bottom-0 left-1/2 z-10 aspect-[4/5] -translate-x-1/2", children: photo ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: photo.src, alt: photo.alt, loading: "eager", decoding: "async", className: "portrait-fade h-full w-full object-contain object-bottom" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PortraitPlaceholder, {})) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_TinyStar__WEBPACK_IMPORTED_MODULE_2__["default"], { size: 34, className: "absolute right-[4vw] top-[calc(var(--hero-top)-8px)] z-20 rotate-12 md:right-[8vw]" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { className: "absolute bottom-0 left-0 z-20 px-[6vw] pb-[max(6vh,36px)]", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", { className: "max-w-[17rem] font-display text-[length:clamp(15px,1.15vw,20px)] italic leading-snug text-muted", children: ["Grounded firm and deep in the Saviour\u2019s", ' ', (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "whitespace-nowrap", children: ["love.", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_MusicNote__WEBPACK_IMPORTED_MODULE_1__["default"], { size: 20, delay: 700, className: "-my-5 ml-2 inline-block translate-y-1 rotate-[10deg] align-middle" })] })] }) })] }));
+}
+/**
+ * A head-and-shoulders silhouette at the cut-out's exact box, so the overlap
+ * with the word can be judged before a photograph exists.
+ */
+function PortraitPlaceholder() {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { "aria-hidden": "true", className: "relative h-full w-full", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { viewBox: "0 0 400 500", preserveAspectRatio: "xMidYMax meet", className: "h-full w-full", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: "M200 70c-52 0-86 40-86 96 0 44 20 80 50 98v26c-70 14-128 50-150 110L0 500h400l-14-100c-22-60-80-96-150-110v-26c30-18 50-54 50-98 0-56-34-96-86-96Z", className: "fill-cocoa" }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "absolute inset-x-0 top-[45%] text-center font-display text-lg italic text-muted", children: "cut-out portrait goes here" })] }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Opening);
 
 
 /***/ }),
 
-/***/ "./src/components/RoomIndex.tsx":
-/*!**************************************!*\
-  !*** ./src/components/RoomIndex.tsx ***!
-  \**************************************/
+/***/ "./src/components/TravellingPortrait.tsx":
+/*!***********************************************!*\
+  !*** ./src/components/TravellingPortrait.tsx ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   RoomIndex: () => (/* binding */ RoomIndex),
+/* harmony export */   TravellingPortrait: () => (/* binding */ TravellingPortrait),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _data_rooms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/data/rooms */ "./src/data/rooms.ts");
-/* harmony import */ var _doodles_Handwritten__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/doodles/Handwritten */ "./src/doodles/Handwritten.tsx");
-/* harmony import */ var _hooks_useActiveRoom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/hooks/useActiveRoom */ "./src/hooks/useActiveRoom.ts");
-/* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _data_me__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/data/me */ "./src/data/me.ts");
 
 
 
 /**
- * Navigation, as a room index rather than a bar.
+ * The hero portrait, carried down into the ME room by the scroll.
  *
- * The user asked for the sticky nav bar to go and the site to read as one big
- * page. §18 still wants the six rooms reachable, and §19 wants the homepage to
- * make someone want to keep exploring — so the nav is now the first thing under
- * the opening screen, in the page's own type, and the wordmark is a quiet
- * return-to-top rather than a fixed bar sitting above the content.
+ * One image, two homes. It starts as the cut-out standing behind the name in
+ * the hero (`[data-portrait-from]`) and ends as a straight-edged print in ME's
+ * photo slot (`[data-portrait-to]`). Between them it is scroll-linked: the page
+ * moves under it while it drifts across and shrinks into place, tilting a few
+ * degrees mid-flight like a print being set down, and landing square.
  *
- * Every entry is a real anchor with a handwritten note, per §18.
+ * ## It develops on the way
+ *
+ * The cut-out and the original studio photograph are the same 1122×1402 frame —
+ * the cut-out is only a mask of it — so they can be stacked pixel for pixel.
+ * As it travels, the hero's edge fade relaxes to nothing and the original
+ * fades in over the cut-out, so the studio backdrop "develops" back around the
+ * figure. It arrives in the cream room as a photograph, not a sticker.
+ *
+ * ## Progress
+ *
+ * 0 at the top of the page, 1 when the ME room's top reaches the top of the
+ * viewport, eased in-out. Because the image's document position moves by about
+ * as much as the page scrolls, it appears to hold its place on screen while the
+ * hero slides away beneath it — that is the effect, and it needs no `fixed`.
+ * Before and after the range it simply scrolls with its room.
+ *
+ * ## Fallbacks
+ *
+ * The two slots each render their own static `<img>`. This component only hides
+ * them — by adding `portrait-travel` to <html> — once it has measured both
+ * slots and is ready to paint. No JS, an error, or `prefers-reduced-motion`
+ * leaves the static images exactly as they are. The traveller is aria-hidden;
+ * the static images keep the alt text.
  */
-function RoomIndex({ onWordmarkClick }) {
-    const active = (0,_hooks_useActiveRoom__WEBPACK_IMPORTED_MODULE_3__["default"])(_data_rooms__WEBPACK_IMPORTED_MODULE_1__.ROOM_IDS);
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "mx-auto w-full max-w-6xl px-6 pb-24 md:px-12 md:pb-32", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex items-baseline justify-between gap-6 border-t border-rule pt-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", { className: "font-sans text-[0.65rem] uppercase tracking-[0.3em] text-muted", children: "Rooms" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { type: "button", onClick: onWordmarkClick, className: "font-sans text-[0.65rem] uppercase tracking-[0.3em] text-muted transition-colors duration-300 hover:text-accent", children: "Back to start" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "mt-8 grid grid-cols-1 gap-x-10 sm:grid-cols-2", children: _data_rooms__WEBPACK_IMPORTED_MODULE_1__.ROOMS.map((room, i) => {
-                    const isActive = active === room.id;
-                    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: "border-b border-rule", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__["default"], { delay: i * 70, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: `#${room.id}`, className: "group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-5", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "flex items-baseline gap-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `font-serif text-2xl uppercase leading-none transition-colors duration-300 md:text-3xl ${isActive ? 'text-accent' : 'text-ink'}`, children: room.label }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_2__["default"], { fontSize: "0.95rem", rotate: "-2deg", className: "text-muted", children: room.note })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: `text-muted transition-transform duration-300 ${isActive ? 'translate-x-1 text-accent' : 'group-hover:translate-x-1'}`, children: "\u2192" })] }) }) }, room.id));
-                }) })] }));
+const clamp01 = (n) => Math.min(1, Math.max(0, n));
+const lerp = (a, b, t) => a + (b - a) * t;
+const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+/** 0 before `a`, 1 after `b`, smooth between. */
+const band = (a, b, t) => {
+    const x = clamp01((t - a) / (b - a));
+    return x * x * (3 - 2 * x);
+};
+function TravellingPortrait() {
+    const ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const photoRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const cutout = _data_me__WEBPACK_IMPORTED_MODULE_2__.HERO_PHOTO.src;
+    const print = _data_me__WEBPACK_IMPORTED_MODULE_2__.PORTRAITS[0]?.src;
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        const el = ref.current;
+        const photo = photoRef.current;
+        if (!el || !photo || !cutout || !print)
+            return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+            return;
+        const from = document.querySelector('[data-portrait-from]');
+        const to = document.querySelector('[data-portrait-to]');
+        const room = document.getElementById('me');
+        if (!from || !to || !room)
+            return;
+        const docBox = (node) => {
+            const r = node.getBoundingClientRect();
+            return { x: r.left + window.scrollX, y: r.top + window.scrollY, w: r.width, h: r.height };
+        };
+        const root = document.documentElement;
+        let a = docBox(from);
+        let b = docBox(to);
+        let end = 1;
+        let frame = 0;
+        const paint = () => {
+            frame = 0;
+            const e = easeInOut(clamp01(window.scrollY / end));
+            const w = lerp(a.w, b.w, e);
+            const h = lerp(a.h, b.h, e);
+            const x = lerp(a.x, b.x, e);
+            const y = lerp(a.y, b.y, e);
+            // The element is laid out at the landing size and scaled about its
+            // centre, so translate to where that centre must be.
+            const sx = w / b.w;
+            const sy = h / b.h;
+            const tx = x + w / 2 - b.w / 2;
+            const ty = y + h / 2 - b.h / 2;
+            const tilt = Math.sin(Math.PI * e) * -4;
+            el.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotate(${tilt}deg) scale(${sx}, ${sy})`;
+            el.style.setProperty('--fade', String(1 - band(0.1, 0.7, e)));
+            photo.style.opacity = String(band(0.3, 0.95, e));
+        };
+        const measure = () => {
+            // Measure with the transform off so nothing we paint feeds back
+            // into the geometry.
+            a = docBox(from);
+            b = docBox(to);
+            end = Math.max(1, room.getBoundingClientRect().top + window.scrollY);
+            el.style.width = `${b.w}px`;
+            el.style.height = `${b.h}px`;
+            paint();
+        };
+        const schedule = () => {
+            if (!frame)
+                frame = requestAnimationFrame(paint);
+        };
+        measure();
+        root.classList.add('portrait-travel');
+        // Fonts, images and the viewport all move the slots.
+        const resize = new ResizeObserver(() => measure());
+        resize.observe(document.body);
+        void document.fonts?.ready.then(measure);
+        window.addEventListener('scroll', schedule, { passive: true });
+        window.addEventListener('resize', measure);
+        return () => {
+            if (frame)
+                cancelAnimationFrame(frame);
+            resize.disconnect();
+            window.removeEventListener('scroll', schedule);
+            window.removeEventListener('resize', measure);
+            root.classList.remove('portrait-travel');
+        };
+    }, [cutout, print]);
+    if (!cutout || !print)
+        return null;
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { ref: ref, "aria-hidden": "true", className: "portrait-traveller portrait-fade pointer-events-none absolute left-0 top-0 z-10 origin-center will-change-transform", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: cutout, alt: "", decoding: "async", className: "absolute inset-0 h-full w-full object-cover" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { ref: photoRef, src: print, alt: "", decoding: "async", className: "absolute inset-0 h-full w-full object-cover opacity-0" })] }));
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RoomIndex);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TravellingPortrait);
 
 
 /***/ }),
@@ -37812,23 +38507,18 @@ function RoomIndex({ onWordmarkClick }) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CV_URL: () => (/* binding */ CV_URL),
 /* harmony export */   EDUCATION: () => (/* binding */ EDUCATION),
 /* harmony export */   EXPERIENCE: () => (/* binding */ EXPERIENCE),
+/* harmony export */   HERO_PHOTO: () => (/* binding */ HERO_PHOTO),
 /* harmony export */   ME_PROSE: () => (/* binding */ ME_PROSE),
 /* harmony export */   PORTRAITS: () => (/* binding */ PORTRAITS),
 /* harmony export */   SKILLS: () => (/* binding */ SKILLS)
 /* harmony export */ });
-/**
- * ME room content.
- *
- * The prose is verbatim from brand-direction §ME — do not tighten it. The
- * register is deliberately not a résumé: the brand direction is explicit that
- * the site "shouldn't make you feel like your entire existence is a GitHub
- * repository."
- *
- * The facts below are carried across from the old four-page site. The old
- * sections are gone; the facts are not. See decision-log.md §13.
- */
+/* harmony import */ var _assets_hero_portrait_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/assets/hero-portrait.png */ "./src/assets/hero-portrait.png");
+/* harmony import */ var _assets_me_portrait_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/assets/me-portrait.jpg */ "./src/assets/me-portrait.jpg");
+
+
 /** brand-direction §ME — "A little about me", verbatim. */
 const ME_PROSE = [
     "I'm a software engineer by training, but I've never been interested in being only one thing.",
@@ -37866,8 +38556,8 @@ const EDUCATION = [
     { period: '2015 – 2018', qualification: 'General Science', org: 'Achimota School' },
 ];
 /**
- * Skills have no room of their own in the brand direction, so they live here as
- * an editorial ruled column rather than the old pill tags — see decision-log.md
+ * Skills have no room of their own in the brand direction, so they sit here
+ * behind the `CV` link as pills rather than a ruled column — see decision-log.md
  * §14 item 5. Order is unchanged from the old site.
  */
 const SKILLS = [
@@ -37886,14 +38576,47 @@ const SKILLS = [
     'Problem Solving',
 ];
 /**
+ * The résumé, as a Google Drive PDF.
+ *
+ * The `/preview` form links the file itself rather than Drive's viewer chrome,
+ * and `target="_blank"` is why this opens in a new tab. ME keeps the facts
+ * visible but small; this is where the full document lives.
+ */
+const CV_URL = 'https://drive.google.com/file/d/1QZa7OBHapcTPIZW0hVTr-EeA6Kp4PLtO/preview';
+/**
  * Portrait slots. No photographs exist yet, so `src` is undefined and Photo
  * renders its designed placeholder. The old site had a single illustrated
  * Hero-Img.svg, which was deleted with the rest of the old assets.
  */
 const PORTRAITS = [
-    { rotate: -2.5, alt: 'A portrait of Fatimah' },
-    { rotate: 2, alt: 'A candid moment from everyday life' },
+    {
+        src: _assets_me_portrait_jpg__WEBPACK_IMPORTED_MODULE_1__,
+        rotate: 0,
+        alt: 'Fatimah in a red blazer and a gold flower pendant, photographed in a studio against a dark backdrop',
+    },
+    { rotate: 1.5, alt: 'A candid moment from everyday life' },
 ];
+/**
+ * The photograph in the opening screen, kept deliberately separate from
+ * `PORTRAITS`. It must be a **cut-out** — a PNG with a transparent background,
+ * 4:5 — because the hero stands the figure in front of the name
+ * (decision-log.md §31). A rectangular photo would hide the name.
+ *
+ * The current file is a studio portrait whose backdrop was removed with macOS
+ * Vision subject lifting: a mask only, no pixels regenerated. The crown of the
+ * hair sits 7.5% down the frame, which `.hero-portrait` in style.css is
+ * calibrated to — replace the photo with one framed differently and that
+ * number has to change too.
+ *
+ * It is deliberately the *same* photograph as `PORTRAITS[0]`: the cut-out is a
+ * mask of that frame, pixel for pixel, which is what lets TravellingPortrait.tsx
+ * carry it from the hero into ME and crossfade the backdrop back in on the way
+ * (decision-log.md §32). Replace one and the other must be re-cut from it.
+ */
+const HERO_PHOTO = {
+    src: _assets_hero_portrait_png__WEBPACK_IMPORTED_MODULE_0__,
+    alt: 'Fatimah in a red blazer and a gold flower pendant, looking straight at the camera',
+};
 
 
 /***/ }),
@@ -37916,101 +38639,32 @@ __webpack_require__.r(__webpack_exports__);
  * and re-subscribes whenever its argument changes, so an inline `.map()` here
  * would rebuild the scroll listener on every render.
  *
- * `tone` is data-driven because only LIFE is paper. See decision-log §7.
+ * `tone` alternates paper / dark down the page so scrolling feels like flipping
+ * through slides — see brand-direction §15. The hero is dark, so ME opens on
+ * cream, as in its layout reference. See decision-log.md §26.
+ *
+ * The fifth room's `label` is a stand-in. The room is a journal and its name is
+ * undecided — change it here and it updates the nav, the anchor and the room
+ * heading together. See decision-log §18.
+ *
+ * ## No `tilt`
+ *
+ * These words used to carry a per-word rotation, all under 2°, so the nav read
+ * as written rather than set. It was dropped when the nav moved to sans caps:
+ * at 13px with 0.1em tracking a 1° lean is far below the threshold where it
+ * reads as intentional, and the caps themselves already carry the character. A
+ * hand is in the *marks*, not in the type — see `NavMark.tsx`. Furniture should
+ * be quieter than what it points at.
  */
 const ROOMS = [
-    { id: 'me', label: 'ME', note: 'where I come from', tone: 'dark' },
-    { id: 'work', label: 'WORK', note: "things I've actually built", tone: 'dark' },
-    { id: 'writings', label: 'WRITINGS', note: "things I've been writing about", tone: 'dark' },
-    { id: 'life', label: 'LIFE', note: 'the other parts of me', tone: 'paper' },
-    { id: 'becoming', label: 'STILL BECOMING', note: 'still, obviously.', tone: 'dark' },
-    { id: 'talk', label: "LET'S TALK", note: 'no reason needed', tone: 'dark' },
+    { id: 'me', label: 'Me', note: 'where I come from', tone: 'paper' },
+    { id: 'work', label: 'Work', note: "things I've actually built", tone: 'dark' },
+    { id: 'writings', label: 'Writings', note: "things I've been writing about", tone: 'paper' },
+    { id: 'life', label: 'Life', note: 'the other parts of me', tone: 'dark' },
+    { id: 'journal', label: 'Journal', note: 'notes, mostly', tone: 'paper' },
+    { id: 'talk', label: "Let's talk", note: 'no reason needed', tone: 'dark' },
 ];
 const ROOM_IDS = ROOMS.map((r) => r.id);
-
-
-/***/ }),
-
-/***/ "./src/doodles/Arrow.tsx":
-/*!*******************************!*\
-  !*** ./src/doodles/Arrow.tsx ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Arrow: () => (/* binding */ Arrow),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared */ "./src/doodles/shared.ts");
-
-
-const ROTATION = {
-    right: 'none',
-    left: 'scaleX(-1)',
-    up: 'rotate(-90deg)',
-    down: 'rotate(90deg)',
-};
-/**
- * Arrow — direction, connection, attention.
- *
- * Rotates about its centre rather than mirroring, so the shaft stays organic.
- */
-function Arrow({ color = _shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, direction = 'right', width = 90, height = 40, animate = true, className, style, strokeWidth = 3, }) {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", { width: width, height: height, viewBox: "0 0 120 50", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: className, style: { transform: ROTATION[direction], ...style }, "aria-hidden": "true", focusable: "false", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: "M10 25C35 10 75 15 105 28", ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: "M88 18C96 22 103 26 107 29C102 34 94 40 90 45", ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth) })] }));
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Arrow);
-
-
-/***/ }),
-
-/***/ "./src/doodles/Cloud.tsx":
-/*!*******************************!*\
-  !*** ./src/doodles/Cloud.tsx ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Cloud: () => (/* binding */ Cloud),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared */ "./src/doodles/shared.ts");
-
-
-/**
- * Small hand-drawn thought bubbles trailing away from the cloud.
- *
- * Closed wobbly paths rather than <circle> — §11 wants lines that read as
- * hand-drawn, not mathematically perfect. Drawn in sequence so the trail
- * appears to trail off.
- */
-const TRAILS = {
-    'down-left': [
-        { path: 'M44 102C51 103 55 107 54 113C53 119 48 122 42 120C36 119 33 114 35 108C37 104 40 102 44 102Z', delay: 0.5 },
-        { path: 'M24 126C29 127 31 131 30 135C29 139 25 141 21 139C17 138 15 134 17 130C18 127 21 126 24 126Z', delay: 0.8 },
-        { path: 'M11 144C14 145 15 148 14 150C13 153 10 154 8 152C6 151 6 148 8 146C9 145 10 145 11 144Z', delay: 1.05 },
-    ],
-    'down-right': [
-        { path: 'M156 102C163 103 167 107 166 113C165 119 160 122 154 120C148 119 145 114 147 108C149 104 152 102 156 102Z', delay: 0.5 },
-        { path: 'M176 126C181 127 183 131 182 135C181 139 177 141 173 139C169 138 167 134 169 130C170 127 173 126 176 126Z', delay: 0.8 },
-        { path: 'M189 144C192 145 193 148 192 150C191 153 188 154 186 152C184 151 184 148 186 146C187 145 188 145 189 144Z', delay: 1.05 },
-    ],
-};
-/**
- * Cloud — ideas, thoughts, dreams, things you're wondering about.
- *
- * The recurring motif (brand-direction §12): appears throughout the site as a
- * visual thread, never as a logo or icon. Carries thought bubbles so it reads
- * as something occurring rather than a shape sitting in a margin.
- */
-function Cloud({ color = _shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, size = 120, direction = 'down-left', bubbles = true, animate = true, className, style, strokeWidth = 3.5, }) {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", { width: size, height: size * 0.8, viewBox: "0 0 200 160", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: `drift-cloud ${className ?? ''}`, style: style, "aria-hidden": "true", focusable: "false", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { transform: "translate(38,-6)", d: "M30 70C18 70 10 60 12 48C14 36 26 30 38 32C42 20 56 12 70 15C82 8 100 12 108 24C118 18 132 22 138 32C148 34 154 44 150 56C146 68 134 72 122 70C118 80 102 86 88 82C76 88 58 84 48 76C40 78 34 76 30 70Z", ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth) }), bubbles &&
-                TRAILS[direction].map(({ path, delay }) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: path, ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth * 0.75), style: animate ? { animationDelay: `${delay}s` } : undefined }, path)))] }));
-}
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Cloud);
 
 
 /***/ }),
@@ -38029,14 +38683,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 /**
- * Handwritten — margin notes, annotations, doodle labels, captions.
+ * Handwritten — the site's margin notes.
  *
- * Beth Ellen is the only notebook voice now; the source component listed
- * 'Caveat' as a fallback. Single-weight 400, so weight cannot vary — size,
- * colour and rotation carry the variation instead. See design-system.md §5.
+ * Small notes are Fraunces italic. Beth Ellen, the site's one hand, is kept
+ * for the few large moments — the hero name and one overlay per room — so it
+ * stays special; set at note size everywhere it would become the body font of
+ * the margins. Large handwriting uses `font-hand` directly. See
+ * design-system.md §5.
+ *
+ * The 18px floor is enforced by the default below — the italic gets spindly
+ * under that on a dark ground. Rotation stays budgeted under 2° (§9).
  */
-function Handwritten({ children, color = 'var(--room-accent)', fontSize = '1.1rem', rotate = '-3deg', className, style, }) {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `inline-block font-hand leading-snug ${className ?? ''}`, style: {
+function Handwritten({ children, color = 'var(--room-accent)', fontSize = '1.125rem', rotate = '-1.2deg', className, style, }) {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `inline-block font-display italic leading-snug ${className ?? ''}`, style: {
             color,
             fontSize,
             transform: rotate === '0' ? undefined : `rotate(${rotate})`,
@@ -38048,15 +38707,15 @@ function Handwritten({ children, color = 'var(--room-accent)', fontSize = '1.1re
 
 /***/ }),
 
-/***/ "./src/doodles/Underline.tsx":
+/***/ "./src/doodles/MusicNote.tsx":
 /*!***********************************!*\
-  !*** ./src/doodles/Underline.tsx ***!
+  !*** ./src/doodles/MusicNote.tsx ***!
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Underline: () => (/* binding */ Underline),
+/* harmony export */   MusicNote: () => (/* binding */ MusicNote),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -38064,17 +38723,63 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * Underline — emphasis.
+ * MusicNote — something sung rather than said.
  *
- * The source path carried two subpaths in one `d`. With a single pathLength the
- * dash pattern would run continuously across the gap and leave a linecap seam
- * mid-draw, so the two strokes are split and staggered instead.
+ * A single quaver (♪) as a margin doodle, not a glyph: a head that loops back
+ * through itself instead of closing neatly, a stem that leans, a flag that
+ * curls a little too far, and two flicks of sound off it. Struck, not filled,
+ * so it writes itself on with the rest of the vocabulary.
+ *
+ * First used after the hero's faith line, which is a lyric — the note says so
+ * without a citation.
+ *
+ * `size` is the width; the drawing is 28×44. `delay` holds the draw back so it
+ * can follow the text it sits beside.
  */
-function Underline({ color = _shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, width = 200, height = 18, animate = true, className, style, strokeWidth = 2.8, }) {
-    const secondStroke = animate ? { animationDelay: '0.35s' } : undefined;
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", { width: width, height: height, viewBox: "0 0 240 20", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: className, style: style, "aria-hidden": "true", focusable: "false", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: "M5 12C50 4 150 16 235 8", ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: "M15 15C80 8 180 18 220 12", ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth), style: secondStroke })] }));
+const PATHS = [
+    // Head, with a scribble back through it.
+    'M14.5 35.5C15.2 38.6 11.6 41.2 8.6 40.4C6 39.7 6.1 36.4 8.6 35C11 33.6 14 33.4 14.5 35.5C14.9 37.2 12.4 38.8 10.2 38.6',
+    // Stem.
+    'M14.5 35.5C14.4 27.5 14.9 19.5 14.6 11.2',
+    // Flag.
+    'M14.6 11.2C18.8 12.6 22.6 15.8 22.4 20.6C22.3 22.4 21.4 23.9 20.2 24.8',
+    // Flicks of sound, off the flag.
+    'M23.6 6.2C25.6 7.4 26.9 9.4 27.2 11.8',
+    'M25.8 15.4L28.4 16.6',
+];
+function MusicNote({ color = _shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, size = 26, animate = true, delay = 0, className, style, strokeWidth = 2.4, }) {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { width: size, height: (size * 44) / 28, viewBox: "3 0 28 44", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: className, style: style, "aria-hidden": "true", focusable: "false", children: PATHS.map((d, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: d, ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth), style: animate ? { animationDelay: `${delay + i * 110}ms`, animationDuration: '0.9s' } : undefined }, d))) }));
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Underline);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MusicNote);
+
+
+/***/ }),
+
+/***/ "./src/doodles/TinyStar.tsx":
+/*!**********************************!*\
+  !*** ./src/doodles/TinyStar.tsx ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TinyStar: () => (/* binding */ TinyStar),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _shared__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared */ "./src/doodles/shared.ts");
+
+
+/**
+ * TinyStar — occasional moments that feel special.
+ *
+ * New. Not in doodle-components.jsx; required by brand-direction §10.
+ * Struck rather than filled so it draws on with everything else.
+ */
+function TinyStar({ color = _shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, size = 28, animate = true, className, style, strokeWidth = 2.6, }) {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { width: size, height: size, viewBox: "0 0 40 40", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: className, style: style, "aria-hidden": "true", focusable: "false", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: "M20 4C22 14 26 18 36 20C26 22 22 26 20 36C18 26 14 22 4 20C14 18 18 14 20 4Z", ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth) }) }));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TinyStar);
 
 
 /***/ }),
@@ -38179,37 +38884,77 @@ function useActiveRoom(ids) {
 
 /***/ }),
 
-/***/ "./src/primitives/Photo.tsx":
-/*!**********************************!*\
-  !*** ./src/primitives/Photo.tsx ***!
-  \**********************************/
+/***/ "./src/hooks/useBackdropRoom.ts":
+/*!**************************************!*\
+  !*** ./src/hooks/useBackdropRoom.ts ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Photo: () => (/* binding */ Photo),
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+/* harmony export */   useBackdropRoom: () => (/* binding */ useBackdropRoom)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _doodles_Handwritten__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/doodles/Handwritten */ "./src/doodles/Handwritten.tsx");
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 /**
- * A photograph, sitting slightly wrong on purpose.
+ * Tracks which room sits *behind the top strip of the viewport*.
  *
- * Brand-direction §14: photography should feel like evidence of a life, so
- * images are never filtered — the frame handles rotation, shadow and settle,
- * the pixels are left alone. §16 wants a rotated photo to "settle into place",
- * which is the settlePhoto keyframe driven by --photo-rotate.
+ * This is a different question from `useActiveRoom`. That hook answers "what am
+ * I reading" and puts its detection line 35% down the viewport, which is right
+ * for deciding which link is `aria-current`. This one answers "what colour is
+ * behind the nav", and the nav is `fixed top-0`, so the backdrop is whatever
+ * room occupies the strip around 40px below the viewport top.
  *
- * The placeholder is deliberately designed rather than a broken-image icon, so
- * a layout can be reviewed before any photograph exists.
+ * They disagree for most of this page, because the rooms after Me are 440px
+ * tall in a 1080px viewport — shorter than the distance between the two lines.
+ * Driving the tone off the reading line painted `tone-paper` links over a dark
+ * room for hundreds of pixels at a time, which measured at 1.1:1: the nav was
+ * effectively invisible. Tone has to come from the backdrop, not the reading
+ * line, or the barless nav loses its background and takes the text with it.
+ *
+ * Pass a stable array reference (ROOM_IDS), not an inline `.map()`.
  */
-function Photo({ src, alt, rotate = -2, aspect = '4 / 5', tape = false, caption, className, style, }) {
-    const rotateVar = { '--photo-rotate': `${rotate}deg` };
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("figure", { className: `m-0 ${className ?? ''}`, style: { ...rotateVar, ...style }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative overflow-hidden bg-muted-rose/40 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.65)] settle-photo", style: { aspectRatio: aspect }, children: [src ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: src, alt: alt ?? '', loading: "lazy", decoding: "async", className: "h-full w-full object-cover" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex h-full w-full items-center justify-center border border-dashed border-rule p-4", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_1__["default"], { className: "text-center text-base", rotate: "-2deg", children: "photo goes here" }) })), tape && src && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: "absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 -rotate-3 bg-ivory/25 backdrop-blur-[1px]" }))] }), caption && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("figcaption", { className: "mt-4", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_1__["default"], { rotate: "-1.5deg", fontSize: "0.95rem", children: caption }) }))] }));
+function useBackdropRoom(ids) {
+    const [backdrop, setBackdrop] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        let frame = 0;
+        const compute = () => {
+            frame = 0;
+            // pt-7 is 28px, so the words occupy roughly 28-80px.
+            const line = window.scrollY + 40;
+            let current = null;
+            for (const id of ids) {
+                const el = document.getElementById(id);
+                if (!el)
+                    continue;
+                const top = el.getBoundingClientRect().top + window.scrollY;
+                if (top <= line)
+                    current = id;
+            }
+            // Above the first room the hero owns the strip, which is dark. There
+            // is no room id for it, so null is the answer and Nav falls back to
+            // the dark tone.
+            setBackdrop((prev) => (prev === current ? prev : current));
+        };
+        const schedule = () => {
+            if (!frame)
+                frame = requestAnimationFrame(compute);
+        };
+        compute();
+        window.addEventListener('scroll', schedule, { passive: true });
+        window.addEventListener('resize', schedule);
+        return () => {
+            if (frame)
+                cancelAnimationFrame(frame);
+            window.removeEventListener('scroll', schedule);
+            window.removeEventListener('resize', schedule);
+        };
+    }, [ids]);
+    return backdrop;
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Photo);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useBackdropRoom);
 
 
 /***/ }),
@@ -38290,6 +39035,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var _doodles_Handwritten__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/doodles/Handwritten */ "./src/doodles/Handwritten.tsx");
+/* harmony import */ var _primitives_WriteOn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/primitives/WriteOn */ "./src/primitives/WriteOn.tsx");
+
 
 
 /**
@@ -38299,12 +39046,162 @@ __webpack_require__.r(__webpack_exports__);
  * the semantic tokens — see design-system.md §1. Components inside must use
  * bg-surface / text-ink / text-muted / text-accent / border-rule rather than the
  * fixed palette, or they will not follow.
+ *
+ * Each room is one full-width slide, alternating dark and paper down the page.
+ *
+ * There is no per-room signature. It used to sit at `top-5 left-6` and scroll to
+ * the top, and landed directly underneath the fixed nav in every room. The nav
+ * has no `Fatimah` wordmark either — it is on screen at all times, so it already
+ * tells you whose site this is. See Nav.tsx.
  */
-function Room({ id, title, note, tone = 'dark', variant = 'default', label, className, children, }) {
-    const isHero = variant === 'hero';
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { id: id, tabIndex: -1, "aria-labelledby": title && !isHero ? `${id}-heading` : undefined, "aria-label": !title || isHero ? label : undefined, className: `tone-${tone} bg-surface text-ink relative focus:outline-none ${isHero ? '' : 'scroll-mt-16 md:scroll-mt-20'} ${className ?? ''}`, children: [title && !isHero && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("header", { className: "mx-auto w-full max-w-6xl px-6 pt-24 pb-10 md:px-12", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-wrap items-baseline gap-x-5 gap-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", { id: `${id}-heading`, className: "font-serif text-title leading-none uppercase", children: title }), note && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_1__["default"], { className: "text-lg", rotate: "-2deg", children: note }))] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-8 h-px w-full bg-rule" })] })), children] }));
+function Room({ id, title, label, note, tone = 'dark', className, children }) {
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { id: id, tabIndex: -1, "aria-labelledby": title ? `${id}-heading` : undefined, "aria-label": !title ? label : undefined, className: `tone-${tone} bg-surface text-ink relative scroll-mt-8 pb-16 focus:outline-none sm:pb-0 ${className ?? ''}`, children: [title && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("header", { className: "mx-auto w-full max-w-6xl px-6 pt-24 pb-10 md:px-12 md:pt-32", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-wrap items-baseline gap-x-5 gap-y-2", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_WriteOn__WEBPACK_IMPORTED_MODULE_2__["default"], { id: `${id}-heading`, duration: 1.3, className: "font-display text-title leading-[0.95]", children: title }), note && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_1__["default"], { rotate: "-1.2deg", children: note })] }) })), children] }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Room);
+
+
+/***/ }),
+
+/***/ "./src/primitives/Typewriter.tsx":
+/*!***************************************!*\
+  !*** ./src/primitives/Typewriter.tsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Typewriter: () => (/* binding */ Typewriter),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * Text typed out once, a character at a time, with a caret.
+ *
+ * Three rules, the same ones `WriteOn` keeps:
+ *
+ * 1. **Readable without it.** The full text is rendered for assistive
+ *    technology from the first frame (`sr-only`); the typed copy is
+ *    `aria-hidden`. Under `prefers-reduced-motion` the text is simply there.
+ * 2. **Nothing moves while it types.** Every character is laid out from the
+ *    start and the untyped ones are transparent, so a right-aligned line does
+ *    not slide left as it grows. The caret has no width for the same reason.
+ * 3. **Once.** It types, the caret blinks three times and goes. No loop, no
+ *    replay — design-system.md §8.
+ *
+ * The rhythm is uneven on purpose — a deterministic jitter per character and a
+ * longer beat after a space — because perfectly even keystrokes read as a
+ * progress bar, not as someone typing.
+ */
+function Typewriter({ text, delay = 0, speed = 70 }) {
+    const [count, setCount] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+    const [reduced, setReduced] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setReduced(true);
+            return;
+        }
+        let timer = 0;
+        let i = 0;
+        const step = () => {
+            i += 1;
+            setCount(i);
+            if (i >= text.length)
+                return;
+            const jitter = ((i * 37) % 11) / 10 - 0.5; // −0.5 … +0.5, stable per index
+            const pause = text[i - 1] === ' ' ? speed * 1.8 : 0;
+            timer = window.setTimeout(step, speed * (1 + jitter * 0.8) + pause);
+        };
+        timer = window.setTimeout(step, delay);
+        return () => window.clearTimeout(timer);
+    }, [text, delay, speed]);
+    const shown = reduced ? text.length : count;
+    const done = shown >= text.length;
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "sr-only", children: text }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { "aria-hidden": "true", children: [text.slice(0, shown), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `typewriter-caret ${done ? 'is-done' : ''} ${reduced ? 'hidden' : ''}` }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-transparent", children: text.slice(shown) })] })] }));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Typewriter);
+
+
+/***/ }),
+
+/***/ "./src/primitives/WriteOn.tsx":
+/*!************************************!*\
+  !*** ./src/primitives/WriteOn.tsx ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WriteOn: () => (/* binding */ WriteOn),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * A title being written by hand, once.
+ *
+ * design-system.md §8: titles and the greeting draw themselves in on first
+ * appearance and then stay still. Nothing loops and nothing replays — this
+ * component deliberately has no `once=false` escape hatch, because a second
+ * playthrough is the failure mode the rule exists to prevent.
+ *
+ * Three guarantees, mirroring `Reveal`:
+ *
+ * 1. **Visible is the default.** The clipped state is opt-in (`.is-waiting`) and
+ *    the finished state is the unstyled default, so if this component never runs
+ *    — no JS, no observer, a thrown error — the title is simply readable. The
+ *    animation is allowed to fail; the text is not. The first version inverted
+ *    this and the hero heading rendered permanently invisible, because
+ *    `clip-path` on the observed element collapses its own intersection rect, so
+ *    an IntersectionObserver `threshold` could never be reached.
+ * 2. **Above-the-fold titles never touch an observer.** They're measured in a
+ *    layout effect before paint, so there is no clipped flash on the hero.
+ * 3. **clip-path clips paint, not content**, so assistive technology reads the
+ *    full title at every point of the animation.
+ */
+function WriteOn({ children, as: Tag = 'h2', className, id, duration = 1.2, }) {
+    const ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    const [state, setState] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('idle');
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useLayoutEffect)(() => {
+        const el = ref.current;
+        if (!el)
+            return;
+        if (typeof IntersectionObserver === 'undefined') {
+            setState('written');
+            return;
+        }
+        // Already on screen: write it now, no observer.
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            setState('written');
+            return;
+        }
+        // Below the fold: hold it clipped until it arrives.
+        setState('waiting');
+        const observer = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (!entry.isIntersecting)
+                    continue;
+                setState('written');
+                observer.disconnect();
+            }
+        }, 
+        // No `threshold` ratio. The element carries a clip-path, so a ratio
+        // would be measured against a collapsed rect. A 0 threshold plus a
+        // generous bottom margin is what "has arrived" actually means here.
+        { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tag, { ref: ref, id: id, className: `write-on ${state === 'idle' ? '' : `is-${state}`} ${className ?? ''}`, style: { transitionDuration: `${duration}s` }, children: children }));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WriteOn);
 
 
 /***/ }),
@@ -38322,23 +39219,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var _data_me__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/data/me */ "./src/data/me.ts");
-/* harmony import */ var _primitives_Photo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/primitives/Photo */ "./src/primitives/Photo.tsx");
-/* harmony import */ var _doodles_Underline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/doodles/Underline */ "./src/doodles/Underline.tsx");
-/* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
-
+/* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
+/* harmony import */ var _primitives_WriteOn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/primitives/WriteOn */ "./src/primitives/WriteOn.tsx");
 
 
 
 
 /**
+ * Wide-tracked words under the portrait, the reference's "BEAUTY ✦ STRATEGY ✦
+ * PROFIT" strip. PLACEHOLDER copy drawn from the hero line, awaiting sign-off.
+ */
+const STRIP = ['Software', 'Product', 'Faith'];
+/**
  * ME — "A little about me". brand-direction §ME.
  *
- * Not a biography. The prose is verbatim from the brand direction and the
- * structured facts sit below it in a ruled editorial column, so the room reads
- * as a person who happens to have a CV rather than a CV with a person stapled on.
+ * Layout is the GlamToProfit "about me." page (decision-log.md §26): a
+ * full-height portrait on the left standing on a hairline, a very large display
+ * heading on the right, a short rule, then the prose. A vertical hairline runs
+ * down the left margin. The room is cream, which is why ME is `tone: 'paper'`.
+ *
+ * The room has no `ME` heading of its own — "A little about me" is the heading,
+ * so the generic room header is skipped and the room is named by its `label`.
+ *
+ * The handwriting is one word-group, `where I come from`, laid across the
+ * heading's lower edge in Beth Ellen. It is the only handwriting in the room:
+ * used once it reads as a hand, used twice it reads as a font.
+ *
+ * The facts sit below the strip as hairline rows, quiet and unlabelled, so the
+ * room still does not read as a CV. See PLAN Phase 5.
  */
 function Me() {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "md:col-span-7", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { className: "font-serif text-title leading-none uppercase text-ink", children: "A little about me" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-8 space-y-6", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.ME_PROSE.map((line, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__["default"], { as: "p", delay: i * 100, className: `font-sans leading-relaxed ${i === 0 ? 'text-xl text-ink' : 'text-lg text-muted'}`, children: line }, line))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__["default"], { delay: 420, className: "mt-10 flex flex-col items-end gap-1", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "relative inline-block", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "font-hand text-lg text-accent", children: "more than my work" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_Underline__WEBPACK_IMPORTED_MODULE_3__["default"], { width: 170, height: 16, className: "absolute -bottom-2 left-0" })] }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-4 md:col-start-9 md:pt-6", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__["default"], { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Photo__WEBPACK_IMPORTED_MODULE_2__["default"], { src: _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS[0].src, alt: _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS[0].alt, rotate: _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS[0].rotate, aspect: "4 / 5" }) }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "mt-20 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-3 md:col-start-2 md:pt-16", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__["default"], { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Photo__WEBPACK_IMPORTED_MODULE_2__["default"], { src: _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS[1].src, alt: _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS[1].alt, rotate: _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS[1].rotate, aspect: "1 / 1" }) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "md:col-span-6 md:col-start-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { "aria-labelledby": "me-experience", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { id: "me-experience", className: "font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted", children: "Experience" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dl", { className: "mt-4", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.EXPERIENCE.map((entry) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "border-t border-rule py-4 last:border-b", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("dt", { className: "flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "font-serif text-xl leading-tight text-ink", children: entry.role }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "font-sans text-xs uppercase tracking-[0.18em] text-muted", children: entry.period })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dd", { className: "mt-1 font-sans text-sm text-muted", children: entry.org })] }, `${entry.period}-${entry.role}`))) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { "aria-labelledby": "me-education", className: "mt-14", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { id: "me-education", className: "font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted", children: "Education" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dl", { className: "mt-4", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.EDUCATION.map((entry) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "border-t border-rule py-4 last:border-b", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("dt", { className: "flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "font-serif text-xl leading-tight text-ink", children: entry.qualification }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "font-sans text-xs uppercase tracking-[0.18em] text-muted", children: entry.period })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("dd", { className: "mt-1 font-sans text-sm text-muted", children: [entry.org, entry.detail && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "text-muted/70", children: [" \u00B7 ", entry.detail] }))] })] }, `${entry.period}-${entry.qualification}`))) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { "aria-labelledby": "me-skills", className: "mt-14", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { id: "me-skills", className: "font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted", children: "Skills" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "mt-4 flex flex-wrap gap-x-6 gap-y-2", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.SKILLS.map((skill) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: "border-b border-rule pb-1 font-sans text-sm text-ink", children: skill }, skill))) })] })] })] })] }));
+    const [portrait] = _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS;
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative pt-28 md:pt-36", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: "pointer-events-none absolute inset-y-0 left-[3vw] hidden w-px bg-rule md:block" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 gap-y-14 px-[6vw] md:grid-cols-12 md:gap-x-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-5 md:self-end", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "data-portrait-to": true, className: "relative aspect-[4/5] w-full max-w-[22rem] overflow-hidden bg-rule/40 md:max-w-none", children: portrait.src && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: portrait.src, alt: portrait.alt, loading: "lazy", decoding: "async", className: "h-full w-full object-cover" })) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "md:col-span-6 md:col-start-7 md:self-center md:pb-24", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative w-fit pb-8", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_WriteOn__WEBPACK_IMPORTED_MODULE_3__["default"], { id: "me-heading", duration: 1.3, className: "font-display text-[length:clamp(3.25rem,7.5vw,8rem)] leading-[0.92] tracking-[-0.02em] text-ink", children: ["A little", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "about me", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-accent", children: "." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { delay: 500, className: "absolute bottom-0 right-0 -rotate-[3deg] whitespace-nowrap font-hand text-[length:clamp(1.375rem,2vw,2.25rem)] text-accent", children: "where I come from" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "aria-hidden": "true", className: "mt-10 h-px w-3/5 bg-rule" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-10 max-w-[34rem] space-y-6", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.ME_PROSE.map((line, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { as: "p", delay: i * 100, className: "font-sans text-[17px] leading-[1.75] text-ink md:text-lg", children: line }, line))) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-14 border-t border-rule md:mt-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-[6vw] py-6 font-sans text-[11px] font-medium uppercase tracking-[0.2em] md:text-xs text-muted md:gap-x-12 md:tracking-[0.4em]", children: STRIP.map((word, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "contents", children: [i > 0 && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: "text-accent", children: "\u2726" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [word, "."] })] }, word))) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-1 px-[6vw] pb-28 pt-16 md:grid-cols-12 md:gap-x-10 md:pb-40", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "md:col-span-6 md:col-start-7", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dl", { "aria-label": "Experience and education", children: [
+                                ..._data_me__WEBPACK_IMPORTED_MODULE_1__.EXPERIENCE.map((e) => ({ key: `${e.period}-${e.role}`, what: e.role, org: e.org, period: e.period })),
+                                ..._data_me__WEBPACK_IMPORTED_MODULE_1__.EDUCATION.map((e) => ({ key: `${e.period}-${e.qualification}`, what: e.qualification, org: e.org, period: e.period })),
+                            ].map((row) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5 border-t border-rule py-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("dt", { className: "font-sans text-[15px] text-ink", children: [row.what, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "text-muted", children: [" \u00B7 ", row.org] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dd", { className: "font-sans text-sm tabular-nums text-muted", children: row.period })] }, row.key))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { "aria-label": "Skills", className: "mt-10 flex flex-wrap gap-2.5", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.SKILLS.map((skill) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: "pill", children: skill }, skill))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { delay: 120, className: "mt-8", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: _data_me__WEBPACK_IMPORTED_MODULE_1__.CV_URL, target: "_blank", rel: "noreferrer noopener", className: "pill", children: ["CV", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", children: "\u2197" })] }) })] }) })] }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Me);
 
@@ -38451,6 +39366,18 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -38474,6 +39401,29 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -38510,4 +39460,4 @@ if (!container) {
 
 /******/ })()
 ;
-//# sourceMappingURL=index.9fb1cbaf23cbe185ca8e.js.map
+//# sourceMappingURL=index.5e7152a04c624caecd5a.js.map

@@ -27,7 +27,7 @@ export function HoverNote({ children, note, position = 'below', className }: Hov
             {children}
             <span
                 aria-hidden="true"
-                className={`pointer-events-none absolute z-20 whitespace-nowrap font-hand text-sm text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 ${POSITION_CLASS[position]}`}
+                className={`pointer-events-none absolute z-20 whitespace-nowrap font-display italic text-lg text-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 ${POSITION_CLASS[position]}`}
             >
                 {note}
             </span>

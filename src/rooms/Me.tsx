@@ -1,160 +1,161 @@
-import { EDUCATION, EXPERIENCE, ME_PROSE, PORTRAITS, SKILLS } from '@/data/me';
-import Photo from '@/primitives/Photo';
-import Underline from '@/doodles/Underline';
+import { EDUCATION, EXPERIENCE, ME_PROSE, PORTRAITS, SKILLS, CV_URL } from '@/data/me';
 import Reveal from '@/primitives/Reveal';
+import WriteOn from '@/primitives/WriteOn';
+
+/**
+ * Wide-tracked words under the portrait, the reference's "BEAUTY ✦ STRATEGY ✦
+ * PROFIT" strip. PLACEHOLDER copy drawn from the hero line, awaiting sign-off.
+ */
+const STRIP = ['Software', 'Product', 'Faith'] as const;
 
 /**
  * ME — "A little about me". brand-direction §ME.
  *
- * Not a biography. The prose is verbatim from the brand direction and the
- * structured facts sit below it in a ruled editorial column, so the room reads
- * as a person who happens to have a CV rather than a CV with a person stapled on.
+ * Layout is the GlamToProfit "about me." page (decision-log.md §26): a
+ * full-height portrait on the left standing on a hairline, a very large display
+ * heading on the right, a short rule, then the prose. A vertical hairline runs
+ * down the left margin. The room is cream, which is why ME is `tone: 'paper'`.
+ *
+ * The room has no `ME` heading of its own — "A little about me" is the heading,
+ * so the generic room header is skipped and the room is named by its `label`.
+ *
+ * The handwriting is one word-group, `where I come from`, laid across the
+ * heading's lower edge in Beth Ellen. It is the only handwriting in the room:
+ * used once it reads as a hand, used twice it reads as a font.
+ *
+ * The facts sit below the strip as hairline rows, quiet and unlabelled, so the
+ * room still does not read as a CV. See PLAN Phase 5.
  */
 export function Me() {
-    return (
-        <div className="mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40">
-            {/* Prose and one portrait, asymmetric per §15. */}
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
-                <div className="md:col-span-7">
-                    <h3 className="font-serif text-title leading-none uppercase text-ink">
-                        A little about me
-                    </h3>
+    const [portrait] = PORTRAITS;
 
-                    <div className="mt-8 space-y-6">
+    return (
+        <div className="relative pt-28 md:pt-36">
+            {/* The vertical hairline at the left margin, as in the reference. */}
+            <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-y-0 left-[3vw] hidden w-px bg-rule md:block"
+            />
+
+            <div className="grid grid-cols-1 gap-y-14 px-[6vw] md:grid-cols-12 md:gap-x-10">
+                {/* The portrait stands on the strip's hairline: no bottom padding
+                    under it on desktop, so its foot meets the rule.
+
+                    This is the *landing* slot for the hero portrait — see
+                    TravellingPortrait.tsx. 4:5 because the photograph is 4:5,
+                    so it lands without a crop. No `Reveal` and no `Photo`: both
+                    animate their own opacity or transform, and the slot has to
+                    hold still to be measured. The `<img>` is the static
+                    fallback for reduced motion and no JS. */}
+                <div className="md:col-span-5 md:self-end">
+                    <div
+                        data-portrait-to
+                        className="relative aspect-[4/5] w-full max-w-[22rem] overflow-hidden bg-rule/40 md:max-w-none"
+                    >
+                        {portrait.src && (
+                            <img
+                                src={portrait.src}
+                                alt={portrait.alt}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-full w-full object-cover"
+                            />
+                        )}
+                    </div>
+                </div>
+
+                <div className="md:col-span-6 md:col-start-7 md:self-center md:pb-24">
+                    {/* `w-fit`, so the script pins to the heading's own right
+                        edge rather than the column's, which is wider at 1920. */}
+                    <div className="relative w-fit pb-8">
+                        <WriteOn
+                            id="me-heading"
+                            duration={1.3}
+                            className="font-display text-[length:clamp(3.25rem,7.5vw,8rem)] leading-[0.92] tracking-[-0.02em] text-ink"
+                        >
+                            A little
+                            <br />
+                            about me<span className="text-accent">.</span>
+                        </WriteOn>
+
+                        <Reveal
+                            delay={500}
+                            className="absolute bottom-0 right-0 -rotate-[3deg] whitespace-nowrap font-hand text-[length:clamp(1.375rem,2vw,2.25rem)] text-accent"
+                        >
+                            where I come from
+                        </Reveal>
+                    </div>
+
+                    <div aria-hidden="true" className="mt-10 h-px w-3/5 bg-rule" />
+
+                    {/* Jost, not Fraunces. These are paragraphs. §5. */}
+                    <div className="mt-10 max-w-[34rem] space-y-6">
                         {ME_PROSE.map((line, i) => (
                             <Reveal
                                 as="p"
                                 key={line}
                                 delay={i * 100}
-                                className={`font-sans leading-relaxed ${
-                                    i === 0 ? 'text-xl text-ink' : 'text-lg text-muted'
-                                }`}
+                                className="font-sans text-[17px] leading-[1.75] text-ink md:text-lg"
                             >
                                 {line}
                             </Reveal>
                         ))}
                     </div>
-
-                    {/* §13: the handwritten layer adds commentary, never repeats.
-                        Underline rather than HighlightCircle — the circle is a
-                        fixed square viewBox, so it cannot sit behind a phrase
-                        without distorting. */}
-                    <Reveal delay={420} className="mt-10 flex flex-col items-end gap-1">
-                        <span className="relative inline-block">
-                            <span className="font-hand text-lg text-accent">more than my work</span>
-                            <Underline
-                                width={170}
-                                height={16}
-                                className="absolute -bottom-2 left-0"
-                            />
-                        </span>
-                    </Reveal>
-                </div>
-
-                <div className="md:col-span-4 md:col-start-9 md:pt-6">
-                    <Reveal>
-                        <Photo
-                            src={PORTRAITS[0].src}
-                            alt={PORTRAITS[0].alt}
-                            rotate={PORTRAITS[0].rotate}
-                            aspect="4 / 5"
-                        />
-                    </Reveal>
                 </div>
             </div>
 
-            {/* Second portrait, offset the other way. */}
-            <div className="mt-20 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
-                <div className="md:col-span-3 md:col-start-2 md:pt-16">
-                    <Reveal>
-                        <Photo
-                            src={PORTRAITS[1].src}
-                            alt={PORTRAITS[1].alt}
-                            rotate={PORTRAITS[1].rotate}
-                            aspect="1 / 1"
-                        />
+            {/* The strip: a full-width hairline, then three tracked words. */}
+            <div className="mt-14 border-t border-rule md:mt-0">
+                <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-[6vw] py-6 font-sans text-[11px] font-medium uppercase tracking-[0.2em] md:text-xs text-muted md:gap-x-12 md:tracking-[0.4em]">
+                    {STRIP.map((word, i) => (
+                        <span key={word} className="contents">
+                            {i > 0 && (
+                                <span aria-hidden="true" className="text-accent">
+                                    &#10022;
+                                </span>
+                            )}
+                            <span>{word}.</span>
+                        </span>
+                    ))}
+                </p>
+            </div>
+
+            {/* The facts, present but quiet: hairline rows aligned under the
+                prose column, no section labels. */}
+            <div className="grid grid-cols-1 px-[6vw] pb-28 pt-16 md:grid-cols-12 md:gap-x-10 md:pb-40">
+                <div className="md:col-span-6 md:col-start-7">
+                    <dl aria-label="Experience and education">
+                        {[
+                            ...EXPERIENCE.map((e) => ({ key: `${e.period}-${e.role}`, what: e.role, org: e.org, period: e.period })),
+                            ...EDUCATION.map((e) => ({ key: `${e.period}-${e.qualification}`, what: e.qualification, org: e.org, period: e.period })),
+                        ].map((row) => (
+                            <div
+                                key={row.key}
+                                className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5 border-t border-rule py-4"
+                            >
+                                <dt className="font-sans text-[15px] text-ink">
+                                    {row.what}
+                                    <span className="text-muted"> · {row.org}</span>
+                                </dt>
+                                <dd className="font-sans text-sm tabular-nums text-muted">{row.period}</dd>
+                            </div>
+                        ))}
+                    </dl>
+
+                    <ul aria-label="Skills" className="mt-10 flex flex-wrap gap-2.5">
+                        {SKILLS.map((skill) => (
+                            <li key={skill} className="pill">
+                                {skill}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <Reveal delay={120} className="mt-8">
+                        <a href={CV_URL} target="_blank" rel="noreferrer noopener" className="pill">
+                            CV
+                            <span aria-hidden="true">↗</span>
+                        </a>
                     </Reveal>
-                </div>
-
-                {/* Facts as a ruled column, not timeline dots or pill tags. */}
-                <div className="md:col-span-6 md:col-start-6">
-                    <section aria-labelledby="me-experience">
-                        <h4
-                            id="me-experience"
-                            className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted"
-                        >
-                            Experience
-                        </h4>
-                        <dl className="mt-4">
-                            {EXPERIENCE.map((entry) => (
-                                <div
-                                    key={`${entry.period}-${entry.role}`}
-                                    className="border-t border-rule py-4 last:border-b"
-                                >
-                                    <dt className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                                        <span className="font-serif text-xl leading-tight text-ink">
-                                            {entry.role}
-                                        </span>
-                                        <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted">
-                                            {entry.period}
-                                        </span>
-                                    </dt>
-                                    <dd className="mt-1 font-sans text-sm text-muted">{entry.org}</dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </section>
-
-                    <section aria-labelledby="me-education" className="mt-14">
-                        <h4
-                            id="me-education"
-                            className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted"
-                        >
-                            Education
-                        </h4>
-                        <dl className="mt-4">
-                            {EDUCATION.map((entry) => (
-                                <div
-                                    key={`${entry.period}-${entry.qualification}`}
-                                    className="border-t border-rule py-4 last:border-b"
-                                >
-                                    <dt className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                                        <span className="font-serif text-xl leading-tight text-ink">
-                                            {entry.qualification}
-                                        </span>
-                                        <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted">
-                                            {entry.period}
-                                        </span>
-                                    </dt>
-                                    <dd className="mt-1 font-sans text-sm text-muted">
-                                        {entry.org}
-                                        {entry.detail && (
-                                            <span className="text-muted/70"> · {entry.detail}</span>
-                                        )}
-                                    </dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </section>
-
-                    <section aria-labelledby="me-skills" className="mt-14">
-                        <h4
-                            id="me-skills"
-                            className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted"
-                        >
-                            Skills
-                        </h4>
-                        <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                            {SKILLS.map((skill) => (
-                                <li
-                                    key={skill}
-                                    className="border-b border-rule pb-1 font-sans text-sm text-ink"
-                                >
-                                    {skill}
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
                 </div>
             </div>
         </div>

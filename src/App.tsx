@@ -1,102 +1,70 @@
-import { useCallback, useEffect, useState } from 'react';
-
-import Arrow from '@/doodles/Arrow';
-import { MUTED } from '@/doodles/shared';
-import Intro from '@/components/Intro';
+import Nav from '@/components/Nav';
 import Opening from '@/components/Opening';
-import RoomIndex from '@/components/RoomIndex';
+import TravellingPortrait from '@/components/TravellingPortrait';
 import { ROOMS } from '@/data/rooms';
-import Reveal from '@/primitives/Reveal';
-import Room from '@/primitives/Room';
+import { HERO_PHOTO } from '@/data/me';
+import Handwritten from '@/doodles/Handwritten';
 import Me from '@/rooms/Me';
-
-/** How long the gate takes to fade. Matches the CSS transition. */
-const LEAVE_MS = 700;
+import Room from '@/primitives/Room';
 
 /**
- * Intro gate + the whole site as one continuous scroll.
+ * The whole site as one continuous scroll.
  *
- * The gate and the top of the page share the `Opening` component, so entering
- * reveals the screen that was just dismissed rather than a second layout that
- * resembles it. There is no sticky nav bar — navigation is the room index
- * directly under the opening screen.
+ * The nav is a fixed line of words at the top — no bar, no background. The page
+ * opens on the name, and the six rooms follow as full-width slides alternating
+ * dark and paper.
  */
 export default function App() {
-    const [entered, setEntered] = useState(false);
-    const [leaving, setLeaving] = useState(false);
-
-    const enter = useCallback(() => {
-        if (entered || leaving) return;
-        setLeaving(true);
-        window.setTimeout(() => {
-            setEntered(true);
-            setLeaving(false);
-        }, LEAVE_MS);
-    }, [entered, leaving]);
-
-    /** The wordmark / "back to start" — returns to the gate. */
-    const backToIntro = useCallback(() => {
-        setLeaving(false);
-        setEntered(false);
-        window.scrollTo({ top: 0, behavior: 'auto' });
-    }, []);
-
-    // Lock scrolling behind the gate so the page cannot be moved underneath it.
-    useEffect(() => {
-        if (entered) return;
-        const previous = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-        return () => {
-            document.body.style.overflow = previous;
-        };
-    }, [entered]);
+    // The hero's static portrait. If HERO_PHOTO.src is ever unset the hero draws
+    // a silhouette at the same size, so nothing shifts. TravellingPortrait
+    // carries this same image into ME on scroll (decision-log.md §32).
+    const openingPhoto = HERO_PHOTO.src ? { src: HERO_PHOTO.src, alt: HERO_PHOTO.alt } : undefined;
 
     return (
         <>
-            {!entered && <Intro onEnter={enter} leaving={leaving} />}
+            <a
+                href="#rooms"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:text-ink"
+            >
+                Skip to content
+            </a>
 
-            {/*
-             * `inert` while the gate is up: the site behind must not be tabbable
-             * or reachable by a screen reader before it has been entered.
-             */}
-            <div inert={!entered ? true : undefined}>
-                <a
-                    href="#rooms"
-                    className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:text-ink"
-                >
-                    Skip to content
-                </a>
+            <Nav />
 
-                <div id="top" />
+            <main id="rooms">
+                {/* The opening screen is not a room — nothing anchors to it.
+                    `Opening` carries its own `id` and surface, so it is a direct
+                    child rather than wrapped in a second one. */}
+                <Opening photo={openingPhoto} />
 
-                <main id="rooms">
-                    <Room id="me" variant="hero" label="Me">
-                        <Opening
-                            note="hello →"
-                            action={
-                                <span className="flex items-center gap-3 font-sans text-[0.65rem] uppercase tracking-[0.3em] text-muted">
-                                    Scroll
-                                    <Arrow direction="down" width={40} height={40} color={MUTED} />
-                                </span>
-                            }
-                        />
-
-                        <RoomIndex onWordmarkClick={backToIntro} />
-
-                        <Me />
-                    </Room>
-
-                    {ROOMS.slice(1).map((room) => (
-                        <Room key={room.id} id={room.id} title={room.label} note={room.note} tone={room.tone}>
-                            <div className="mx-auto flex min-h-[60vh] w-full max-w-6xl flex-col justify-end px-6 pb-24 md:px-12">
-                                <p className="font-hand text-lg text-accent rotate-[-2deg] inline-block">
+                {ROOMS.map((room) => (
+                    <Room
+                        key={room.id}
+                        id={room.id}
+                        // The journal room has no title, and ME supplies its own
+                        // heading — "A little about me" — rather than a bare
+                        // "ME" above it. `label` names both.
+                        title={room.id === 'journal' || room.id === 'me' ? undefined : room.label}
+                        label={room.id === 'journal' || room.id === 'me' ? room.label : undefined}
+                        note={room.note}
+                        tone={room.tone}
+                    >
+                        {room.id === 'me' ? (
+                            <Me />
+                        ) : (
+                            <div className="mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40">
+                                <Handwritten rotate="-1.2deg">
                                     built in Phase {ROOMS.indexOf(room) + 5}
-                                </p>
+                                </Handwritten>
                             </div>
-                        </Room>
-                    ))}
-                </main>
-            </div>
+                        )}
+                    </Room>
+                ))}
+            </main>
+
+            {/* Outside every room, positioned against the document. See the
+                component for why it needs no `fixed`. */}
+            <TravellingPortrait />
         </>
     );
 }

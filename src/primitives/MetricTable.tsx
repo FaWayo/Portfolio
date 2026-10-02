@@ -22,9 +22,7 @@ export function MetricTable({ rows, caption, className }: MetricTableProps) {
     return (
         <div className={className}>
             {caption && (
-                <p className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted pb-3">
-                    {caption}
-                </p>
+                <p className="pb-3 font-display italic text-lg text-muted">{caption}</p>
             )}
             <dl>
                 {rows.map((row) => (
@@ -32,11 +30,9 @@ export function MetricTable({ rows, caption, className }: MetricTableProps) {
                         key={row.label}
                         className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-rule py-4"
                     >
-                        <dt className="font-sans text-xs uppercase tracking-[0.18em] text-muted">
-                            {row.label}
-                        </dt>
+                        <dt className="font-sans text-xs text-muted">{row.label}</dt>
                         <dd className="text-right">
-                            <span className="font-serif text-2xl leading-none text-ink">{row.value}</span>
+                            <span className="font-display text-2xl leading-tight text-ink">{row.value}</span>
                             {row.detail && (
                                 <span className="ml-3 font-sans text-xs text-muted">{row.detail}</span>
                             )}
