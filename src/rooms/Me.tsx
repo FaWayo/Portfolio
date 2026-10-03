@@ -1,5 +1,6 @@
 import { EDUCATION, EXPERIENCE, ME_PROSE, PORTRAITS, SKILLS, CV_URL } from '@/data/me';
 import Reveal from '@/primitives/Reveal';
+import Typewriter from '@/primitives/Typewriter';
 import WriteOn from '@/primitives/WriteOn';
 
 /**
@@ -9,17 +10,17 @@ import WriteOn from '@/primitives/WriteOn';
 const STRIP = ['Software', 'Product', 'Faith'] as const;
 
 /**
- * ME — "A little about me". brand-direction §ME.
+ * ME — "About me." decision-log.md §37 (was "A little about me", brand-direction §ME).
  *
  * Layout is the GlamToProfit "about me." page (decision-log.md §26): a
  * full-height portrait on the left standing on a hairline, a very large display
  * heading on the right, a short rule, then the prose. A vertical hairline runs
  * down the left margin. The room is cream, which is why ME is `tone: 'paper'`.
  *
- * The room has no `ME` heading of its own — "A little about me" is the heading,
+ * The room has no `ME` heading of its own — "About me." is the heading,
  * so the generic room header is skipped and the room is named by its `label`.
  *
- * The handwriting is one word-group, `where I come from`, laid across the
+ * The handwriting is one word-group, `the short version`, laid across the
  * heading's lower edge in Beth Ellen. It is the only handwriting in the room:
  * used once it reads as a hand, used twice it reads as a font.
  *
@@ -34,10 +35,10 @@ export function Me() {
             {/* The vertical hairline at the left margin, as in the reference. */}
             <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 left-[3vw] hidden w-px bg-rule md:block"
+                className="pointer-events-none absolute inset-y-0 left-[3vw] hidden w-px bg-rule lg:block"
             />
 
-            <div className="grid grid-cols-1 gap-y-14 px-[6vw] md:grid-cols-12 md:gap-x-10">
+            <div className="grid grid-cols-1 gap-y-14 px-[6vw] lg:grid-cols-12 lg:gap-x-10">
                 {/* The portrait stands on the strip's hairline: no bottom padding
                     under it on desktop, so its foot meets the rule.
 
@@ -47,10 +48,10 @@ export function Me() {
                     animate their own opacity or transform, and the slot has to
                     hold still to be measured. The `<img>` is the static
                     fallback for reduced motion and no JS. */}
-                <div className="md:col-span-5 md:self-end">
+                <div className="lg:col-span-5 lg:self-end">
                     <div
                         data-portrait-to
-                        className="relative aspect-[4/5] w-full max-w-[22rem] overflow-hidden bg-rule/40 md:max-w-none"
+                        className="relative aspect-[4/5] w-full max-w-[min(26rem,64svh)] overflow-hidden bg-rule/40 lg:max-w-none"
                     >
                         {portrait.src && (
                             <img
@@ -64,38 +65,45 @@ export function Me() {
                     </div>
                 </div>
 
-                <div className="md:col-span-6 md:col-start-7 md:self-center md:pb-24">
-                    {/* `w-fit`, so the script pins to the heading's own right
-                        edge rather than the column's, which is wider at 1920. */}
+                <div className="lg:col-span-6 lg:col-start-7 lg:self-center lg:pb-24">
+                    {/* `w-fit`, so the handwriting is placed against the heading
+                        itself rather than the column. It hangs from 12% in and runs
+                        right: "About" is narrower than the handwritten line, so
+                        right-anchoring pushed it off the left edge of a phone. */}
                     <div className="relative w-fit pb-8">
                         <WriteOn
                             id="me-heading"
                             duration={1.3}
-                            className="font-display text-[length:clamp(3.25rem,7.5vw,8rem)] leading-[0.92] tracking-[-0.02em] text-ink"
+                            className="font-display text-[length:clamp(4.25rem,10vw,14rem)] leading-[0.88] tracking-[-0.02em] text-ink"
                         >
-                            A little
+                            About
                             <br />
-                            about me<span className="text-accent">.</span>
+                            me<span className="text-accent">.</span>
                         </WriteOn>
 
-                        <Reveal
-                            delay={500}
-                            className="absolute bottom-0 right-0 -rotate-[3deg] whitespace-nowrap font-hand text-[length:clamp(1.375rem,2vw,2.25rem)] text-accent"
-                        >
-                            where I come from
-                        </Reveal>
+                        {/* Typed, not faded: on every visit to ME, after the heading
+                            has mostly written itself on. decision-log.md §38. */}
+                        <span className="absolute bottom-0 left-[12%] -rotate-[3deg] whitespace-nowrap font-hand text-[length:clamp(1.375rem,2vw,3rem)] text-accent">
+                            <Typewriter text="the short version" delay={1100} returnDelay={300} speed={85} />
+                        </span>
                     </div>
 
                     <div aria-hidden="true" className="mt-10 h-px w-3/5 bg-rule" />
 
-                    {/* Jost, not Fraunces. These are paragraphs. §5. */}
-                    <div className="mt-10 max-w-[34rem] space-y-6">
+                    {/* The first line is a lede — three short statements, set in
+                        Fraunces a step larger. The rest are paragraphs, so Jost.
+                        §5. */}
+                    <div className="mt-10 max-w-[32em] space-y-6 text-[length:clamp(17px,0.5rem+0.7vw,26px)]">
                         {ME_PROSE.map((line, i) => (
                             <Reveal
                                 as="p"
                                 key={line}
                                 delay={i * 100}
-                                className="font-sans text-[17px] leading-[1.75] text-ink md:text-lg"
+                                className={
+                                    i === 0
+                                        ? 'font-display text-[1.3em] leading-[1.35] tracking-[-0.01em] text-ink'
+                                        : 'font-sans leading-[1.75] text-ink'
+                                }
                             >
                                 {line}
                             </Reveal>
@@ -105,8 +113,8 @@ export function Me() {
             </div>
 
             {/* The strip: a full-width hairline, then three tracked words. */}
-            <div className="mt-14 border-t border-rule md:mt-0">
-                <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-[6vw] py-6 font-sans text-[11px] font-medium uppercase tracking-[0.2em] md:text-xs text-muted md:gap-x-12 md:tracking-[0.4em]">
+            <div className="mt-14 border-t border-rule lg:mt-0">
+                <p className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-[6vw] py-6 font-sans text-[11px] font-medium uppercase tracking-[0.2em] md:text-[length:clamp(0.75rem,0.6vw,1rem)] text-muted md:gap-x-12 md:tracking-[0.4em]">
                     {STRIP.map((word, i) => (
                         <span key={word} className="contents">
                             {i > 0 && (
@@ -122,8 +130,8 @@ export function Me() {
 
             {/* The facts, present but quiet: hairline rows aligned under the
                 prose column, no section labels. */}
-            <div className="grid grid-cols-1 px-[6vw] pb-28 pt-16 md:grid-cols-12 md:gap-x-10 md:pb-40">
-                <div className="md:col-span-6 md:col-start-7">
+            <div className="grid grid-cols-1 px-[6vw] pb-28 pt-16 lg:grid-cols-12 lg:gap-x-10 lg:pb-40">
+                <div className="max-w-3xl lg:col-span-6 lg:col-start-7 lg:max-w-none">
                     <dl aria-label="Experience and education">
                         {[
                             ...EXPERIENCE.map((e) => ({ key: `${e.period}-${e.role}`, what: e.role, org: e.org, period: e.period })),
@@ -133,11 +141,11 @@ export function Me() {
                                 key={row.key}
                                 className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5 border-t border-rule py-4"
                             >
-                                <dt className="font-sans text-[15px] text-ink">
+                                <dt className="font-sans text-[length:clamp(15px,0.35rem+0.55vw,20px)] text-ink">
                                     {row.what}
                                     <span className="text-muted"> · {row.org}</span>
                                 </dt>
-                                <dd className="font-sans text-sm tabular-nums text-muted">{row.period}</dd>
+                                <dd className="font-sans text-[length:clamp(13px,0.3rem+0.45vw,17px)] tabular-nums text-muted">{row.period}</dd>
                             </div>
                         ))}
                     </dl>

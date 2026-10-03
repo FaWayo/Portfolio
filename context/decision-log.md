@@ -1155,3 +1155,107 @@ reduced motion shows it complete.
 scribbled head, leaning stem and curling flag kept, the ♫ dropped, two small flicks
 of sound off the flag. 20px wide, +10°, hung slightly low so the flag clears the
 line above at every width.
+
+---
+
+## 36. Responsive pass — 2026-10-02
+
+Audited at 320×568, 360×740, 375×667, 414×896, 844×390 (landscape phone),
+768×1024, 820×1180, 1024×768, 1180×820, 1280×720, 1366×768, 1536×864 and
+2560×1440, with mobile emulation on for phones.
+
+**Fixed:**
+- **Phones laid out wider than the screen.** The travelling portrait starts scaled
+  wider than a phone and sits outside every room, so it stretched the layout
+  viewport: a 320px phone laid out at 391px and `menu` sat off the edge. The page
+  is now wrapped in `relative overflow-x-clip` (clip, not hidden — no scroll
+  container, so the fixed nav is unaffected), which is also the traveller's
+  positioning box.
+- **Large screens stopped scaling at laptop size.** The hero name cap rises to
+  400px, the nav's size, gap and top padding, the tag, the faith line (now
+  `max-w-[14em]`), the ♪ and the star all scale fluidly; ME's heading caps at
+  11rem and its prose, facts rows, strip and pills now scale with the viewport.
+- **Short landscape screens.** The hero name is also held to 26svh, so at 844×390
+  it no longer eats the height the portrait needs; `--hero-top` floor drops to
+  112px.
+- **ME went two-column too early.** At 768–1023 the portrait got a narrow column
+  and read as a thumbnail. ME now stacks below 1024 (`lg`), with the portrait
+  capped at `min(26rem, 64svh)` so it fits a landscape phone's height.
+
+**Verified:** no horizontal scroll and `layout width = device width` at every size;
+the traveller lands within 2px of its slot everywhere.
+
+---
+
+## 37. ME heading: "About me." — 2026-10-02
+
+**Supersedes:** "A little about me" as the heading (brand-direction §ME, which also
+supplies the prose — the prose is unchanged and still verbatim).
+
+**Decision:** `About` / `me.` on two lines in Fraunces, mauve full stop, as in the
+GlamToProfit reference. The shorter words take a larger size —
+`clamp(4.25rem, 10vw, 14rem)`, leading 0.88 — so the block is bolder rather than
+emptier. `where I come from` now hangs from 12% into the heading and runs right; it
+was right-anchored, and because "About" is narrower than the handwritten line it
+pushed 35px off the left edge of a 320px phone.
+
+**Reasoning:** Fatimah wanted a better title than "A little about me"; "About me."
+is shorter, more confident, and matches the room's layout reference.
+
+**Amended 2026-10-02:** the handwritten line is now `the short version`, not
+`where I come from` — which read as a hometown, while the prose is about who
+Fatimah is. Updated in `data/rooms.ts` (ME's `note`) and `rooms/Me.tsx`.
+
+---
+
+## 38. Typing on every visit, and a note that keeps time — 2026-10-03
+
+**Relaxes** design-system.md §8's "once, no loop" for three elements, at Fatimah's
+request.
+
+- **`Typewriter` types on view and retypes on every return** (`replay`, default
+  on). An IntersectionObserver at 0.6 starts it; leaving resets it, so a return
+  types from scratch. First view waits `delay`, later views `returnDelay` (300ms),
+  because the hero name's write-on doesn't replay. Text stays laid out (no shift),
+  full text is `sr-only` throughout, reduced motion shows it complete.
+- **"the short version"** in ME is now typed, not faded (`delay` 1100ms so the
+  heading is mostly written first, 85ms a character).
+- **The ♪ plays.** `MusicNote playing`: after the draw-on, the body bops on a
+  ~92 bpm beat pivoting on the head, with a bigger bop every second beat, and three
+  sound flicks flash out on each hit. The beat animates `<g>` groups so it never
+  fights the per-path draw-on. Paused while the hero is off screen
+  (`data-offscreen` on #opening); none for reduced motion.
+
+---
+
+## 39. The nav floats once you scroll — 2026-10-03
+
+**Supersedes:** hide-on-scroll-down / show-on-scroll-up, and "no background" for
+the scrolled state.
+
+At the very top (≤40px of scroll) the nav is unchanged: bare words over the hero.
+Past that it stays fixed and floats as a pill — the room's own `bg-surface` at 80%,
+`backdrop-blur-md`, a hairline ring and a soft shadow, inset to 4vw — with an `F.`
+(Beth Ellen, mauve full stop) home link on its left. Padding, background and shadow
+transition in on the same element, so nothing jumps. Mobile gets the same pill
+around `F.` + `menu`.
+
+**Reasoning:** Fatimah wanted the nav "sticky or fixed or somewhat better". The
+bare words had no background, so when they came back on scroll-up they sat directly
+on ME's paragraphs (visible in the §36 audit). The pill keeps them legible over any
+content while still taking the room's colour, and keeping it always visible means
+the rooms are one tap away.
+
+---
+
+## 40. ME copy, in Fatimah's words — 2026-10-03
+
+**Supersedes** the brand-direction §ME prose. `ME_PROSE` is now Fatimah's own text,
+verbatim (curly apostrophes, British "realise"): the LEGO paragraph, "a lot more
+work than LEGO", software and AI changing, building character. The first line —
+"Software engineer by training. Product builder. Curious about what else I can
+create." — is set as a lede in Fraunces at 1.3em; the rest stay Jost paragraphs.
+
+**Open:** the strip under the room still reads SOFTWARE ✦ PRODUCT ✦ FAITH; faith is
+no longer in this copy, so the third word may want to change.
+

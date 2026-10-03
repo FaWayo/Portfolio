@@ -40,7 +40,7 @@ export interface RoomMeta {
  * be quieter than what it points at.
  */
 export const ROOMS: readonly RoomMeta[] = [
-    { id: 'me', label: 'Me', note: 'where I come from', tone: 'paper' },
+    { id: 'me', label: 'Me', note: 'the short version', tone: 'paper' },
     { id: 'work', label: 'Work', note: "things I've actually built", tone: 'dark' },
     { id: 'writings', label: 'Writings', note: "things I've been writing about", tone: 'paper' },
     { id: 'life', label: 'Life', note: 'the other parts of me', tone: 'dark' },

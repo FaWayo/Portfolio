@@ -130,7 +130,7 @@
         border: 1px solid var(--room-rule, var(--color-wine));
         padding: 0.45rem 1.05rem;
         font-family: var(--font-sans);
-        font-size: 0.75rem;
+        font-size: clamp(0.75rem, 0.35rem + 0.35vw, 0.95rem);
         font-weight: 500;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -302,6 +302,66 @@
     transform: skewX(0deg);
 }
 
+/* --- The playing note ------------------------------------------------------
+   MusicNote with `playing`: two beats of keyframes at 0.65s each (~92 bpm).
+   The body dips onto the beat and rebounds — a sharp hit, a soft return —
+   pivoting on the note head, with a bigger bop on the second beat so it
+   grooves instead of ticking. The flicks flash out from the head on each hit.
+   It starts after the draw-on (`--beat-start`), pauses while the hero is off
+   screen (`data-offscreen` on #opening), and does nothing for reduced motion.
+   decision-log.md §38.
+   ------------------------------------------------------------------------- */
+
+.note-playing .note-body,
+.note-playing .note-flicks {
+    transform-box: view-box;
+    transform-origin: 11px 38px;
+    animation-duration: 1.3s;
+    animation-delay: var(--beat-start, 1.3s);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.note-playing .note-body {
+    animation-name: noteBop;
+}
+
+.note-playing .note-flicks {
+    animation-name: noteFlick;
+    opacity: 0.35;
+}
+
+@keyframes noteBop {
+    0% { transform: translateY(0) rotate(0deg); }
+    6% { transform: translateY(2.5px) rotate(-9deg); }
+    20% { transform: translateY(-4px) rotate(7deg); }
+    40%, 50% { transform: translateY(0) rotate(0deg); }
+    56% { transform: translateY(3.5px) rotate(-13deg); }
+    70% { transform: translateY(-7px) rotate(11deg); }
+    90%, 100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes noteFlick {
+    0% { transform: scale(0.75); opacity: 0.25; }
+    8% { transform: scale(1.25); opacity: 1; }
+    40%, 50% { transform: scale(0.75); opacity: 0.25; }
+    58% { transform: scale(1.4); opacity: 1; }
+    90%, 100% { transform: scale(0.75); opacity: 0.25; }
+}
+
+[data-offscreen] .note-playing .note-body,
+[data-offscreen] .note-playing .note-flicks {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .note-playing .note-body,
+    .note-playing .note-flicks {
+        animation: none;
+        opacity: 1;
+    }
+}
+
 /* --- Typewriter caret ------------------------------------------------------
    A 1px bar, zero-width in the flow so typing never shifts the line. Solid
    while the text is being typed; once it is done it blinks three times and
@@ -347,8 +407,12 @@
    it. See Opening.tsx and decision-log.md §29.
 
    `Fatimah.` in Beth Ellen advances **5.112em** (decision-log.md §25), so
-   14.5vw spans ~74% of the viewport; the 280px cap holds it at 1431px (75%) at
-   1920. On a phone 14.5vw is 57px — 289px of 390. The F carries a 0.04em left
+   14.5vw spans ~74% of the viewport. It is also held to 26svh, so on a short
+   landscape screen the name cannot eat the height the portrait needs — at
+   844×390 it is 101px, not 122. The 400px cap is only reached past ~2760px
+   wide; at 2560 it is 371px, so a large monitor gets a large name instead of a
+   laptop-sized one floating in the middle. On a phone 14.5vw is 57px — 289px of
+   390. The F carries a 0.04em left
    side bearing, which is why the name is optically centred with a nudge.
 
    `--hero-top` sits the name well below the nav — the F's top flourish rises
@@ -370,8 +434,8 @@
    ------------------------------------------------------------------------- */
 
 .hero {
-    --hero-top: max(27svh, 150px);
-    --text-hero-name: clamp(58px, 14.5vw, 280px);
+    --hero-top: max(27svh, 112px);
+    --text-hero-name: clamp(58px, min(14.5vw, 26svh), 400px);
     --hero-crown: calc(var(--hero-top) + var(--text-hero-name) * 0.85);
 }
 

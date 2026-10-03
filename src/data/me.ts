@@ -28,12 +28,16 @@ export interface EducationEntry {
     org: string;
 }
 
-/** brand-direction §ME — "A little about me", verbatim. */
+/**
+ * Fatimah's own words, verbatim (2026-10-03, decision-log.md §40). The first
+ * line is set as a lede in the room — see rooms/Me.tsx.
+ */
 export const ME_PROSE: readonly string[] = [
-    "I'm a software engineer by training, but I've never been interested in being only one thing.",
-    "I like understanding how things work. I like building. I like learning from people who know more than I do. I like writing when I have something worth saying.",
-    "My faith is a big part of how I make sense of where I've been, where I am, and where I'm going.",
-    "And I'm interested in having a life that is bigger than my work.",
+    'Software engineer by training. Product builder. Curious about what else I can create.',
+    'I’ve always liked making things. As a kid, it was LEGO. I could spend time putting pieces together, taking them apart, and seeing what else they could become. Software gave me that same feeling, just with a lot more possibilities.',
+    'It has turned out to be a lot more work than LEGO.',
+    'Software keeps changing, and so do I. Now AI has entered the picture, and I’m still testing the waters, figuring out what’s possible, what I can build with it, and what comes next. Change happens so quickly that sometimes you don’t realise how much you’ve changed until you look back and see that you’re not quite the person who started.',
+    'It has been a journey of building things, but also building character. And to think, this is only the beginning.',
 ];
 
 /**

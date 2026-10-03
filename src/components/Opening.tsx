@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react';
+
 import MusicNote from '@/doodles/MusicNote';
 import TinyStar from '@/doodles/TinyStar';
 import Reveal from '@/primitives/Reveal';
@@ -35,8 +37,22 @@ interface OpeningProps {
  * layers overlap by design.
  */
 export function Opening({ photo }: OpeningProps) {
+    // Marks the hero `data-offscreen` while it is scrolled away, so the playing
+    // note pauses instead of keeping time for nobody.
+    const ref = useRef<HTMLElement>(null);
+    useEffect(() => {
+        const el = ref.current;
+        if (!el || typeof IntersectionObserver === 'undefined') return;
+        const observer = new IntersectionObserver(([entry]) => {
+            el.toggleAttribute('data-offscreen', !entry.isIntersecting);
+        });
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <section
+            ref={ref}
             id="opening"
             tabIndex={-1}
             aria-label="Introduction"
@@ -54,8 +70,8 @@ export function Opening({ photo }: OpeningProps) {
                     Fatimah<span className="text-accent">.</span>
                 </WriteOn>
                 <div className="relative z-20 mt-3 w-[calc(var(--text-hero-name)*5.112)] max-w-full text-right">
-                    <p className="font-sans text-[length:clamp(11px,1.05vw,16px)] font-semibold uppercase tracking-[0.24em] text-muted">
-                        <Typewriter text={HERO_TAG} delay={1500} speed={75} />
+                    <p className="font-sans text-[length:clamp(11px,1.05vw,24px)] font-semibold uppercase tracking-[0.24em] text-muted">
+                        <Typewriter text={HERO_TAG} delay={1500} returnDelay={300} speed={75} />
                     </p>
                 </div>
             </div>
@@ -84,7 +100,7 @@ export function Opening({ photo }: OpeningProps) {
             </div>
 
             {/* 3 — the star, off the name's top right. */}
-            <TinyStar size={34} className="absolute right-[4vw] top-[calc(var(--hero-top)-8px)] z-20 rotate-12 md:right-[8vw]" />
+            <TinyStar size={34} className="absolute right-[4vw] top-[calc(var(--hero-top)-8px)] z-20 h-auto w-[clamp(26px,2.2vw,56px)] rotate-12 md:right-[8vw]" />
 
             {/* 3 — the faith line, bottom left, with a hand-drawn ♪ after it:
                 the line is a lyric, and the note says so. It sits at the end of
@@ -92,14 +108,15 @@ export function Opening({ photo }: OpeningProps) {
                 faded in. Negative vertical margins keep it from pushing the line
                 apart; `nowrap` keeps it with "love." so it never wraps alone. */}
             <Reveal className="absolute bottom-0 left-0 z-20 px-[6vw] pb-[max(6vh,36px)]">
-                <p className="max-w-[17rem] font-display text-[length:clamp(15px,1.15vw,20px)] italic leading-snug text-muted">
+                <p className="max-w-[14em] font-display text-[length:clamp(15px,1.15vw,28px)] italic leading-snug text-muted">
                     Grounded firm and deep in the Saviour&rsquo;s{' '}
                     <span className="whitespace-nowrap">
                         love.
                         <MusicNote
                             size={20}
                             delay={700}
-                            className="-my-5 ml-2 inline-block translate-y-1 rotate-[10deg] align-middle"
+                            playing
+                            className="-my-5 ml-[0.4em] inline-block h-auto w-[1.05em] translate-y-[0.2em] rotate-[10deg] align-middle"
                         />
                     </span>
                 </p>

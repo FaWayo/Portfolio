@@ -21,7 +21,13 @@ export default function App() {
     const openingPhoto = HERO_PHOTO.src ? { src: HERO_PHOTO.src, alt: HERO_PHOTO.alt } : undefined;
 
     return (
-        <>
+        // `overflow-x: clip` — not `hidden` — so nothing can widen the page
+        // sideways without creating a scroll container. The travelling portrait
+        // starts scaled wider than a phone screen, and outside any room it would
+        // otherwise stretch the layout viewport: on a 320px phone the page laid
+        // out at 391px and the browser zoomed out. `relative` makes this the
+        // traveller's positioning box, which starts at the document's top-left.
+        <div className="relative overflow-x-clip">
             <a
                 href="#rooms"
                 className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:text-ink"
@@ -42,7 +48,7 @@ export default function App() {
                         key={room.id}
                         id={room.id}
                         // The journal room has no title, and ME supplies its own
-                        // heading — "A little about me" — rather than a bare
+                        // heading — "About me." — rather than a bare
                         // "ME" above it. `label` names both.
                         title={room.id === 'journal' || room.id === 'me' ? undefined : room.label}
                         label={room.id === 'journal' || room.id === 'me' ? room.label : undefined}
@@ -65,6 +71,6 @@ export default function App() {
             {/* Outside every room, positioned against the document. See the
                 component for why it needs no `fixed`. */}
             <TravellingPortrait />
-        </>
+        </div>
     );
 }

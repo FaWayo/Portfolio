@@ -77,6 +77,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --blur-md: 12px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -396,6 +397,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .left-\\[3vw\\] {
     left: 3vw;
   }
+  .left-\\[12\\%\\] {
+    left: 12%;
+  }
   .left-full {
     left: 100%;
   }
@@ -639,6 +643,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .ml-10 {
     margin-left: calc(var(--spacing) * 10);
   }
+  .ml-\\[0\\.4em\\] {
+    margin-left: 0.4em;
+  }
   .ml-auto {
     margin-left: auto;
   }
@@ -843,8 +850,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
+  .w-\\[1\\.05em\\] {
+    width: 1.05em;
+  }
   .w-\\[calc\\(var\\(--text-hero-name\\)\\*5\\.112\\)\\] {
     width: calc(var(--text-hero-name) * 5.112);
+  }
+  .w-\\[clamp\\(26px\\,2\\.2vw\\,56px\\)\\] {
+    width: clamp(26px, 2.2vw, 56px);
   }
   .w-fit {
     width: fit-content;
@@ -867,14 +880,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .max-w-6xl {
     max-width: var(--container-6xl);
   }
-  .max-w-\\[17rem\\] {
-    max-width: 17rem;
+  .max-w-\\[14em\\] {
+    max-width: 14em;
   }
-  .max-w-\\[22rem\\] {
-    max-width: 22rem;
+  .max-w-\\[32em\\] {
+    max-width: 32em;
   }
-  .max-w-\\[34rem\\] {
-    max-width: 34rem;
+  .max-w-\\[min\\(26rem\\,64svh\\)\\] {
+    max-width: min(26rem, 64svh);
   }
   .max-w-full {
     max-width: 100%;
@@ -1031,6 +1044,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .translate-y-4 {
     --tw-translate-y: calc(var(--spacing) * 4);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-y-\\[0\\.2em\\] {
+    --tw-translate-y: 0.2em;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .translate-3d {
@@ -1423,8 +1440,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .gap-\\[2px\\] {
     gap: 2px;
   }
-  .gap-\\[2rem\\] {
-    gap: 2rem;
+  .gap-\\[clamp\\(1\\.25rem\\,2\\.2vw\\,3\\.25rem\\)\\] {
+    gap: clamp(1.25rem, 2.2vw, 3.25rem);
   }
   .space-y-1 {
     :where(& > :not(:last-child)) {
@@ -1636,6 +1653,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .overflow-visible {
     overflow: visible;
   }
+  .overflow-x-clip {
+    overflow-x: clip;
+  }
   .overflow-x-hidden {
     overflow-x: hidden;
   }
@@ -1822,6 +1842,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .bg-surface {
     background-color: var(--room-bg);
+  }
+  .bg-surface\\/80 {
+    background-color: color-mix(in oklab, var(--room-bg) 80%, transparent);
   }
   .bg-transparent {
     background-color: transparent;
@@ -2010,6 +2033,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .p-10 {
     padding: calc(var(--spacing) * 10);
   }
+  .px-0 {
+    padding-inline: calc(var(--spacing) * 0);
+  }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
@@ -2031,8 +2057,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .px-20 {
     padding-inline: calc(var(--spacing) * 20);
   }
+  .px-\\[4vw\\] {
+    padding-inline: 4vw;
+  }
   .px-\\[6vw\\] {
     padding-inline: 6vw;
+  }
+  .py-0 {
+    padding-block: calc(var(--spacing) * 0);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -2064,6 +2096,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .py-24 {
     padding-block: calc(var(--spacing) * 24);
   }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
@@ -2087,6 +2122,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .pt-28 {
     padding-top: calc(var(--spacing) * 28);
+  }
+  .pt-\\[clamp\\(1\\.75rem\\,2vw\\,2\\.75rem\\)\\] {
+    padding-top: clamp(1.75rem, 2vw, 2.75rem);
   }
   .pr-4 {
     padding-right: calc(var(--spacing) * 4);
@@ -2234,8 +2272,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .text-\\[0\\.6rem\\] {
     font-size: 0.6rem;
   }
-  .text-\\[0\\.8125rem\\] {
-    font-size: 0.8125rem;
+  .text-\\[1\\.3em\\] {
+    font-size: 1.3em;
   }
   .text-\\[1\\.75rem\\] {
     font-size: 1.75rem;
@@ -2243,23 +2281,29 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .text-\\[11px\\] {
     font-size: 11px;
   }
-  .text-\\[15px\\] {
-    font-size: 15px;
+  .text-\\[length\\:clamp\\(0\\.75rem\\,0\\.72vw\\,1\\.125rem\\)\\] {
+    font-size: clamp(0.75rem, 0.72vw, 1.125rem);
   }
-  .text-\\[17px\\] {
-    font-size: 17px;
+  .text-\\[length\\:clamp\\(1\\.375rem\\,2vw\\,3rem\\)\\] {
+    font-size: clamp(1.375rem, 2vw, 3rem);
   }
-  .text-\\[length\\:clamp\\(1\\.375rem\\,2vw\\,2\\.25rem\\)\\] {
-    font-size: clamp(1.375rem, 2vw, 2.25rem);
+  .text-\\[length\\:clamp\\(4\\.25rem\\,10vw\\,14rem\\)\\] {
+    font-size: clamp(4.25rem, 10vw, 14rem);
   }
-  .text-\\[length\\:clamp\\(3\\.25rem\\,7\\.5vw\\,8rem\\)\\] {
-    font-size: clamp(3.25rem, 7.5vw, 8rem);
+  .text-\\[length\\:clamp\\(11px\\,1\\.05vw\\,24px\\)\\] {
+    font-size: clamp(11px, 1.05vw, 24px);
   }
-  .text-\\[length\\:clamp\\(11px\\,1\\.05vw\\,16px\\)\\] {
-    font-size: clamp(11px, 1.05vw, 16px);
+  .text-\\[length\\:clamp\\(13px\\,0\\.3rem\\+0\\.45vw\\,17px\\)\\] {
+    font-size: clamp(13px, 0.3rem + 0.45vw, 17px);
   }
-  .text-\\[length\\:clamp\\(15px\\,1\\.15vw\\,20px\\)\\] {
-    font-size: clamp(15px, 1.15vw, 20px);
+  .text-\\[length\\:clamp\\(15px\\,0\\.35rem\\+0\\.55vw\\,20px\\)\\] {
+    font-size: clamp(15px, 0.35rem + 0.55vw, 20px);
+  }
+  .text-\\[length\\:clamp\\(15px\\,1\\.15vw\\,28px\\)\\] {
+    font-size: clamp(15px, 1.15vw, 28px);
+  }
+  .text-\\[length\\:clamp\\(17px\\,0\\.5rem\\+0\\.7vw\\,26px\\)\\] {
+    font-size: clamp(17px, 0.5rem + 0.7vw, 26px);
   }
   .text-title {
     font-size: var(--text-title);
@@ -2272,13 +2316,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --tw-leading: calc(var(--spacing) * 28);
     line-height: calc(var(--spacing) * 28);
   }
-  .leading-\\[0\\.92\\] {
-    --tw-leading: 0.92;
-    line-height: 0.92;
+  .leading-\\[0\\.88\\] {
+    --tw-leading: 0.88;
+    line-height: 0.88;
   }
   .leading-\\[0\\.95\\] {
     --tw-leading: 0.95;
     line-height: 0.95;
+  }
+  .leading-\\[1\\.35\\] {
+    --tw-leading: 1.35;
+    line-height: 1.35;
   }
   .leading-\\[1\\.75\\] {
     --tw-leading: 1.75;
@@ -2315,6 +2363,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .tracking-\\[-0\\.01em\\] {
+    --tw-tracking: -0.01em;
+    letter-spacing: -0.01em;
   }
   .tracking-\\[-0\\.02em\\] {
     --tw-tracking: -0.02em;
@@ -2601,11 +2653,19 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .shadow-\\[0_6px_24px_-8px_rgb\\(0_0_0\\/0\\.35\\)\\] {
+    --tw-shadow: 0 6px 24px -8px var(--tw-shadow-color, rgb(0 0 0/0.35));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
   .shadow-lg {
     --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .ring {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .ring-1 {
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
@@ -2615,6 +2675,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .shadow-initial {
     --tw-shadow-color: initial;
+  }
+  .ring-ink {
+    --tw-ring-color: var(--room-ink);
+  }
+  .ring-ink\\/10 {
+    --tw-ring-color: color-mix(in oklab, var(--room-ink) 10%, transparent);
   }
   .inset-shadow-initial {
     --tw-inset-shadow-color: initial;
@@ -2667,6 +2733,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
+  .backdrop-blur-md {
+    --tw-backdrop-blur: blur(var(--blur-md));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
   .backdrop-blur-none {
     --tw-backdrop-blur:  ;
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
@@ -2693,6 +2764,16 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-\\[background-color\\,box-shadow\\,padding\\] {
+    transition-property: background-color,box-shadow,padding;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-\\[padding\\] {
+    transition-property: padding;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
@@ -2749,10 +2830,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   .duration-1000 {
     --tw-duration: 1000ms;
     transition-duration: 1000ms;
-  }
-  .duration-\\[250ms\\] {
-    --tw-duration: 250ms;
-    transition-duration: 250ms;
   }
   .ease-in {
     --tw-ease: var(--ease-in);
@@ -3034,31 +3111,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       right: 8vw;
     }
   }
-  .md\\:col-span-5 {
-    @media (width >= 48rem) {
-      grid-column: span 5 / span 5;
-    }
-  }
-  .md\\:col-span-6 {
-    @media (width >= 48rem) {
-      grid-column: span 6 / span 6;
-    }
-  }
-  .md\\:col-start-7 {
-    @media (width >= 48rem) {
-      grid-column-start: 7;
-    }
-  }
-  .md\\:mt-0 {
-    @media (width >= 48rem) {
-      margin-top: calc(var(--spacing) * 0);
-    }
-  }
-  .md\\:block {
-    @media (width >= 48rem) {
-      display: block;
-    }
-  }
   .md\\:flex {
     @media (width >= 48rem) {
       display: flex;
@@ -3069,24 +3121,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       display: none;
     }
   }
-  .md\\:max-w-none {
-    @media (width >= 48rem) {
-      max-width: none;
-    }
-  }
   .md\\:flex-1 {
     @media (width >= 48rem) {
       flex: 1;
-    }
-  }
-  .md\\:grid-cols-12 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
-  }
-  .md\\:gap-x-10 {
-    @media (width >= 48rem) {
-      column-gap: calc(var(--spacing) * 10);
     }
   }
   .md\\:gap-x-12 {
@@ -3094,14 +3131,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       column-gap: calc(var(--spacing) * 12);
     }
   }
-  .md\\:self-center {
+  .md\\:px-7 {
     @media (width >= 48rem) {
-      align-self: center;
-    }
-  }
-  .md\\:self-end {
-    @media (width >= 48rem) {
-      align-self: flex-end;
+      padding-inline: calc(var(--spacing) * 7);
     }
   }
   .md\\:px-12 {
@@ -3119,26 +3151,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       padding-top: calc(var(--spacing) * 36);
     }
   }
-  .md\\:pb-24 {
-    @media (width >= 48rem) {
-      padding-bottom: calc(var(--spacing) * 24);
-    }
-  }
   .md\\:pb-40 {
     @media (width >= 48rem) {
       padding-bottom: calc(var(--spacing) * 40);
     }
   }
-  .md\\:text-lg {
+  .md\\:text-\\[length\\:clamp\\(0\\.75rem\\,0\\.6vw\\,1rem\\)\\] {
     @media (width >= 48rem) {
-      font-size: var(--text-lg);
-      line-height: var(--tw-leading, var(--text-lg--line-height));
-    }
-  }
-  .md\\:text-xs {
-    @media (width >= 48rem) {
-      font-size: var(--text-xs);
-      line-height: var(--tw-leading, var(--text-xs--line-height));
+      font-size: clamp(0.75rem, 0.6vw, 1rem);
     }
   }
   .md\\:tracking-\\[0\\.4em\\] {
@@ -3147,9 +3167,69 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
       letter-spacing: 0.4em;
     }
   }
+  .lg\\:col-span-5 {
+    @media (width >= 64rem) {
+      grid-column: span 5 / span 5;
+    }
+  }
+  .lg\\:col-span-6 {
+    @media (width >= 64rem) {
+      grid-column: span 6 / span 6;
+    }
+  }
+  .lg\\:col-start-7 {
+    @media (width >= 64rem) {
+      grid-column-start: 7;
+    }
+  }
+  .lg\\:mt-0 {
+    @media (width >= 64rem) {
+      margin-top: calc(var(--spacing) * 0);
+    }
+  }
+  .lg\\:block {
+    @media (width >= 64rem) {
+      display: block;
+    }
+  }
+  .lg\\:max-w-none {
+    @media (width >= 64rem) {
+      max-width: none;
+    }
+  }
+  .lg\\:grid-cols-12 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
   .lg\\:gap-x-9 {
     @media (width >= 64rem) {
       column-gap: calc(var(--spacing) * 9);
+    }
+  }
+  .lg\\:gap-x-10 {
+    @media (width >= 64rem) {
+      column-gap: calc(var(--spacing) * 10);
+    }
+  }
+  .lg\\:self-center {
+    @media (width >= 64rem) {
+      align-self: center;
+    }
+  }
+  .lg\\:self-end {
+    @media (width >= 64rem) {
+      align-self: flex-end;
+    }
+  }
+  .lg\\:pb-24 {
+    @media (width >= 64rem) {
+      padding-bottom: calc(var(--spacing) * 24);
+    }
+  }
+  .lg\\:pb-40 {
+    @media (width >= 64rem) {
+      padding-bottom: calc(var(--spacing) * 40);
     }
   }
 }
@@ -3204,7 +3284,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
     border: 1px solid var(--room-rule, var(--color-wine));
     padding: 0.45rem 1.05rem;
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: clamp(0.75rem, 0.35rem + 0.35vw, 0.95rem);
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -3289,6 +3369,78 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   clip-path: inset(-0.25em -0.05em -0.15em -0.05em);
   transform: skewX(0deg);
 }
+.note-playing .note-body,
+.note-playing .note-flicks {
+  transform-box: view-box;
+  transform-origin: 11px 38px;
+  animation-duration: 1.3s;
+  animation-delay: var(--beat-start, 1.3s);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.note-playing .note-body {
+  animation-name: noteBop;
+}
+.note-playing .note-flicks {
+  animation-name: noteFlick;
+  opacity: 0.35;
+}
+@keyframes noteBop {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  6% {
+    transform: translateY(2.5px) rotate(-9deg);
+  }
+  20% {
+    transform: translateY(-4px) rotate(7deg);
+  }
+  40%, 50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  56% {
+    transform: translateY(3.5px) rotate(-13deg);
+  }
+  70% {
+    transform: translateY(-7px) rotate(11deg);
+  }
+  90%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+@keyframes noteFlick {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.25;
+  }
+  8% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+  40%, 50% {
+    transform: scale(0.75);
+    opacity: 0.25;
+  }
+  58% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  90%, 100% {
+    transform: scale(0.75);
+    opacity: 0.25;
+  }
+}
+[data-offscreen] .note-playing .note-body,
+[data-offscreen] .note-playing .note-flicks {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .note-playing .note-body,
+    .note-playing .note-flicks {
+    animation: none;
+    opacity: 1;
+  }
+}
 .typewriter-caret {
   position: relative;
   display: inline-block;
@@ -3319,8 +3471,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
   }
 }
 .hero {
-  --hero-top: max(27svh, 150px);
-  --text-hero-name: clamp(58px, 14.5vw, 280px);
+  --hero-top: max(27svh, 112px);
+  --text-hero-name: clamp(58px, min(14.5vw, 26svh), 400px);
   --hero-crown: calc(var(--hero-top) + var(--text-hero-name) * 0.85);
 }
 .hero-portrait {
@@ -3672,7 +3824,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `/*! tailwindcss v4.0.15 | MIT License 
 @property --tw-contain-style {
   syntax: "*";
   inherits: false;
-}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA;AArdD;EAAA,WAqdC;EArdD,eAqdC;AAAA","sourcesContent":["@import \"tailwindcss\";\n\n/* ============================================================================\n   FIXED PALETTE\n   \"Black Champagne\", five values plus one derived cream. These never change\n   with room tone — bg-noir, text-mauve and friends are stable across the whole\n   site. Use the SEMANTIC tokens below inside components instead.\n   See decision-log.md §26.\n   ========================================================================= */\n\n@theme {\n    --color-noir: #0E0B0B;\n    --color-cocoa: #2B1B1B;\n    --color-wine: #5B3A3A;\n    --color-mauve: #876A6A;\n    --color-champagne: #CDB8A6;\n    /* Derived, not in the palette: the light rooms need a ground lighter than\n       champagne, which is 1.6:1 against itself as a background for wine. */\n    --color-cream: #F4EDE4;\n\n    /* Three voices, one job each. Fraunces is the display, Jost is the read,\n       Beth Ellen is the only hand and is never set below 18px.\n       See design-system.md §5. */\n    --font-display: \"Fraunces\", ui-serif, Georgia, serif;\n    --font-sans: \"Jost\", ui-sans-serif, system-ui, sans-serif;\n    --font-hand: \"Beth Ellen\", cursive;\n\n    --text-title: clamp(2rem, 5vw, 3.5rem);\n}\n\n/* ============================================================================\n   SEMANTIC TOKENS\n   `inline` makes utilities emit var(--room-*) directly instead of\n   var(--color-surface), so flipping one class repaints an entire room.\n   A <Room tone=\"dark\" | \"paper\"> wrapper sets it. See design-system.md §1.\n   ========================================================================= */\n\n@theme inline {\n    --color-surface: var(--room-bg);\n    --color-ink: var(--room-ink);\n    --color-muted: var(--room-muted);\n    --color-rule: var(--room-rule);\n    --color-accent: var(--room-accent);\n}\n\n/*\n * Dark is the default across the whole site.\n * cream on noir 16.9:1 · champagne on noir 10.3:1 · mauve on noir 4.0:1.\n * Mauve is under 4.5:1, so it is for large type, marks and doodles only —\n * never body copy. Wine as a rule is 2.0:1, which is right for a hairline.\n */\n:root,\n.tone-dark {\n    --room-bg: #0E0B0B;\n    --room-ink: #F4EDE4;\n    --room-muted: #CDB8A6;\n    --room-rule: #5B3A3A;\n    --room-accent: #876A6A;\n}\n\n/*\n * Paper tone — cream.\n * noir on cream 16.9:1 · wine on cream 8.6:1 · mauve on cream 4.2:1.\n * The same mauve works in both tones, so the accent does not shift colour as\n * you scroll from one room to the next. See design-system.md §3 and §4.\n */\n.tone-paper {\n    --room-bg: #F4EDE4;\n    --room-ink: #0E0B0B;\n    --room-muted: #5B3A3A;\n    --room-rule: #CDB8A6;\n    --room-accent: #876A6A;\n}\n\n/* ============================================================================\n   BASE\n   ========================================================================= */\n\n@layer base {\n    html {\n        scroll-behavior: smooth;\n    }\n\n    body {\n        background-color: var(--color-noir);\n        color: var(--color-cream);\n        font-family: var(--font-sans);\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        text-rendering: optimizeLegibility;\n    }\n\n    ::selection {\n        background-color: var(--room-accent, var(--color-mauve));\n        color: var(--room-bg, var(--color-noir));\n    }\n\n    :focus-visible {\n        outline: 2px solid var(--room-accent, var(--color-mauve));\n        outline-offset: 3px;\n    }\n\n    /* Pure white is banned. Cream keeps the dark interface soft. */\n    h1,\n    h2,\n    h3,\n    h4 {\n        font-weight: inherit;\n    }\n}\n\n/* ============================================================================\n   PILLS\n   The one container shape on the site. Fully rounded, outlined, no fill and no\n   shadow. Room labels, stack tags, LET'S TALK intents, the CV link and the\n   floating room pill are all this shape. See design-system.md §9.\n\n   Labels are small Jost capitals, tracked wide — the editorial register, and\n   straight, because a tilted chip next to a straight serif reads as a mistake.\n   Hover moves the border to the accent and leaves the text in ink: mauve is\n   4.0:1, too low for 12px type.\n   ========================================================================= */\n\n@layer components {\n    .pill {\n        display: inline-flex;\n        align-items: center;\n        gap: 0.5rem;\n        border-radius: 999px;\n        border: 1px solid var(--room-rule, var(--color-wine));\n        padding: 0.45rem 1.05rem;\n        font-family: var(--font-sans);\n        font-size: 0.75rem;\n        font-weight: 500;\n        letter-spacing: 0.12em;\n        text-transform: uppercase;\n        line-height: 1.2;\n        color: var(--room-ink, var(--color-cream));\n        background-color: transparent;\n        transition: border-color 0.3s ease;\n    }\n\n    .pill:hover {\n        border-color: var(--room-accent, var(--color-mauve));\n    }\n\n    /* The display face. Fraunces's SOFT axis rounds the terminals, which is\n       what lets it sit next to a signature script without looking stiff. */\n    .font-display {\n        font-variation-settings: \"SOFT\" 50, \"WONK\" 0;\n    }\n\n    /* Beth Ellen is single-weight and light: below 18px it looks weak rather\n       than intimate. Callers set the size; anything smaller belongs in\n       Fraunces italic. */\n    .font-hand {\n        line-height: 1.1;\n    }\n}\n\n/* ============================================================================\n   DOODLE MOTION\n   Ported from context/doodle-components.jsx, which injected these at runtime.\n   Now static. Drawing paths carry pathLength=\"1000\" so the dashoffset maths is\n   correct regardless of real path length — that was a bug in the original.\n   ========================================================================= */\n\n@keyframes drawPath {\n    from {\n        stroke-dashoffset: 1000;\n    }\n\n    to {\n        stroke-dashoffset: 0;\n    }\n}\n\n@keyframes settlePhoto {\n    from {\n        transform: var(--photo-rotate, 0deg) translateY(14px);\n        opacity: 0;\n    }\n\n    to {\n        transform: var(--photo-rotate, 0deg) translateY(0);\n        opacity: 1;\n    }\n}\n\n.draw-doodle {\n    stroke-dasharray: 1000;\n    stroke-dashoffset: 1000;\n    animation: drawPath 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;\n}\n\n/* --- Nav mark ---------------------------------------------------------------\n   The one hand-drawn underline every word shares, invisible until needed.\n\n   It is revealed with a left-to-right clip wipe, not the library's dash draw.\n   The nav path is stretched to each word with `vector-effect:\n   non-scaling-stroke`, and Chrome measures dashes on such a path in screen\n   pixels rather than in `pathLength` units — so a 1000-unit dash drew a fixed\n   ~20px stub under every word and never finished. A clip on the wrapper is\n   independent of the path, so the line always spans the whole word.\n\n   Hover and focus wipe the line in, and wipe it back out on leave. The current\n   room's line is simply there: it does not redraw when hovered, and moving\n   between rooms cross-fades it rather than replaying the wipe as you scroll.\n   Focus is in the selector deliberately — a mark only reachable with a mouse is\n   a mark keyboard users never see. See `Nav.tsx`.\n   ------------------------------------------------------------------------- */\n\n.nav-mark {\n    opacity: 0;\n    clip-path: inset(-4px 100% -4px -4px);\n    transition:\n        clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1),\n        opacity 0.2s ease-out;\n}\n\n.nav-mark[data-active],\n.nav-group:hover > .nav-mark,\n.nav-group:focus-visible > .nav-mark {\n    opacity: 1;\n    clip-path: inset(-4px -4px -4px -4px);\n}\n\n/* The current room's line must not wipe in from nothing when you arrive —\n   it fades, so only hover reads as \"drawing\". */\n.nav-mark[data-active] {\n    transition: opacity 0.2s ease-out;\n}\n\n/* Reduced motion: the same states, no movement. Only the current and hovered\n   words are marked — never all six. */\n@media (prefers-reduced-motion: reduce) {\n    .nav-mark {\n        transition: none;\n    }\n}\n\n\n/* A rotated photograph settling into place. --photo-rotate is set inline by the\n   Photo primitive so the rotation survives the transform in the keyframes.\n   Kept under 2° per §9 — past that a photo stops reading as hand-placed. */\n.settle-photo {\n    animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;\n}\n\n/* ============================================================================\n   MOTION\n   Two things, and nothing else. A room fades in as it enters view, and a title\n   writes itself once and then stays still forever. See design-system.md §8.\n\n   The doodle keyframes above are existing doodle behaviour and are deliberately\n   left untouched — stroke-draw and photo settle are not new motion.\n   ========================================================================= */\n\n.reveal {\n    opacity: 0;\n    transition: opacity 0.7s ease-out;\n}\n\n.reveal.is-visible {\n    opacity: 1;\n}\n\n/* --- Write on ---------------------------------------------------------------\n   A title being written by hand.\n\n   A live-text stroke-draw would mean moving the title into an <svg><text>, and\n   that forces either a fixed font size or `lengthAdjust` stretching the glyphs —\n   which wrecks a script face. So this reveals the real text along a hand-drawn\n   edge instead: a clip-path inset sweeping left to right, with a slight skew,\n   using the same easing as drawPath so it sits with the doodles.\n\n   The visible state is the DEFAULT, and the clipped state is opt-in via\n   `.is-waiting`. That ordering is deliberate and load-bearing. The first version\n   had it backwards — clipped by default, revealed by an IntersectionObserver —\n   and the hero heading came up invisible, because `clip-path` on the observed\n   element zeroes out its own intersection rect, so a `threshold` ratio could\n   never be met and the observer never fired. Motion here must be able to fail\n   without taking the text with it: if JS never runs, no `.is-waiting` is ever\n   added and the title is simply there.\n\n   It fires once on first appearance. It does not loop and it does not replay.\n   ------------------------------------------------------------------------- */\n\n.write-on {\n    transform: skewX(0deg);\n}\n\n.write-on.is-waiting {\n    clip-path: inset(-0.25em 100% -0.15em -0.05em);\n    transform: skewX(-3deg);\n    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1),\n        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);\n}\n\n.write-on.is-written {\n    clip-path: inset(-0.25em -0.05em -0.15em -0.05em);\n    transform: skewX(0deg);\n}\n\n/* --- Typewriter caret ------------------------------------------------------\n   A 1px bar, zero-width in the flow so typing never shifts the line. Solid\n   while the text is being typed; once it is done it blinks three times and\n   goes. See Typewriter.tsx.\n   ------------------------------------------------------------------------- */\n\n.typewriter-caret {\n    position: relative;\n    display: inline-block;\n    width: 0;\n    height: 1em;\n    vertical-align: -0.12em;\n}\n\n.typewriter-caret::after {\n    content: \"\";\n    position: absolute;\n    left: 0.08em;\n    top: 0;\n    bottom: 0;\n    width: 1.5px;\n    background: currentColor;\n}\n\n.typewriter-caret.is-done::after {\n    animation: caretBlink 0.9s steps(1, end) 3 forwards;\n}\n\n@keyframes caretBlink {\n    0%,\n    49% {\n        opacity: 1;\n    }\n\n    50%,\n    100% {\n        opacity: 0;\n    }\n}\n\n/* --- The hero ---------------------------------------------------------------\n   The name written by hand, very large, with a portrait standing in front of\n   it. See Opening.tsx and decision-log.md §29.\n\n   `Fatimah.` in Beth Ellen advances **5.112em** (decision-log.md §25), so\n   14.5vw spans ~74% of the viewport; the 280px cap holds it at 1431px (75%) at\n   1920. On a phone 14.5vw is 57px — 289px of 390. The F carries a 0.04em left\n   side bearing, which is why the name is optically centred with a nudge.\n\n   `--hero-top` sits the name well below the nav — the F's top flourish rises\n   ~0.2em above the line box, so 27svh leaves roughly 150px of clear air under\n   the nav at 1440×900 — and lets the name and the figure read as one group in\n   the middle of the screen rather than a banner.\n\n   The portrait is sized *from the name*, so the overlap is the same at every\n   viewport. `--hero-crown` is where the top of the hair should land: 0.85em\n   below the name's top, which is about a quarter of the way up from the\n   name's lowest ink (the line box is 1.1em and Beth Ellen's `t` hangs\n   ~0.085em below the baseline, decision-log.md §25). So the crown tucks\n   *behind* the feet of the middle letters and stops — the name stays readable,\n   the figure reads as standing in front of it.\n\n   The photo's crown sits 7.5% down its 4:5 frame (see `HERO_PHOTO` in\n   data/me.ts), so a bottom-anchored box of height `(100svh - crown) / 0.925`\n   puts the hair exactly on that line.\n   ------------------------------------------------------------------------- */\n\n.hero {\n    --hero-top: max(27svh, 150px);\n    --text-hero-name: clamp(58px, 14.5vw, 280px);\n    --hero-crown: calc(var(--hero-top) + var(--text-hero-name) * 0.85);\n}\n\n.hero-portrait {\n    height: calc((100svh - var(--hero-crown)) / 0.925);\n}\n\n/* The studio frame was cropped at the shoulders, so the jacket and the outer\n   curls end in straight vertical lines — on desktop, where the frame is\n   narrower than the screen, those read as the edge of a rectangle pasted onto\n   the page. Two mask layers, intersected, dissolve the frame into the room:\n   the sides fade over their outer 14%, the bottom over its last 22%. The\n   bottom fade is also what keeps the faith line readable where it crosses the\n   jacket on a phone. The file itself is untouched; this is display only.\n\n   `--fade` scales both fades from 1 (the hero) to 0 (a crisp print). The\n   static hero image never sets it, so it stays fully faded; the travelling\n   portrait animates it to 0 as it lands in ME. See TravellingPortrait.tsx. */\n.portrait-fade {\n    --fade: 1;\n    -webkit-mask-image:\n        linear-gradient(to right,\n            transparent 0%,\n            #000 calc(var(--fade) * 14%),\n            #000 calc(100% - var(--fade) * 14%),\n            transparent 100%),\n        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);\n    -webkit-mask-composite: source-in;\n    mask-image:\n        linear-gradient(to right,\n            transparent 0%,\n            #000 calc(var(--fade) * 14%),\n            #000 calc(100% - var(--fade) * 14%),\n            transparent 100%),\n        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);\n    mask-composite: intersect;\n}\n\n/* While the print is in flight its landing slot must be invisible — a tinted\n   empty frame reads as a placeholder waiting to be filled. */\n.portrait-travel [data-portrait-to] {\n    background: transparent;\n}\n\n/* The traveller only exists once it has measured both slots; until then, and\n   for reduced motion or no JS, the two static images are the portrait. */\n.portrait-traveller {\n    display: none;\n}\n\n.portrait-travel .portrait-traveller {\n    display: block;\n}\n\n.portrait-travel [data-portrait-from] img,\n.portrait-travel [data-portrait-to] img {\n    opacity: 0;\n}\n\n\n.hero-name {\n    font-size: var(--text-hero-name);\n    line-height: 1.1;\n    white-space: nowrap;\n}\n\n@media (prefers-reduced-motion: reduce) {\n\n    .reveal {\n        opacity: 1;\n    }\n\n    /* Must out-specify `.write-on.is-waiting`, or a title still below the fold\n       would stay clipped for a reduced-motion visitor. */\n    .write-on,\n    .write-on.is-waiting,\n    .write-on.is-written {\n        clip-path: none;\n        transform: none;\n    }\n}\n\n/* Motion must never delay access to content. */\n@media (prefers-reduced-motion: reduce) {\n    html {\n        scroll-behavior: auto;\n    }\n\n    *,\n    *::before,\n    *::after {\n        animation-duration: 0.01ms !important;\n        animation-iteration-count: 1 !important;\n        transition-duration: 0.01ms !important;\n    }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["@import \"tailwindcss\";\n\n/* ============================================================================\n   FIXED PALETTE\n   \"Black Champagne\", five values plus one derived cream. These never change\n   with room tone — bg-noir, text-mauve and friends are stable across the whole\n   site. Use the SEMANTIC tokens below inside components instead.\n   See decision-log.md §26.\n   ========================================================================= */\n\n@theme {\n    --color-noir: #0E0B0B;\n    --color-cocoa: #2B1B1B;\n    --color-wine: #5B3A3A;\n    --color-mauve: #876A6A;\n    --color-champagne: #CDB8A6;\n    /* Derived, not in the palette: the light rooms need a ground lighter than\n       champagne, which is 1.6:1 against itself as a background for wine. */\n    --color-cream: #F4EDE4;\n\n    /* Three voices, one job each. Fraunces is the display, Jost is the read,\n       Beth Ellen is the only hand and is never set below 18px.\n       See design-system.md §5. */\n    --font-display: \"Fraunces\", ui-serif, Georgia, serif;\n    --font-sans: \"Jost\", ui-sans-serif, system-ui, sans-serif;\n    --font-hand: \"Beth Ellen\", cursive;\n\n    --text-title: clamp(2rem, 5vw, 3.5rem);\n}\n\n/* ============================================================================\n   SEMANTIC TOKENS\n   `inline` makes utilities emit var(--room-*) directly instead of\n   var(--color-surface), so flipping one class repaints an entire room.\n   A <Room tone=\"dark\" | \"paper\"> wrapper sets it. See design-system.md §1.\n   ========================================================================= */\n\n@theme inline {\n    --color-surface: var(--room-bg);\n    --color-ink: var(--room-ink);\n    --color-muted: var(--room-muted);\n    --color-rule: var(--room-rule);\n    --color-accent: var(--room-accent);\n}\n\n/*\n * Dark is the default across the whole site.\n * cream on noir 16.9:1 · champagne on noir 10.3:1 · mauve on noir 4.0:1.\n * Mauve is under 4.5:1, so it is for large type, marks and doodles only —\n * never body copy. Wine as a rule is 2.0:1, which is right for a hairline.\n */\n:root,\n.tone-dark {\n    --room-bg: #0E0B0B;\n    --room-ink: #F4EDE4;\n    --room-muted: #CDB8A6;\n    --room-rule: #5B3A3A;\n    --room-accent: #876A6A;\n}\n\n/*\n * Paper tone — cream.\n * noir on cream 16.9:1 · wine on cream 8.6:1 · mauve on cream 4.2:1.\n * The same mauve works in both tones, so the accent does not shift colour as\n * you scroll from one room to the next. See design-system.md §3 and §4.\n */\n.tone-paper {\n    --room-bg: #F4EDE4;\n    --room-ink: #0E0B0B;\n    --room-muted: #5B3A3A;\n    --room-rule: #CDB8A6;\n    --room-accent: #876A6A;\n}\n\n/* ============================================================================\n   BASE\n   ========================================================================= */\n\n@layer base {\n    html {\n        scroll-behavior: smooth;\n    }\n\n    body {\n        background-color: var(--color-noir);\n        color: var(--color-cream);\n        font-family: var(--font-sans);\n        -webkit-font-smoothing: antialiased;\n        -moz-osx-font-smoothing: grayscale;\n        text-rendering: optimizeLegibility;\n    }\n\n    ::selection {\n        background-color: var(--room-accent, var(--color-mauve));\n        color: var(--room-bg, var(--color-noir));\n    }\n\n    :focus-visible {\n        outline: 2px solid var(--room-accent, var(--color-mauve));\n        outline-offset: 3px;\n    }\n\n    /* Pure white is banned. Cream keeps the dark interface soft. */\n    h1,\n    h2,\n    h3,\n    h4 {\n        font-weight: inherit;\n    }\n}\n\n/* ============================================================================\n   PILLS\n   The one container shape on the site. Fully rounded, outlined, no fill and no\n   shadow. Room labels, stack tags, LET'S TALK intents, the CV link and the\n   floating room pill are all this shape. See design-system.md §9.\n\n   Labels are small Jost capitals, tracked wide — the editorial register, and\n   straight, because a tilted chip next to a straight serif reads as a mistake.\n   Hover moves the border to the accent and leaves the text in ink: mauve is\n   4.0:1, too low for 12px type.\n   ========================================================================= */\n\n@layer components {\n    .pill {\n        display: inline-flex;\n        align-items: center;\n        gap: 0.5rem;\n        border-radius: 999px;\n        border: 1px solid var(--room-rule, var(--color-wine));\n        padding: 0.45rem 1.05rem;\n        font-family: var(--font-sans);\n        font-size: clamp(0.75rem, 0.35rem + 0.35vw, 0.95rem);\n        font-weight: 500;\n        letter-spacing: 0.12em;\n        text-transform: uppercase;\n        line-height: 1.2;\n        color: var(--room-ink, var(--color-cream));\n        background-color: transparent;\n        transition: border-color 0.3s ease;\n    }\n\n    .pill:hover {\n        border-color: var(--room-accent, var(--color-mauve));\n    }\n\n    /* The display face. Fraunces's SOFT axis rounds the terminals, which is\n       what lets it sit next to a signature script without looking stiff. */\n    .font-display {\n        font-variation-settings: \"SOFT\" 50, \"WONK\" 0;\n    }\n\n    /* Beth Ellen is single-weight and light: below 18px it looks weak rather\n       than intimate. Callers set the size; anything smaller belongs in\n       Fraunces italic. */\n    .font-hand {\n        line-height: 1.1;\n    }\n}\n\n/* ============================================================================\n   DOODLE MOTION\n   Ported from context/doodle-components.jsx, which injected these at runtime.\n   Now static. Drawing paths carry pathLength=\"1000\" so the dashoffset maths is\n   correct regardless of real path length — that was a bug in the original.\n   ========================================================================= */\n\n@keyframes drawPath {\n    from {\n        stroke-dashoffset: 1000;\n    }\n\n    to {\n        stroke-dashoffset: 0;\n    }\n}\n\n@keyframes settlePhoto {\n    from {\n        transform: var(--photo-rotate, 0deg) translateY(14px);\n        opacity: 0;\n    }\n\n    to {\n        transform: var(--photo-rotate, 0deg) translateY(0);\n        opacity: 1;\n    }\n}\n\n.draw-doodle {\n    stroke-dasharray: 1000;\n    stroke-dashoffset: 1000;\n    animation: drawPath 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;\n}\n\n/* --- Nav mark ---------------------------------------------------------------\n   The one hand-drawn underline every word shares, invisible until needed.\n\n   It is revealed with a left-to-right clip wipe, not the library's dash draw.\n   The nav path is stretched to each word with `vector-effect:\n   non-scaling-stroke`, and Chrome measures dashes on such a path in screen\n   pixels rather than in `pathLength` units — so a 1000-unit dash drew a fixed\n   ~20px stub under every word and never finished. A clip on the wrapper is\n   independent of the path, so the line always spans the whole word.\n\n   Hover and focus wipe the line in, and wipe it back out on leave. The current\n   room's line is simply there: it does not redraw when hovered, and moving\n   between rooms cross-fades it rather than replaying the wipe as you scroll.\n   Focus is in the selector deliberately — a mark only reachable with a mouse is\n   a mark keyboard users never see. See `Nav.tsx`.\n   ------------------------------------------------------------------------- */\n\n.nav-mark {\n    opacity: 0;\n    clip-path: inset(-4px 100% -4px -4px);\n    transition:\n        clip-path 0.45s cubic-bezier(0.16, 1, 0.3, 1),\n        opacity 0.2s ease-out;\n}\n\n.nav-mark[data-active],\n.nav-group:hover > .nav-mark,\n.nav-group:focus-visible > .nav-mark {\n    opacity: 1;\n    clip-path: inset(-4px -4px -4px -4px);\n}\n\n/* The current room's line must not wipe in from nothing when you arrive —\n   it fades, so only hover reads as \"drawing\". */\n.nav-mark[data-active] {\n    transition: opacity 0.2s ease-out;\n}\n\n/* Reduced motion: the same states, no movement. Only the current and hovered\n   words are marked — never all six. */\n@media (prefers-reduced-motion: reduce) {\n    .nav-mark {\n        transition: none;\n    }\n}\n\n\n/* A rotated photograph settling into place. --photo-rotate is set inline by the\n   Photo primitive so the rotation survives the transform in the keyframes.\n   Kept under 2° per §9 — past that a photo stops reading as hand-placed. */\n.settle-photo {\n    animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;\n}\n\n/* ============================================================================\n   MOTION\n   Two things, and nothing else. A room fades in as it enters view, and a title\n   writes itself once and then stays still forever. See design-system.md §8.\n\n   The doodle keyframes above are existing doodle behaviour and are deliberately\n   left untouched — stroke-draw and photo settle are not new motion.\n   ========================================================================= */\n\n.reveal {\n    opacity: 0;\n    transition: opacity 0.7s ease-out;\n}\n\n.reveal.is-visible {\n    opacity: 1;\n}\n\n/* --- Write on ---------------------------------------------------------------\n   A title being written by hand.\n\n   A live-text stroke-draw would mean moving the title into an <svg><text>, and\n   that forces either a fixed font size or `lengthAdjust` stretching the glyphs —\n   which wrecks a script face. So this reveals the real text along a hand-drawn\n   edge instead: a clip-path inset sweeping left to right, with a slight skew,\n   using the same easing as drawPath so it sits with the doodles.\n\n   The visible state is the DEFAULT, and the clipped state is opt-in via\n   `.is-waiting`. That ordering is deliberate and load-bearing. The first version\n   had it backwards — clipped by default, revealed by an IntersectionObserver —\n   and the hero heading came up invisible, because `clip-path` on the observed\n   element zeroes out its own intersection rect, so a `threshold` ratio could\n   never be met and the observer never fired. Motion here must be able to fail\n   without taking the text with it: if JS never runs, no `.is-waiting` is ever\n   added and the title is simply there.\n\n   It fires once on first appearance. It does not loop and it does not replay.\n   ------------------------------------------------------------------------- */\n\n.write-on {\n    transform: skewX(0deg);\n}\n\n.write-on.is-waiting {\n    clip-path: inset(-0.25em 100% -0.15em -0.05em);\n    transform: skewX(-3deg);\n    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1),\n        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);\n}\n\n.write-on.is-written {\n    clip-path: inset(-0.25em -0.05em -0.15em -0.05em);\n    transform: skewX(0deg);\n}\n\n/* --- The playing note ------------------------------------------------------\n   MusicNote with `playing`: two beats of keyframes at 0.65s each (~92 bpm).\n   The body dips onto the beat and rebounds — a sharp hit, a soft return —\n   pivoting on the note head, with a bigger bop on the second beat so it\n   grooves instead of ticking. The flicks flash out from the head on each hit.\n   It starts after the draw-on (`--beat-start`), pauses while the hero is off\n   screen (`data-offscreen` on #opening), and does nothing for reduced motion.\n   decision-log.md §38.\n   ------------------------------------------------------------------------- */\n\n.note-playing .note-body,\n.note-playing .note-flicks {\n    transform-box: view-box;\n    transform-origin: 11px 38px;\n    animation-duration: 1.3s;\n    animation-delay: var(--beat-start, 1.3s);\n    animation-iteration-count: infinite;\n    animation-timing-function: linear;\n}\n\n.note-playing .note-body {\n    animation-name: noteBop;\n}\n\n.note-playing .note-flicks {\n    animation-name: noteFlick;\n    opacity: 0.35;\n}\n\n@keyframes noteBop {\n    0% { transform: translateY(0) rotate(0deg); }\n    6% { transform: translateY(2.5px) rotate(-9deg); }\n    20% { transform: translateY(-4px) rotate(7deg); }\n    40%, 50% { transform: translateY(0) rotate(0deg); }\n    56% { transform: translateY(3.5px) rotate(-13deg); }\n    70% { transform: translateY(-7px) rotate(11deg); }\n    90%, 100% { transform: translateY(0) rotate(0deg); }\n}\n\n@keyframes noteFlick {\n    0% { transform: scale(0.75); opacity: 0.25; }\n    8% { transform: scale(1.25); opacity: 1; }\n    40%, 50% { transform: scale(0.75); opacity: 0.25; }\n    58% { transform: scale(1.4); opacity: 1; }\n    90%, 100% { transform: scale(0.75); opacity: 0.25; }\n}\n\n[data-offscreen] .note-playing .note-body,\n[data-offscreen] .note-playing .note-flicks {\n    animation-play-state: paused;\n}\n\n@media (prefers-reduced-motion: reduce) {\n    .note-playing .note-body,\n    .note-playing .note-flicks {\n        animation: none;\n        opacity: 1;\n    }\n}\n\n/* --- Typewriter caret ------------------------------------------------------\n   A 1px bar, zero-width in the flow so typing never shifts the line. Solid\n   while the text is being typed; once it is done it blinks three times and\n   goes. See Typewriter.tsx.\n   ------------------------------------------------------------------------- */\n\n.typewriter-caret {\n    position: relative;\n    display: inline-block;\n    width: 0;\n    height: 1em;\n    vertical-align: -0.12em;\n}\n\n.typewriter-caret::after {\n    content: \"\";\n    position: absolute;\n    left: 0.08em;\n    top: 0;\n    bottom: 0;\n    width: 1.5px;\n    background: currentColor;\n}\n\n.typewriter-caret.is-done::after {\n    animation: caretBlink 0.9s steps(1, end) 3 forwards;\n}\n\n@keyframes caretBlink {\n    0%,\n    49% {\n        opacity: 1;\n    }\n\n    50%,\n    100% {\n        opacity: 0;\n    }\n}\n\n/* --- The hero ---------------------------------------------------------------\n   The name written by hand, very large, with a portrait standing in front of\n   it. See Opening.tsx and decision-log.md §29.\n\n   `Fatimah.` in Beth Ellen advances **5.112em** (decision-log.md §25), so\n   14.5vw spans ~74% of the viewport. It is also held to 26svh, so on a short\n   landscape screen the name cannot eat the height the portrait needs — at\n   844×390 it is 101px, not 122. The 400px cap is only reached past ~2760px\n   wide; at 2560 it is 371px, so a large monitor gets a large name instead of a\n   laptop-sized one floating in the middle. On a phone 14.5vw is 57px — 289px of\n   390. The F carries a 0.04em left\n   side bearing, which is why the name is optically centred with a nudge.\n\n   `--hero-top` sits the name well below the nav — the F's top flourish rises\n   ~0.2em above the line box, so 27svh leaves roughly 150px of clear air under\n   the nav at 1440×900 — and lets the name and the figure read as one group in\n   the middle of the screen rather than a banner.\n\n   The portrait is sized *from the name*, so the overlap is the same at every\n   viewport. `--hero-crown` is where the top of the hair should land: 0.85em\n   below the name's top, which is about a quarter of the way up from the\n   name's lowest ink (the line box is 1.1em and Beth Ellen's `t` hangs\n   ~0.085em below the baseline, decision-log.md §25). So the crown tucks\n   *behind* the feet of the middle letters and stops — the name stays readable,\n   the figure reads as standing in front of it.\n\n   The photo's crown sits 7.5% down its 4:5 frame (see `HERO_PHOTO` in\n   data/me.ts), so a bottom-anchored box of height `(100svh - crown) / 0.925`\n   puts the hair exactly on that line.\n   ------------------------------------------------------------------------- */\n\n.hero {\n    --hero-top: max(27svh, 112px);\n    --text-hero-name: clamp(58px, min(14.5vw, 26svh), 400px);\n    --hero-crown: calc(var(--hero-top) + var(--text-hero-name) * 0.85);\n}\n\n.hero-portrait {\n    height: calc((100svh - var(--hero-crown)) / 0.925);\n}\n\n/* The studio frame was cropped at the shoulders, so the jacket and the outer\n   curls end in straight vertical lines — on desktop, where the frame is\n   narrower than the screen, those read as the edge of a rectangle pasted onto\n   the page. Two mask layers, intersected, dissolve the frame into the room:\n   the sides fade over their outer 14%, the bottom over its last 22%. The\n   bottom fade is also what keeps the faith line readable where it crosses the\n   jacket on a phone. The file itself is untouched; this is display only.\n\n   `--fade` scales both fades from 1 (the hero) to 0 (a crisp print). The\n   static hero image never sets it, so it stays fully faded; the travelling\n   portrait animates it to 0 as it lands in ME. See TravellingPortrait.tsx. */\n.portrait-fade {\n    --fade: 1;\n    -webkit-mask-image:\n        linear-gradient(to right,\n            transparent 0%,\n            #000 calc(var(--fade) * 14%),\n            #000 calc(100% - var(--fade) * 14%),\n            transparent 100%),\n        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);\n    -webkit-mask-composite: source-in;\n    mask-image:\n        linear-gradient(to right,\n            transparent 0%,\n            #000 calc(var(--fade) * 14%),\n            #000 calc(100% - var(--fade) * 14%),\n            transparent 100%),\n        linear-gradient(to bottom, #000 calc(100% - var(--fade) * 22%), transparent 100%);\n    mask-composite: intersect;\n}\n\n/* While the print is in flight its landing slot must be invisible — a tinted\n   empty frame reads as a placeholder waiting to be filled. */\n.portrait-travel [data-portrait-to] {\n    background: transparent;\n}\n\n/* The traveller only exists once it has measured both slots; until then, and\n   for reduced motion or no JS, the two static images are the portrait. */\n.portrait-traveller {\n    display: none;\n}\n\n.portrait-travel .portrait-traveller {\n    display: block;\n}\n\n.portrait-travel [data-portrait-from] img,\n.portrait-travel [data-portrait-to] img {\n    opacity: 0;\n}\n\n\n.hero-name {\n    font-size: var(--text-hero-name);\n    line-height: 1.1;\n    white-space: nowrap;\n}\n\n@media (prefers-reduced-motion: reduce) {\n\n    .reveal {\n        opacity: 1;\n    }\n\n    /* Must out-specify `.write-on.is-waiting`, or a title still below the fold\n       would stay clipped for a reduced-motion visitor. */\n    .write-on,\n    .write-on.is-waiting,\n    .write-on.is-written {\n        clip-path: none;\n        transform: none;\n    }\n}\n\n/* Motion must never delay access to content. */\n@media (prefers-reduced-motion: reduce) {\n    html {\n        scroll-behavior: auto;\n    }\n\n    *,\n    *::before,\n    *::after {\n        animation-duration: 0.01ms !important;\n        animation-iteration-count: 1 !important;\n        transition-duration: 0.01ms !important;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38052,9 +38204,16 @@ function App() {
     // a silhouette at the same size, so nothing shifts. TravellingPortrait
     // carries this same image into ME on scroll (decision-log.md §32).
     const openingPhoto = _data_me__WEBPACK_IMPORTED_MODULE_5__.HERO_PHOTO.src ? { src: _data_me__WEBPACK_IMPORTED_MODULE_5__.HERO_PHOTO.src, alt: _data_me__WEBPACK_IMPORTED_MODULE_5__.HERO_PHOTO.alt } : undefined;
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", { href: "#rooms", className: "sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:text-ink", children: "Skip to content" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", { id: "rooms", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Opening__WEBPACK_IMPORTED_MODULE_2__["default"], { photo: openingPhoto }), _data_rooms__WEBPACK_IMPORTED_MODULE_4__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Room__WEBPACK_IMPORTED_MODULE_8__["default"], { id: room.id, 
+    return (
+    // `overflow-x: clip` — not `hidden` — so nothing can widen the page
+    // sideways without creating a scroll container. The travelling portrait
+    // starts scaled wider than a phone screen, and outside any room it would
+    // otherwise stretch the layout viewport: on a 320px phone the page laid
+    // out at 391px and the browser zoomed out. `relative` makes this the
+    // traveller's positioning box, which starts at the document's top-left.
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative overflow-x-clip", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", { href: "#rooms", className: "sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:text-ink", children: "Skip to content" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Nav__WEBPACK_IMPORTED_MODULE_1__["default"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("main", { id: "rooms", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Opening__WEBPACK_IMPORTED_MODULE_2__["default"], { photo: openingPhoto }), _data_rooms__WEBPACK_IMPORTED_MODULE_4__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Room__WEBPACK_IMPORTED_MODULE_8__["default"], { id: room.id, 
                         // The journal room has no title, and ME supplies its own
-                        // heading — "A little about me" — rather than a bare
+                        // heading — "About me." — rather than a bare
                         // "ME" above it. `label` names both.
                         title: room.id === 'journal' || room.id === 'me' ? undefined : room.label, label: room.id === 'journal' || room.id === 'me' ? room.label : undefined, note: room.note, tone: room.tone, children: room.id === 'me' ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_rooms_Me__WEBPACK_IMPORTED_MODULE_7__["default"], {})) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_doodles_Handwritten__WEBPACK_IMPORTED_MODULE_6__["default"], { rotate: "-1.2deg", children: ["built in Phase ", _data_rooms__WEBPACK_IMPORTED_MODULE_4__.ROOMS.indexOf(room) + 5] }) })) }, room.id)))] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_TravellingPortrait__WEBPACK_IMPORTED_MODULE_3__["default"], {})] }));
 }
@@ -38107,16 +38266,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const MENU_ID = 'room-menu';
-/** Below this the nav hides going down and returns going up. */
-const HIDE_AFTER = 120;
-/** How long the nav takes to slide away or come back. */
-const HIDE_MS = 250;
+/** Past this many pixels of scroll the nav leaves the hero line and floats. */
+const FLOAT_AFTER = 40;
 /**
  * The navigation, which is a line of words and nothing else.
  *
- * No bar, no background, no border, no divider, no dots, no pill outlines. Six
- * short words of Jost capitals in the top right, sharing one hand-drawn
- * underline. See design-system.md §13 and decision-log.md §30.
+ * At the top of the page: no bar, no background, no border — six short words of
+ * Jost capitals in the top right, sharing one hand-drawn underline
+ * (design-system.md §13, decision-log.md §30). Once you scroll it floats: the
+ * same words, plus an "F." home link, in a frosted pill of the room's own
+ * surface, always on screen (decision-log.md §39).
  *
  * ## Why the nav is sans and the hero is not
  *
@@ -38169,30 +38328,17 @@ function Nav() {
     const active = (0,_hooks_useActiveRoom__WEBPACK_IMPORTED_MODULE_3__["default"])(_data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOM_IDS);
     const backdrop = (0,_hooks_useBackdropRoom__WEBPACK_IMPORTED_MODULE_4__["default"])(_data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOM_IDS);
     const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-    // Hide on the way down, come back on the way up. Direction is read from two
-    // consecutive scroll positions rather than a wheel event, because a wheel
-    // fires far more often than the scroll actually moves and would flicker on a
-    // trackpad.
-    const [hidden, setHidden] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    // At the very top the nav is the bare line of words over the hero. Once the
+    // page moves it floats: always on screen, in a frosted pill — decision-log.md
+    // §39. It used to hide on the way down instead, and when it came back it sat
+    // as bare words straight over ME's paragraphs.
+    const [floating, setFloating] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     const triggerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const overlayRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const close = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => setOpen(false), []);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-        let lastY = window.scrollY;
-        const onScroll = () => {
-            const y = window.scrollY;
-            const delta = y - lastY;
-            // Ignore sub-pixel jitter and rubber-band overscroll at either end.
-            if (Math.abs(delta) < 4)
-                return;
-            if (y <= 0) {
-                setHidden(false);
-            }
-            else {
-                setHidden(delta > 0 && y > HIDE_AFTER);
-            }
-            lastY = y;
-        };
+        const onScroll = () => setFloating(window.scrollY > FLOAT_AFTER);
+        onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
@@ -38238,12 +38384,14 @@ function Nav() {
     // the tone. See useBackdropRoom for why they cannot be the same value.
     const backdropRoom = _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.find((room) => room.id === backdrop);
     const tone = backdropRoom?.tone ?? 'dark';
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("nav", { "aria-label": "Rooms", "data-tone": tone, "data-hidden": hidden && !open ? 'true' : undefined, className: `tone-${tone} fixed inset-x-0 top-0 z-40 px-[6vw] pt-7 text-ink transition-transform duration-[250ms] ease-out ${hidden && !open ? '-translate-y-full' : ''}`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex w-full items-start justify-end gap-6", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "hidden items-center gap-[2rem] md:flex", children: _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavWord, { room: room, isActive: room.id === active }) }, room.id))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { ref: triggerRef, type: "button", onClick: () => setOpen(true), "aria-haspopup": "dialog", "aria-expanded": open, "aria-controls": MENU_ID, className: "font-sans text-sm font-semibold uppercase leading-none tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink md:hidden", children: "menu" })] }) }), open && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { ref: overlayRef, id: MENU_ID, role: "dialog", "aria-modal": "true", "aria-label": "Rooms", className: "tone-dark fixed inset-0 z-50 flex items-center justify-center bg-noir/92 px-6", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "w-full max-w-3xl", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "flex flex-col gap-x-12 gap-y-[clamp(2rem,5vh,2.75rem)] sm:flex-row sm:flex-wrap", children: _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavWord, { room: room, isActive: room.id === active, onNavigate: close, size: "overlay" }) }, room.id))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { type: "button", onClick: close, className: "mt-10 font-sans text-sm font-semibold uppercase tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink", children: "close" })] }) }))] }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("nav", { "aria-label": "Rooms", "data-tone": tone, "data-floating": floating ? 'true' : undefined, className: `tone-${tone} pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-end px-[6vw] text-ink transition-[padding] duration-300 ease-out ${floating ? 'px-[4vw] pt-4' : 'pt-[clamp(1.75rem,2vw,2.75rem)]'}`, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: `pointer-events-auto flex items-center gap-6 rounded-full transition-[background-color,box-shadow,padding] duration-300 ease-out ${floating
+                        ? 'bg-surface/80 px-5 py-3 shadow-[0_6px_24px_-8px_rgb(0_0_0/0.35)] ring-1 ring-ink/10 backdrop-blur-md md:px-7'
+                        : 'bg-transparent px-0 py-0'}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: "#opening", "aria-label": "Back to the top", tabIndex: floating ? 0 : -1, "aria-hidden": !floating, className: `font-hand text-xl leading-none text-ink transition-opacity duration-300 ${floating ? 'opacity-100' : 'pointer-events-none hidden opacity-0'}`, children: ["F", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-accent", children: "." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "hidden items-center gap-[clamp(1.25rem,2.2vw,3.25rem)] md:flex", children: _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavWord, { room: room, isActive: room.id === active }) }, room.id))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { ref: triggerRef, type: "button", onClick: () => setOpen(true), "aria-haspopup": "dialog", "aria-expanded": open, "aria-controls": MENU_ID, className: "font-sans text-sm font-semibold uppercase leading-none tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink md:hidden", children: "menu" })] }) }), open && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { ref: overlayRef, id: MENU_ID, role: "dialog", "aria-modal": "true", "aria-label": "Rooms", className: "tone-dark fixed inset-0 z-50 flex items-center justify-center bg-noir/92 px-6", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "w-full max-w-3xl", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { className: "flex flex-col gap-x-12 gap-y-[clamp(2rem,5vh,2.75rem)] sm:flex-row sm:flex-wrap", children: _data_rooms__WEBPACK_IMPORTED_MODULE_2__.ROOMS.map((room) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavWord, { room: room, isActive: room.id === active, onNavigate: close, size: "overlay" }) }, room.id))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { type: "button", onClick: close, className: "mt-10 font-sans text-sm font-semibold uppercase tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink", children: "close" })] }) }))] }));
 }
 /** One word in the nav. Every word is built the same way — see the header. */
 function NavWord({ room, isActive, onNavigate, size = 'inline' }) {
     const isOverlay = size === 'overlay';
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: `#${room.id}`, onClick: onNavigate, "aria-current": isActive ? 'true' : undefined, className: `group nav-group relative inline-block uppercase ${isOverlay ? 'text-[1.75rem] font-bold tracking-[0.06em]' : 'text-[0.8125rem] font-semibold tracking-[0.1em]'}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 ${isActive ? 'opacity-100' : 'opacity-70'}`, children: room.label }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_NavMark__WEBPACK_IMPORTED_MODULE_5__["default"], { active: isActive })] }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: `#${room.id}`, onClick: onNavigate, "aria-current": isActive ? 'true' : undefined, className: `group nav-group relative inline-block uppercase ${isOverlay ? 'text-[1.75rem] font-bold tracking-[0.06em]' : 'text-[length:clamp(0.75rem,0.72vw,1.125rem)] font-semibold tracking-[0.1em]'}`, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 ${isActive ? 'opacity-100' : 'opacity-70'}`, children: room.label }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_NavMark__WEBPACK_IMPORTED_MODULE_5__["default"], { active: isActive })] }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Nav);
 
@@ -38310,11 +38458,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var _doodles_MusicNote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/doodles/MusicNote */ "./src/doodles/MusicNote.tsx");
-/* harmony import */ var _doodles_TinyStar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/doodles/TinyStar */ "./src/doodles/TinyStar.tsx");
-/* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
-/* harmony import */ var _primitives_Typewriter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/primitives/Typewriter */ "./src/primitives/Typewriter.tsx");
-/* harmony import */ var _primitives_WriteOn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/primitives/WriteOn */ "./src/primitives/WriteOn.tsx");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _doodles_MusicNote__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/doodles/MusicNote */ "./src/doodles/MusicNote.tsx");
+/* harmony import */ var _doodles_TinyStar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/doodles/TinyStar */ "./src/doodles/TinyStar.tsx");
+/* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
+/* harmony import */ var _primitives_Typewriter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/primitives/Typewriter */ "./src/primitives/Typewriter.tsx");
+/* harmony import */ var _primitives_WriteOn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/primitives/WriteOn */ "./src/primitives/WriteOn.tsx");
+
 
 
 
@@ -38342,7 +38493,20 @@ const HERO_TAG = 'software engineer';
  * layers overlap by design.
  */
 function Opening({ photo }) {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { id: "opening", tabIndex: -1, "aria-label": "Introduction", className: "hero tone-dark relative min-h-[100svh] w-full overflow-hidden bg-surface text-ink focus:outline-none", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "absolute inset-x-0 top-[var(--hero-top)] flex flex-col items-center", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_WriteOn__WEBPACK_IMPORTED_MODULE_5__["default"], { as: "h1", duration: 1.6, className: "hero-name -ml-[0.04em] font-hand text-ink", children: ["Fatimah", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-accent", children: "." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "relative z-20 mt-3 w-[calc(var(--text-hero-name)*5.112)] max-w-full text-right", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "font-sans text-[length:clamp(11px,1.05vw,16px)] font-semibold uppercase tracking-[0.24em] text-muted", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Typewriter__WEBPACK_IMPORTED_MODULE_4__["default"], { text: HERO_TAG, delay: 1500, speed: 75 }) }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "data-portrait-from": true, className: "hero-portrait pointer-events-none absolute bottom-0 left-1/2 z-10 aspect-[4/5] -translate-x-1/2", children: photo ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: photo.src, alt: photo.alt, loading: "eager", decoding: "async", className: "portrait-fade h-full w-full object-contain object-bottom" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PortraitPlaceholder, {})) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_TinyStar__WEBPACK_IMPORTED_MODULE_2__["default"], { size: 34, className: "absolute right-[4vw] top-[calc(var(--hero-top)-8px)] z-20 rotate-12 md:right-[8vw]" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_3__["default"], { className: "absolute bottom-0 left-0 z-20 px-[6vw] pb-[max(6vh,36px)]", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", { className: "max-w-[17rem] font-display text-[length:clamp(15px,1.15vw,20px)] italic leading-snug text-muted", children: ["Grounded firm and deep in the Saviour\u2019s", ' ', (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "whitespace-nowrap", children: ["love.", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_MusicNote__WEBPACK_IMPORTED_MODULE_1__["default"], { size: 20, delay: 700, className: "-my-5 ml-2 inline-block translate-y-1 rotate-[10deg] align-middle" })] })] }) })] }));
+    // Marks the hero `data-offscreen` while it is scrolled away, so the playing
+    // note pauses instead of keeping time for nobody.
+    const ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        const el = ref.current;
+        if (!el || typeof IntersectionObserver === 'undefined')
+            return;
+        const observer = new IntersectionObserver(([entry]) => {
+            el.toggleAttribute('data-offscreen', !entry.isIntersecting);
+        });
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", { ref: ref, id: "opening", tabIndex: -1, "aria-label": "Introduction", className: "hero tone-dark relative min-h-[100svh] w-full overflow-hidden bg-surface text-ink focus:outline-none", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "absolute inset-x-0 top-[var(--hero-top)] flex flex-col items-center", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_WriteOn__WEBPACK_IMPORTED_MODULE_6__["default"], { as: "h1", duration: 1.6, className: "hero-name -ml-[0.04em] font-hand text-ink", children: ["Fatimah", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-accent", children: "." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "relative z-20 mt-3 w-[calc(var(--text-hero-name)*5.112)] max-w-full text-right", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "font-sans text-[length:clamp(11px,1.05vw,24px)] font-semibold uppercase tracking-[0.24em] text-muted", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Typewriter__WEBPACK_IMPORTED_MODULE_5__["default"], { text: HERO_TAG, delay: 1500, returnDelay: 300, speed: 75 }) }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "data-portrait-from": true, className: "hero-portrait pointer-events-none absolute bottom-0 left-1/2 z-10 aspect-[4/5] -translate-x-1/2", children: photo ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: photo.src, alt: photo.alt, loading: "eager", decoding: "async", className: "portrait-fade h-full w-full object-contain object-bottom" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PortraitPlaceholder, {})) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_TinyStar__WEBPACK_IMPORTED_MODULE_3__["default"], { size: 34, className: "absolute right-[4vw] top-[calc(var(--hero-top)-8px)] z-20 h-auto w-[clamp(26px,2.2vw,56px)] rotate-12 md:right-[8vw]" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_4__["default"], { className: "absolute bottom-0 left-0 z-20 px-[6vw] pb-[max(6vh,36px)]", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", { className: "max-w-[14em] font-display text-[length:clamp(15px,1.15vw,28px)] italic leading-snug text-muted", children: ["Grounded firm and deep in the Saviour\u2019s", ' ', (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "whitespace-nowrap", children: ["love.", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_doodles_MusicNote__WEBPACK_IMPORTED_MODULE_2__["default"], { size: 20, delay: 700, playing: true, className: "-my-5 ml-[0.4em] inline-block h-auto w-[1.05em] translate-y-[0.2em] rotate-[10deg] align-middle" })] })] }) })] }));
 }
 /**
  * A head-and-shoulders silhouette at the cut-out's exact box, so the overlap
@@ -38519,12 +38683,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_me_portrait_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/assets/me-portrait.jpg */ "./src/assets/me-portrait.jpg");
 
 
-/** brand-direction §ME — "A little about me", verbatim. */
+/**
+ * Fatimah's own words, verbatim (2026-10-03, decision-log.md §40). The first
+ * line is set as a lede in the room — see rooms/Me.tsx.
+ */
 const ME_PROSE = [
-    "I'm a software engineer by training, but I've never been interested in being only one thing.",
-    "I like understanding how things work. I like building. I like learning from people who know more than I do. I like writing when I have something worth saying.",
-    "My faith is a big part of how I make sense of where I've been, where I am, and where I'm going.",
-    "And I'm interested in having a life that is bigger than my work.",
+    'Software engineer by training. Product builder. Curious about what else I can create.',
+    'I’ve always liked making things. As a kid, it was LEGO. I could spend time putting pieces together, taking them apart, and seeing what else they could become. Software gave me that same feeling, just with a lot more possibilities.',
+    'It has turned out to be a lot more work than LEGO.',
+    'Software keeps changing, and so do I. Now AI has entered the picture, and I’m still testing the waters, figuring out what’s possible, what I can build with it, and what comes next. Change happens so quickly that sometimes you don’t realise how much you’ve changed until you look back and see that you’re not quite the person who started.',
+    'It has been a journey of building things, but also building character. And to think, this is only the beginning.',
 ];
 /**
  * Experience, from the old site's Experience timeline. PCES appears as an
@@ -38657,7 +38825,7 @@ __webpack_require__.r(__webpack_exports__);
  * be quieter than what it points at.
  */
 const ROOMS = [
-    { id: 'me', label: 'Me', note: 'where I come from', tone: 'paper' },
+    { id: 'me', label: 'Me', note: 'the short version', tone: 'paper' },
     { id: 'work', label: 'Work', note: "things I've actually built", tone: 'dark' },
     { id: 'writings', label: 'Writings', note: "things I've been writing about", tone: 'paper' },
     { id: 'life', label: 'Life', note: 'the other parts of me', tone: 'dark' },
@@ -38727,28 +38895,40 @@ __webpack_require__.r(__webpack_exports__);
  *
  * A single quaver (♪) as a margin doodle, not a glyph: a head that loops back
  * through itself instead of closing neatly, a stem that leans, a flag that
- * curls a little too far, and two flicks of sound off it. Struck, not filled,
+ * curls a little too far, and three flicks of sound off it. Struck, not filled,
  * so it writes itself on with the rest of the vocabulary.
+ *
+ * With `playing` it keeps time once drawn: it bops on a ~92 bpm beat, a bigger
+ * bop every second beat, and the flicks flash out on each hit
+ * (decision-log.md §38). Paused while off screen, still for reduced motion.
  *
  * First used after the hero's faith line, which is a lyric — the note says so
  * without a citation.
  *
- * `size` is the width; the drawing is 28×44. `delay` holds the draw back so it
+ * `size` is the width; the drawing is 30×44. `delay` holds the draw back so it
  * can follow the text it sits beside.
  */
-const PATHS = [
+const BODY = [
     // Head, with a scribble back through it.
     'M14.5 35.5C15.2 38.6 11.6 41.2 8.6 40.4C6 39.7 6.1 36.4 8.6 35C11 33.6 14 33.4 14.5 35.5C14.9 37.2 12.4 38.8 10.2 38.6',
     // Stem.
     'M14.5 35.5C14.4 27.5 14.9 19.5 14.6 11.2',
     // Flag.
     'M14.6 11.2C18.8 12.6 22.6 15.8 22.4 20.6C22.3 22.4 21.4 23.9 20.2 24.8',
-    // Flicks of sound, off the flag.
+];
+const FLICKS = [
+    // Off the flag, and one off the other side, so a hit sounds both ways.
     'M23.6 6.2C25.6 7.4 26.9 9.4 27.2 11.8',
     'M25.8 15.4L28.4 16.6',
+    'M6.2 24.6C4.8 22.8 4.3 20.6 4.8 18.4',
 ];
-function MusicNote({ color = _shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, size = 26, animate = true, delay = 0, className, style, strokeWidth = 2.4, }) {
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", { width: size, height: (size * 44) / 28, viewBox: "3 0 28 44", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: className, style: style, "aria-hidden": "true", focusable: "false", children: PATHS.map((d, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: d, ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth), style: animate ? { animationDelay: `${delay + i * 110}ms`, animationDuration: '0.9s' } : undefined }, d))) }));
+function MusicNote({ color = _shared__WEBPACK_IMPORTED_MODULE_1__.ACCENT, size = 26, animate = true, delay = 0, playing = false, className, style, strokeWidth = 2.4, }) {
+    // The draw-on runs on the paths; the beat runs on the groups, so the two
+    // animations never fight over one element. The beat starts once the last
+    // stroke has drawn — see `.note-playing` in style.css.
+    const draw = (d, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("path", { d: d, ...(0,_shared__WEBPACK_IMPORTED_MODULE_1__.stroke)(color, animate, strokeWidth), style: animate ? { animationDelay: `${delay + i * 110}ms`, animationDuration: '0.9s' } : undefined }, d));
+    const beatStart = { '--beat-start': `${delay + 1300}ms` };
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("svg", { width: size, height: (size * 44) / 28, viewBox: "1 0 30 44", fill: "none", xmlns: "http://www.w3.org/2000/svg", className: `${playing ? 'note-playing ' : ''}overflow-visible ${className ?? ''}`, style: { ...beatStart, ...style }, "aria-hidden": "true", focusable: "false", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("g", { className: "note-body", children: BODY.map((d, i) => draw(d, i)) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("g", { className: "note-flicks", children: FLICKS.map((d, i) => draw(d, BODY.length + i)) })] }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MusicNote);
 
@@ -39079,9 +39259,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /**
- * Text typed out once, a character at a time, with a caret.
- *
- * Three rules, the same ones `WriteOn` keeps:
+ * Text typed out a character at a time, with a caret, whenever it is on screen.
  *
  * 1. **Readable without it.** The full text is rendered for assistive
  *    technology from the first frame (`sr-only`); the typed copy is
@@ -39089,15 +39267,20 @@ __webpack_require__.r(__webpack_exports__);
  * 2. **Nothing moves while it types.** Every character is laid out from the
  *    start and the untyped ones are transparent, so a right-aligned line does
  *    not slide left as it grows. The caret has no width for the same reason.
- * 3. **Once.** It types, the caret blinks three times and goes. No loop, no
- *    replay — design-system.md §8.
+ * 3. **On every visit.** It types when it comes into view, and with `replay`
+ *    (the default) it resets when it leaves, so coming back types it again —
+ *    decision-log.md §38, which relaxes design-system.md §8's "once" for the
+ *    two lines that use it. The caret blinks three times after each pass and
+ *    goes.
  *
  * The rhythm is uneven on purpose — a deterministic jitter per character and a
  * longer beat after a space — because perfectly even keystrokes read as a
  * progress bar, not as someone typing.
  */
-function Typewriter({ text, delay = 0, speed = 70 }) {
+function Typewriter({ text, delay = 0, returnDelay, speed = 70, replay = true }) {
+    const ref = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
     const [count, setCount] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+    const [run, setRun] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
     const [reduced, setReduced] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -39105,22 +39288,55 @@ function Typewriter({ text, delay = 0, speed = 70 }) {
             return;
         }
         let timer = 0;
-        let i = 0;
-        const step = () => {
-            i += 1;
-            setCount(i);
-            if (i >= text.length)
-                return;
-            const jitter = ((i * 37) % 11) / 10 - 0.5; // −0.5 … +0.5, stable per index
-            const pause = text[i - 1] === ' ' ? speed * 1.8 : 0;
-            timer = window.setTimeout(step, speed * (1 + jitter * 0.8) + pause);
+        let runs = 0;
+        const stop = () => {
+            window.clearTimeout(timer);
+            timer = 0;
         };
-        timer = window.setTimeout(step, delay);
-        return () => window.clearTimeout(timer);
-    }, [text, delay, speed]);
+        const start = () => {
+            stop();
+            let i = 0;
+            setCount(0);
+            setRun((r) => r + 1);
+            const step = () => {
+                i += 1;
+                setCount(i);
+                if (i >= text.length)
+                    return;
+                const jitter = ((i * 37) % 11) / 10 - 0.5; // −0.5 … +0.5, stable per index
+                const pause = text[i - 1] === ' ' ? speed * 1.8 : 0;
+                timer = window.setTimeout(step, speed * (1 + jitter * 0.8) + pause);
+            };
+            timer = window.setTimeout(step, runs === 0 ? delay : (returnDelay ?? delay));
+            runs += 1;
+        };
+        const el = ref.current;
+        if (!el || typeof IntersectionObserver === 'undefined') {
+            start();
+            return stop;
+        }
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                if (runs === 0 || replay)
+                    start();
+                if (!replay)
+                    observer.disconnect();
+            }
+            else if (replay && runs > 0) {
+                // Reset while out of sight, so the next visit types from scratch.
+                stop();
+                setCount(0);
+            }
+        }, { threshold: 0.6 });
+        observer.observe(el);
+        return () => {
+            stop();
+            observer.disconnect();
+        };
+    }, [text, delay, returnDelay, speed, replay]);
     const shown = reduced ? text.length : count;
     const done = shown >= text.length;
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "sr-only", children: text }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { "aria-hidden": "true", children: [text.slice(0, shown), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `typewriter-caret ${done ? 'is-done' : ''} ${reduced ? 'hidden' : ''}` }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-transparent", children: text.slice(shown) })] })] }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { ref: ref, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "sr-only", children: text }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { "aria-hidden": "true", children: [text.slice(0, shown), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: `typewriter-caret ${done ? 'is-done' : ''} ${reduced ? 'hidden' : ''}` }, run), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-transparent", children: text.slice(shown) })] })] }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Typewriter);
 
@@ -39220,7 +39436,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var _data_me__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/data/me */ "./src/data/me.ts");
 /* harmony import */ var _primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/primitives/Reveal */ "./src/primitives/Reveal.tsx");
-/* harmony import */ var _primitives_WriteOn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/primitives/WriteOn */ "./src/primitives/WriteOn.tsx");
+/* harmony import */ var _primitives_Typewriter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/primitives/Typewriter */ "./src/primitives/Typewriter.tsx");
+/* harmony import */ var _primitives_WriteOn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/primitives/WriteOn */ "./src/primitives/WriteOn.tsx");
+
 
 
 
@@ -39231,17 +39449,17 @@ __webpack_require__.r(__webpack_exports__);
  */
 const STRIP = ['Software', 'Product', 'Faith'];
 /**
- * ME — "A little about me". brand-direction §ME.
+ * ME — "About me." decision-log.md §37 (was "A little about me", brand-direction §ME).
  *
  * Layout is the GlamToProfit "about me." page (decision-log.md §26): a
  * full-height portrait on the left standing on a hairline, a very large display
  * heading on the right, a short rule, then the prose. A vertical hairline runs
  * down the left margin. The room is cream, which is why ME is `tone: 'paper'`.
  *
- * The room has no `ME` heading of its own — "A little about me" is the heading,
+ * The room has no `ME` heading of its own — "About me." is the heading,
  * so the generic room header is skipped and the room is named by its `label`.
  *
- * The handwriting is one word-group, `where I come from`, laid across the
+ * The handwriting is one word-group, `the short version`, laid across the
  * heading's lower edge in Beth Ellen. It is the only handwriting in the room:
  * used once it reads as a hand, used twice it reads as a font.
  *
@@ -39250,10 +39468,12 @@ const STRIP = ['Software', 'Product', 'Faith'];
  */
 function Me() {
     const [portrait] = _data_me__WEBPACK_IMPORTED_MODULE_1__.PORTRAITS;
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative pt-28 md:pt-36", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: "pointer-events-none absolute inset-y-0 left-[3vw] hidden w-px bg-rule md:block" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 gap-y-14 px-[6vw] md:grid-cols-12 md:gap-x-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "md:col-span-5 md:self-end", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "data-portrait-to": true, className: "relative aspect-[4/5] w-full max-w-[22rem] overflow-hidden bg-rule/40 md:max-w-none", children: portrait.src && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: portrait.src, alt: portrait.alt, loading: "lazy", decoding: "async", className: "h-full w-full object-cover" })) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "md:col-span-6 md:col-start-7 md:self-center md:pb-24", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative w-fit pb-8", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_WriteOn__WEBPACK_IMPORTED_MODULE_3__["default"], { id: "me-heading", duration: 1.3, className: "font-display text-[length:clamp(3.25rem,7.5vw,8rem)] leading-[0.92] tracking-[-0.02em] text-ink", children: ["A little", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "about me", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-accent", children: "." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { delay: 500, className: "absolute bottom-0 right-0 -rotate-[3deg] whitespace-nowrap font-hand text-[length:clamp(1.375rem,2vw,2.25rem)] text-accent", children: "where I come from" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "aria-hidden": "true", className: "mt-10 h-px w-3/5 bg-rule" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-10 max-w-[34rem] space-y-6", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.ME_PROSE.map((line, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { as: "p", delay: i * 100, className: "font-sans text-[17px] leading-[1.75] text-ink md:text-lg", children: line }, line))) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-14 border-t border-rule md:mt-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-[6vw] py-6 font-sans text-[11px] font-medium uppercase tracking-[0.2em] md:text-xs text-muted md:gap-x-12 md:tracking-[0.4em]", children: STRIP.map((word, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "contents", children: [i > 0 && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: "text-accent", children: "\u2726" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [word, "."] })] }, word))) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-1 px-[6vw] pb-28 pt-16 md:grid-cols-12 md:gap-x-10 md:pb-40", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "md:col-span-6 md:col-start-7", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dl", { "aria-label": "Experience and education", children: [
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative pt-28 md:pt-36", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: "pointer-events-none absolute inset-y-0 left-[3vw] hidden w-px bg-rule lg:block" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "grid grid-cols-1 gap-y-14 px-[6vw] lg:grid-cols-12 lg:gap-x-10", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "lg:col-span-5 lg:self-end", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "data-portrait-to": true, className: "relative aspect-[4/5] w-full max-w-[min(26rem,64svh)] overflow-hidden bg-rule/40 lg:max-w-none", children: portrait.src && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { src: portrait.src, alt: portrait.alt, loading: "lazy", decoding: "async", className: "h-full w-full object-cover" })) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "lg:col-span-6 lg:col-start-7 lg:self-center lg:pb-24", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "relative w-fit pb-8", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_primitives_WriteOn__WEBPACK_IMPORTED_MODULE_4__["default"], { id: "me-heading", duration: 1.3, className: "font-display text-[length:clamp(4.25rem,10vw,14rem)] leading-[0.88] tracking-[-0.02em] text-ink", children: ["About", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("br", {}), "me", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "text-accent", children: "." })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "absolute bottom-0 left-[12%] -rotate-[3deg] whitespace-nowrap font-hand text-[length:clamp(1.375rem,2vw,3rem)] text-accent", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Typewriter__WEBPACK_IMPORTED_MODULE_3__["default"], { text: "the short version", delay: 1100, returnDelay: 300, speed: 85 }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { "aria-hidden": "true", className: "mt-10 h-px w-3/5 bg-rule" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-10 max-w-[32em] space-y-6 text-[length:clamp(17px,0.5rem+0.7vw,26px)]", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.ME_PROSE.map((line, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { as: "p", delay: i * 100, className: i === 0
+                                        ? 'font-display text-[1.3em] leading-[1.35] tracking-[-0.01em] text-ink'
+                                        : 'font-sans leading-[1.75] text-ink', children: line }, line))) })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "mt-14 border-t border-rule lg:mt-0", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { className: "flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-[6vw] py-6 font-sans text-[11px] font-medium uppercase tracking-[0.2em] md:text-[length:clamp(0.75rem,0.6vw,1rem)] text-muted md:gap-x-12 md:tracking-[0.4em]", children: STRIP.map((word, i) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "contents", children: [i > 0 && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", className: "text-accent", children: "\u2726" })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [word, "."] })] }, word))) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "grid grid-cols-1 px-[6vw] pb-28 pt-16 lg:grid-cols-12 lg:gap-x-10 lg:pb-40", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "max-w-3xl lg:col-span-6 lg:col-start-7 lg:max-w-none", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dl", { "aria-label": "Experience and education", children: [
                                 ..._data_me__WEBPACK_IMPORTED_MODULE_1__.EXPERIENCE.map((e) => ({ key: `${e.period}-${e.role}`, what: e.role, org: e.org, period: e.period })),
                                 ..._data_me__WEBPACK_IMPORTED_MODULE_1__.EDUCATION.map((e) => ({ key: `${e.period}-${e.qualification}`, what: e.qualification, org: e.org, period: e.period })),
-                            ].map((row) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5 border-t border-rule py-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("dt", { className: "font-sans text-[15px] text-ink", children: [row.what, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "text-muted", children: [" \u00B7 ", row.org] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dd", { className: "font-sans text-sm tabular-nums text-muted", children: row.period })] }, row.key))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { "aria-label": "Skills", className: "mt-10 flex flex-wrap gap-2.5", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.SKILLS.map((skill) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: "pill", children: skill }, skill))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { delay: 120, className: "mt-8", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: _data_me__WEBPACK_IMPORTED_MODULE_1__.CV_URL, target: "_blank", rel: "noreferrer noopener", className: "pill", children: ["CV", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", children: "\u2197" })] }) })] }) })] }));
+                            ].map((row) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5 border-t border-rule py-4", children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("dt", { className: "font-sans text-[length:clamp(15px,0.35rem+0.55vw,20px)] text-ink", children: [row.what, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { className: "text-muted", children: [" \u00B7 ", row.org] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("dd", { className: "font-sans text-[length:clamp(13px,0.3rem+0.45vw,17px)] tabular-nums text-muted", children: row.period })] }, row.key))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("ul", { "aria-label": "Skills", className: "mt-10 flex flex-wrap gap-2.5", children: _data_me__WEBPACK_IMPORTED_MODULE_1__.SKILLS.map((skill) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { className: "pill", children: skill }, skill))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_primitives_Reveal__WEBPACK_IMPORTED_MODULE_2__["default"], { delay: 120, className: "mt-8", children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: _data_me__WEBPACK_IMPORTED_MODULE_1__.CV_URL, target: "_blank", rel: "noreferrer noopener", className: "pill", children: ["CV", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { "aria-hidden": "true", children: "\u2197" })] }) })] }) })] }));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Me);
 
@@ -39460,4 +39680,4 @@ if (!container) {
 
 /******/ })()
 ;
-//# sourceMappingURL=index.5e7152a04c624caecd5a.js.map
+//# sourceMappingURL=index.747e7e653b22ee305991.js.map

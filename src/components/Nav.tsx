@@ -7,18 +7,17 @@ import NavMark from './NavMark';
 
 const MENU_ID = 'room-menu';
 
-/** Below this the nav hides going down and returns going up. */
-const HIDE_AFTER = 120;
-
-/** How long the nav takes to slide away or come back. */
-const HIDE_MS = 250;
+/** Past this many pixels of scroll the nav leaves the hero line and floats. */
+const FLOAT_AFTER = 40;
 
 /**
  * The navigation, which is a line of words and nothing else.
  *
- * No bar, no background, no border, no divider, no dots, no pill outlines. Six
- * short words of Jost capitals in the top right, sharing one hand-drawn
- * underline. See design-system.md §13 and decision-log.md §30.
+ * At the top of the page: no bar, no background, no border — six short words of
+ * Jost capitals in the top right, sharing one hand-drawn underline
+ * (design-system.md §13, decision-log.md §30). Once you scroll it floats: the
+ * same words, plus an "F." home link, in a frosted pill of the room's own
+ * surface, always on screen (decision-log.md §39).
  *
  * ## Why the nav is sans and the hero is not
  *
@@ -72,11 +71,11 @@ export function Nav() {
     const backdrop = useBackdropRoom(ROOM_IDS);
     const [open, setOpen] = useState(false);
 
-    // Hide on the way down, come back on the way up. Direction is read from two
-    // consecutive scroll positions rather than a wheel event, because a wheel
-    // fires far more often than the scroll actually moves and would flicker on a
-    // trackpad.
-    const [hidden, setHidden] = useState(false);
+    // At the very top the nav is the bare line of words over the hero. Once the
+    // page moves it floats: always on screen, in a frosted pill — decision-log.md
+    // §39. It used to hide on the way down instead, and when it came back it sat
+    // as bare words straight over ME's paragraphs.
+    const [floating, setFloating] = useState(false);
 
     const triggerRef = useRef<HTMLButtonElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
@@ -84,23 +83,8 @@ export function Nav() {
     const close = useCallback(() => setOpen(false), []);
 
     useEffect(() => {
-        let lastY = window.scrollY;
-
-        const onScroll = () => {
-            const y = window.scrollY;
-            const delta = y - lastY;
-
-            // Ignore sub-pixel jitter and rubber-band overscroll at either end.
-            if (Math.abs(delta) < 4) return;
-            if (y <= 0) {
-                setHidden(false);
-            } else {
-                setHidden(delta > 0 && y > HIDE_AFTER);
-            }
-
-            lastY = y;
-        };
-
+        const onScroll = () => setFloating(window.scrollY > FLOAT_AFTER);
+        onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
@@ -168,23 +152,44 @@ export function Nav() {
                 hero's, so the nav and the name share a left and right edge.
 
                 `data-tone` is the hook the CSS reads for the word opacity and the
-                mark draw. Translating out is `translateY(-100%)` rather than a
-                height change so nothing reflows when the nav leaves.
+                mark draw.
+
+                Floating, the words sit in a pill of the room's own surface at
+                80% with a blur, so they stay legible over any content and still
+                belong to the room. The pill is the same element as the bare line,
+                padding and background transition in, so nothing jumps.
             */}
             <nav
                 aria-label="Rooms"
                 data-tone={tone}
-                data-hidden={hidden && !open ? 'true' : undefined}
-                className={`tone-${tone} fixed inset-x-0 top-0 z-40 px-[6vw] pt-7 text-ink transition-transform duration-[250ms] ease-out ${
-                    hidden && !open ? '-translate-y-full' : ''
+                data-floating={floating ? 'true' : undefined}
+                className={`tone-${tone} pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-end px-[6vw] text-ink transition-[padding] duration-300 ease-out ${
+                    floating ? 'px-[4vw] pt-4' : 'pt-[clamp(1.75rem,2vw,2.75rem)]'
                 }`}
             >
-                {/* Right-aligned. The `Fatimah` wordmark that used to sit here is
-                    gone — see the note in the file header. `ml-auto` puts the
-                    words on the right and nothing on the left. */}
-                <div className="flex w-full items-start justify-end gap-6">
+                <div
+                    className={`pointer-events-auto flex items-center gap-6 rounded-full transition-[background-color,box-shadow,padding] duration-300 ease-out ${
+                        floating
+                            ? 'bg-surface/80 px-5 py-3 shadow-[0_6px_24px_-8px_rgb(0_0_0/0.35)] ring-1 ring-ink/10 backdrop-blur-md md:px-7'
+                            : 'bg-transparent px-0 py-0'
+                    }`}
+                >
+                    {/* Home, only once you have left it. The hero already says
+                        who this is; deep in a room, "F." gets you back. */}
+                    <a
+                        href="#opening"
+                        aria-label="Back to the top"
+                        tabIndex={floating ? 0 : -1}
+                        aria-hidden={!floating}
+                        className={`font-hand text-xl leading-none text-ink transition-opacity duration-300 ${
+                            floating ? 'opacity-100' : 'pointer-events-none hidden opacity-0'
+                        }`}
+                    >
+                        F<span className="text-accent">.</span>
+                    </a>
+
                     {/* Words, desktop. */}
-                    <ul className="hidden items-center gap-[2rem] md:flex">
+                    <ul className="hidden items-center gap-[clamp(1.25rem,2.2vw,3.25rem)] md:flex">
                         {ROOMS.map((room) => (
                             <li key={room.id}>
                                 <NavWord room={room} isActive={room.id === active} />
@@ -266,7 +271,7 @@ function NavWord({ room, isActive, onNavigate, size = 'inline' }: NavWordProps) 
             onClick={onNavigate}
             aria-current={isActive ? 'true' : undefined}
             className={`group nav-group relative inline-block uppercase ${
-                isOverlay ? 'text-[1.75rem] font-bold tracking-[0.06em]' : 'text-[0.8125rem] font-semibold tracking-[0.1em]'
+                isOverlay ? 'text-[1.75rem] font-bold tracking-[0.06em]' : 'text-[length:clamp(0.75rem,0.72vw,1.125rem)] font-semibold tracking-[0.1em]'
             }`}
         >
             {/* 70% at rest, 100% on hover, focus and current. Colour comes from
