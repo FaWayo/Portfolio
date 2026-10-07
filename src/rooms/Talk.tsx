@@ -5,7 +5,7 @@ import PillLink from '@/primitives/PillLink';
 import Reveal from '@/primitives/Reveal';
 
 /** From her CV (2026-10-04). The phone number is left off on purpose. */
-const EMAIL = 'wayofatima@gmail.com';
+const EMAIL = 'wayofatimah@gmail.com';
 type Network = 'linkedin' | 'github' | 'instagram' | 'x' | 'snapchat';
 
 /**

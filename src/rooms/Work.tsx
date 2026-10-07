@@ -16,7 +16,7 @@ import Typewriter from '@/primitives/Typewriter';
  * matted like a gallery print with an inset overlapping its foot and a caption
  * beneath, beside a short story and one handwritten note.
  *
- *   2  title      Proof of / work., then "so far ↘"
+ *   2  title      Proof of / work., then "a few of many ↘"
  *   3  projects   feature spreads, alternating sides
  *   4  the CV — one centred line; the CV holds the history
  *
@@ -48,8 +48,8 @@ export function Work() {
                         never collides with the full stop; it may wrap on a phone,
                         and the typewriter lays the whole line out first so wrapping
                         never jumps while it types. */}
-                    <span className="mt-3 block -rotate-[6deg] whitespace-nowrap pl-[38%] font-hand text-[length:clamp(1.75rem,3.2vw,3.5rem)] leading-snug text-accent">
-                        <Typewriter text="so far" delay={500} returnDelay={300} speed={110} />
+                    <span className="mt-3 block -rotate-[6deg] whitespace-nowrap pl-[22%] font-hand sm:pl-[38%] text-[length:clamp(1.75rem,3.2vw,3.5rem)] leading-snug text-accent">
+                        <Typewriter text="a few of many" delay={500} returnDelay={300} speed={110} />
                         <span aria-hidden="true" className="ml-2 inline-block origin-left translate-y-[0.1em] rotate-[58deg] align-top">
                             <Arrow width={120} height={50} strokeWidth={4} className="h-auto w-[2.2em]" />
                         </span>

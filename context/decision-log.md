@@ -1851,3 +1851,18 @@ larger (`clamp(2rem,…,3rem)`), wine, tilted −3°, with the star.
 **Amended 2026-10-07:** the signature is smaller (`clamp(1.5rem,…,2.1rem)`) and the
 star after it is now a hand-drawn heart (`doodles/Heart.tsx`, one stroke that
 overshoots, mauve, 26px, tilted −8°).
+
+## 70. LIFE removed; one email; "a few of many" — 2026-10-07
+
+Fatimah: LIFE isn't needed; anyone who wants her life can find her on social
+media (linked from LET'S TALK). The room is removed from `ROOMS`, so the nav,
+anchor and section go with it. WRITING and LET'S TALK are now both paper, back
+to back; the hairline opening LET'S TALK (§69) separates them.
+
+The only email is **wayofatimah@gmail.com** (with the h), on the postcard and
+the "Say hello" button. The earlier wayofatima@ from her CV was wrong.
+
+WORK's handwritten line "so far" becomes "a few of many": it should read as a
+selection, not the whole record.
+
+---

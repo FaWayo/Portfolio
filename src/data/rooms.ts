@@ -26,11 +26,11 @@ export interface RoomMeta {
  * through slides — see brand-direction §15. The hero is dark, so ME opens on
  * cream, as in its layout reference. See decision-log.md §26.
  *
- * Five rooms since decision-log.md §42: the separate journal room is gone —
- * journal-style notes belong in WRITING and a "Now" section in ME — and LIFE is
- * the photo room. Change a `label` here and it updates the nav, the anchor and
- * the room heading together. LIFE may yet become "Journal" (a visual diary,
- * photos with dates and notes); that is a one-word change here.
+ * Four rooms since decision-log.md §70: LIFE is gone too — her social media is
+ * where her life lives, and LET'S TALK links to it. (The journal room went in
+ * §42.) Change a `label` here and it updates the nav, the anchor and the room
+ * heading together. WRITING and LET'S TALK are now both paper; the hairline
+ * that opens LET'S TALK separates them.
  *
  * ## No `tilt`
  *
@@ -43,9 +43,8 @@ export interface RoomMeta {
  */
 export const ROOMS: readonly RoomMeta[] = [
     { id: 'me', label: 'Me', note: 'the short version', tone: 'paper' },
-    { id: 'work', label: 'Work', note: 'so far', tone: 'dark' },
+    { id: 'work', label: 'Work', note: 'a few of many', tone: 'dark' },
     { id: 'writing', label: 'Writing', note: "things I've been writing about", tone: 'paper' },
-    { id: 'life', label: 'Life', note: 'the other parts of me', tone: 'dark' },
     { id: 'talk', label: "Let's talk", note: 'no reason needed', tone: 'paper' },
 ] as const;
 

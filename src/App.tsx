@@ -14,7 +14,7 @@ import Room from '@/primitives/Room';
  * The whole site as one continuous scroll.
  *
  * The nav is a fixed line of words at the top — no bar, no background. The page
- * opens on the name, and the six rooms follow as full-width slides alternating
+ * opens on the name, and the rooms follow as full-width slides alternating
  * dark and paper.
  */
 export default function App() {
