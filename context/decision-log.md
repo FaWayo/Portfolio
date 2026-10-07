@@ -1836,3 +1836,7 @@ Fatimah". "Dear you," is gone.
 **Amended 2026-10-07:** the note is set in Fraunces (`clamp(1.3rem,…,1.95rem)`,
 leading 1.4) like a printed letter; only the signature "Fatimah" is in Beth Ellen,
 larger (`clamp(2rem,…,3rem)`), wine, tilted −3°, with the star.
+
+**Amended 2026-10-07:** the signature is smaller (`clamp(1.5rem,…,2.1rem)`) and the
+star after it is now a hand-drawn heart (`doodles/Heart.tsx`, one stroke that
+overshoots, mauve, 26px, tilted −8°).

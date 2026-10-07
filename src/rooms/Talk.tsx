@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import TinyStar from '@/doodles/TinyStar';
+import Heart from '@/doodles/Heart';
 import PillLink from '@/primitives/PillLink';
 import Reveal from '@/primitives/Reveal';
 
@@ -73,9 +73,9 @@ export function Talk() {
                         <div className="flex flex-col font-display text-[length:clamp(1.3rem,0.9rem+0.9vw,1.95rem)] leading-[1.4] tracking-[-0.01em] md:pr-10 lg:pr-14">
                             <p>For work, ideas, questions, collaborations, or simply a hello.</p>
                             <p className="mt-5">I&rsquo;d like to hear from you.</p>
-                            <p className="mt-10 flex items-center gap-3 font-hand text-[length:clamp(2rem,1.4rem+1.6vw,3rem)] leading-none text-wine">
+                            <p className="mt-8 flex items-center gap-2 font-hand text-[length:clamp(1.5rem,1.1rem+0.9vw,2.1rem)] leading-none text-wine">
                                 <span className="-rotate-[3deg]">Fatimah</span>
-                                <TinyStar size={26} />
+                                <Heart size={26} strokeWidth={2.6} className="-rotate-[8deg] translate-y-[-0.15em]" />
                             </p>
                         </div>
 
