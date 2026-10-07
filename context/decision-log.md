@@ -1782,6 +1782,17 @@ ruled address line with a small wine line icon and the handle in Fraunces italic
 (matching the email line), two columns from `sm`. The handwriting stays for the
 note only.
 
+**Amended 2026-10-07:** arrangement. From `md` the card is a true 3:2 postcard
+(`md:aspect-[3/2]`, `md:p-12 lg:p-14`) split by a full-height hairline. Both
+halves run top to bottom: the note on top left and the signature at the foot;
+the stamp and postmark pinned top right in one fixed box (postmark over the
+stamp's left edge), the address flush to the foot. The signature's bottom and
+the last address rule share the card's bottom line. Address: the email on one
+ruled `h-12` line with "copy" on its baseline; socials in two columns
+(`gap-x-8`), every row a fixed `h-11` with a 20px icon box, truncated handle and
+the ↗ pushed right so the arrows make a straight column. Phones: no ratio; note,
+signature, hairline, stamp right-aligned, then the address in one column.
+
 ---
 
 ## 66. Section openers in her hand — 2026-10-07

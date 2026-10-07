@@ -61,75 +61,87 @@ export function Talk() {
                 </h2>
             </Reveal>
 
-            {/* The postcard. */}
+            {/* The postcard. On desktop a true 3:2 card split by a full-height
+                hairline; both halves run top to bottom, so the signature and the
+                last address rule share the card's bottom line. */}
             <Reveal className="mt-14 flex justify-center lg:mt-20">
                 <article
                     aria-label="A postcard from Fatimah"
-                    className="relative w-full max-w-5xl -rotate-[1.5deg] bg-[#FBF6EF] p-6 text-noir shadow-[0_30px_70px_-30px_rgb(0_0_0/0.45),0_2px_6px_rgb(0_0_0/0.08)] ring-1 ring-black/5 transition-[rotate,translate] duration-500 ease-out motion-safe:hover:-translate-y-1 motion-safe:hover:rotate-0 sm:p-10 lg:p-14"
+                    className="relative w-full max-w-5xl -rotate-[1.5deg] bg-[#FBF6EF] p-6 text-noir shadow-[0_30px_70px_-30px_rgb(0_0_0/0.45),0_2px_6px_rgb(0_0_0/0.08)] ring-1 ring-black/5 transition-[rotate,translate] duration-500 ease-out motion-safe:hover:-translate-y-1 motion-safe:hover:rotate-0 sm:p-10 md:flex md:aspect-[3/2] md:flex-col md:p-12 lg:p-14"
                 >
-                    <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2">
-                        {/* Left: the note, set in Fraunces like a printed letter; only
-                            the signature is in her hand. */}
-                        <div className="flex flex-col font-display text-[length:clamp(1.3rem,0.9rem+0.9vw,1.95rem)] leading-[1.4] tracking-[-0.01em] md:pr-10 lg:pr-14">
-                            <p>For work, ideas, questions, collaborations, or simply a hello.</p>
-                            <p className="mt-5">I&rsquo;d like to hear from you.</p>
-                            <p className="mt-8 flex items-center gap-2 font-hand text-[length:clamp(1.5rem,1.1rem+0.9vw,2.1rem)] leading-none text-wine">
+                    <div className="grid grid-cols-1 md:flex-1 md:grid-cols-2">
+                        {/* Left: the note, set in Fraunces like a printed letter, on
+                            top; her signature, the only thing in her hand, at the foot. */}
+                        <div className="flex flex-col justify-between gap-y-8 pb-10 font-display text-[length:clamp(1.25rem,0.95rem+0.6vw,1.75rem)] leading-[1.4] tracking-[-0.01em] md:pb-0 md:pr-12">
+                            <div className="max-w-[18em]">
+                                <p>For work, ideas, questions, collaborations, or simply a hello.</p>
+                                <p className="mt-5">I&rsquo;d like to hear from you.</p>
+                            </div>
+                            <p className="flex items-end gap-2 font-hand text-[length:clamp(1.5rem,1.1rem+0.9vw,2.1rem)] leading-none text-wine">
                                 <span className="-rotate-[3deg]">Fatimah</span>
-                                <Heart size={26} strokeWidth={2.6} className="-rotate-[8deg] translate-y-[-0.15em]" />
+                                <Heart size={26} strokeWidth={2.6} className="-rotate-[8deg] -translate-y-[0.1em]" />
                             </p>
                         </div>
 
-                        {/* Right: stamp, postmark, address. */}
-                        <div className="relative border-t border-noir/15 pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0 lg:pl-14">
-                            <div className="flex items-start justify-end">
-                                <Postmark />
-                                <Stamp />
+                        {/* Right: stamp and postmark pinned to the corner, the address
+                            flush to the foot. */}
+                        <div className="flex flex-col justify-between gap-y-8 border-t border-noir/15 pt-8 md:border-l md:border-t-0 md:pl-12 md:pt-0">
+                            {/* One fixed box so neither the stamp nor the postmark shifts. */}
+                            <div className="relative ml-auto h-[120px] w-[230px] shrink-0">
+                                <span className="absolute right-0 top-0">
+                                    <Stamp />
+                                </span>
+                                <span className="absolute right-[64px] top-7 z-10">
+                                    <Postmark />
+                                </span>
                             </div>
 
-                            <p className="mt-6 font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-mauve">to</p>
-                            <ul className="mt-1">
-                                <li className="flex flex-wrap items-baseline justify-between gap-x-4 border-b border-noir/20 pb-2 pt-3">
+                            <div>
+                                <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.3em] text-mauve">to</p>
+                                <div className="flex h-12 justify-between gap-x-4 border-b [align-items:last_baseline] border-noir/20 pb-2">
                                     <a
                                         href={`mailto:${EMAIL}`}
-                                        className="break-all font-sans text-[length:clamp(1.1rem,0.8rem+0.8vw,1.6rem)] text-noir transition-colors hover:text-wine sm:break-normal"
+                                        className="min-w-0 truncate font-sans text-[length:clamp(1.05rem,0.8rem+0.6vw,1.45rem)] leading-normal text-noir transition-colors hover:text-wine"
                                     >
                                         {EMAIL}
                                     </a>
                                     <button
                                         type="button"
                                         onClick={copy}
-                                        className="font-sans text-[10px] font-semibold uppercase tracking-[0.24em] text-mauve transition-colors hover:text-noir"
+                                        className="shrink-0 font-sans text-[10px] font-semibold uppercase leading-none tracking-[0.24em] text-mauve transition-colors hover:text-noir"
                                     >
                                         <span aria-live="polite">{copied ? 'copied' : 'copy'}</span>
                                     </button>
-                                </li>
-                            </ul>
+                                </div>
 
-                            {/* Elsewhere: an ink icon and the handle in clean Jost on each
-                                ruled line, two columns from `sm`. The handwriting is kept
-                                for the note. */}
-                            <ul aria-label="Elsewhere" className="mt-2 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
-                                {ELSEWHERE.map((link) => (
-                                    <li key={link.href} className="border-b border-noir/20">
-                                        <a
-                                            href={link.href}
-                                            target="_blank"
-                                            rel="noreferrer noopener"
-                                            aria-label={`${link.name}: ${link.handle}`}
-                                            className="group flex items-center gap-3 py-3 font-sans text-[length:clamp(15px,0.35rem+0.45vw,18px)] text-noir transition-colors hover:text-wine"
-                                        >
-                                            <SocialIcon network={link.network} />
-                                            <span className="truncate">{link.handle}</span>
-                                            <span
-                                                aria-hidden="true"
-                                                className="ml-auto font-sans text-xs text-mauve transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                {/* Elsewhere: an ink icon and the handle in clean Jost on
+                                    each ruled line, two columns from `md`. Every row is the
+                                    same height and the arrows make a straight column. */}
+                                <ul aria-label="Elsewhere" className="grid grid-cols-1 gap-x-8 md:grid-cols-2">
+                                    {ELSEWHERE.map((link) => (
+                                        <li key={link.href} className="min-w-0 border-b border-noir/20">
+                                            <a
+                                                href={link.href}
+                                                target="_blank"
+                                                rel="noreferrer noopener"
+                                                aria-label={`${link.name}: ${link.handle}`}
+                                                className="group flex h-11 items-center gap-3 font-sans text-[length:clamp(14px,0.3rem+0.45vw,17px)] text-noir transition-colors hover:text-wine"
                                             >
-                                                ↗
-                                            </span>
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
+                                                <span className="flex size-5 shrink-0 items-center justify-center">
+                                                    <SocialIcon network={link.network} />
+                                                </span>
+                                                <span className="min-w-0 truncate">{link.handle}</span>
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="ml-auto shrink-0 font-sans text-xs text-mauve transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                                >
+                                                    ↗
+                                                </span>
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -233,7 +245,7 @@ function Postmark() {
         <svg
             aria-hidden="true"
             viewBox="0 0 180 100"
-            className="relative z-10 -mr-10 mt-6 h-auto w-[clamp(120px,13vw,170px)] -rotate-[8deg] text-mauve opacity-80"
+            className="block h-auto w-[150px] -rotate-[8deg] text-mauve opacity-80"
             fill="none"
         >
             <defs>
