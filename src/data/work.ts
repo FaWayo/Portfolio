@@ -1,4 +1,5 @@
 import deymoveHero from '@/assets/work/deymove-hero.jpg';
+import deymoveQueue from '@/assets/work/deymove-queue.jpg';
 import omayaPitch from '@/assets/work/omaya-pitch.jpg';
 import omayaSummit from '@/assets/work/omaya-summit.jpg';
 import pcesCode from '@/assets/work/pces-code.jpg';
@@ -156,6 +157,12 @@ export const PROJECTS: readonly Project[] = [
         summary: 'Rush-hour commuting in Ghana, for the corporate workers who feel it most.',
         skills: ['Customer discovery', 'Problem validation'],
         images: [
+            {
+                src: deymoveQueue,
+                alt: 'Two long lines of commuters waiting at a bus stop at dusk, stretching back down a dirt lot',
+                caption: 'Rush hour at the bus stop, taken by me',
+                position: 'center 45%',
+            },
             {
                 src: deymoveHero,
                 alt: 'A woman in the back seat of a car in rush-hour traffic, from the Deymove website',
