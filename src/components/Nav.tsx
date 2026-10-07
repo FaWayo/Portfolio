@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { ROOMS, ROOM_IDS } from '@/data/rooms';
 import useActiveRoom from '@/hooks/useActiveRoom';
 import useBackdropRoom from '@/hooks/useBackdropRoom';
+import useBackdropTones from '@/hooks/useBackdropTones';
 import NavMark, { NavCircle } from './NavMark';
 
 const MENU_ID = 'room-menu';
@@ -69,6 +70,12 @@ const FLOAT_AFTER = 40;
 export function Nav() {
     const active = useActiveRoom(ROOM_IDS);
     const backdrop = useBackdropRoom(ROOM_IDS);
+
+    // The spine runs the full height of the screen, so each of its parts takes
+    // the tone of the room behind it: "F." first, then one per word, then the
+    // year. See useBackdropTones.
+    const spineRefs = useRef<(HTMLElement | null)[]>([]);
+    const spineTones = useBackdropTones(ROOMS, spineRefs);
     const [open, setOpen] = useState(false);
 
     // At the very top the nav is the bare line of words over the hero. Once the
@@ -137,6 +144,7 @@ export function Nav() {
     // the tone. See useBackdropRoom for why they cannot be the same value.
     const backdropRoom = ROOMS.find((room) => room.id === backdrop);
     const tone = backdropRoom?.tone ?? 'dark';
+    const spinePart = (i: number) => `tone-${spineTones[i] ?? tone} text-ink transition-colors duration-300`;
 
     return (
         <>
@@ -170,19 +178,38 @@ export function Nav() {
                 data-tone={tone}
                 className={`tone-${tone} fixed inset-y-0 left-0 z-40 hidden w-[clamp(48px,3.6vw,72px)] flex-col items-center border-r border-ink/15 py-8 text-ink transition-colors duration-300 lg:flex`}
             >
-                <a href="#opening" aria-label="Back to the top" className="font-hand text-[length:clamp(1.4rem,1.6vw,2rem)] leading-none text-ink">
+                <a
+                    ref={(el) => {
+                        spineRefs.current[0] = el;
+                    }}
+                    href="#opening"
+                    aria-label="Back to the top"
+                    className={`font-hand text-[length:clamp(1.4rem,1.6vw,2rem)] leading-none ${spinePart(0)}`}
+                >
                     F<span className="text-accent">.</span>
                 </a>
 
                 <ul className="mt-auto mb-auto flex flex-col items-center gap-[clamp(1.75rem,4vh,3rem)]">
-                    {ROOMS.map((room) => (
-                        <li key={room.id}>
+                    {ROOMS.map((room, i) => (
+                        <li
+                            key={room.id}
+                            ref={(el) => {
+                                spineRefs.current[i + 1] = el;
+                            }}
+                            className={spinePart(i + 1)}
+                        >
                             <NavWord room={room} isActive={room.id === active} size="spine" />
                         </li>
                     ))}
                 </ul>
 
-                <span aria-hidden="true" className="font-sans text-[10px] font-semibold tracking-[0.2em] text-ink/50 [writing-mode:vertical-rl]">
+                <span
+                    ref={(el) => {
+                        spineRefs.current[ROOMS.length + 1] = el;
+                    }}
+                    aria-hidden="true"
+                    className={`tone-${spineTones[ROOMS.length + 1] ?? tone} font-sans text-[10px] font-semibold tracking-[0.2em] text-ink/50 transition-colors duration-300 [writing-mode:vertical-rl]`}
+                >
                     2026
                 </span>
             </nav>
