@@ -41128,7 +41128,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /** From her CV (2026-10-04). The phone number is left off on purpose. */
-const EMAIL = 'wayofatimah@gmail.com';
+const EMAIL = 'wayofatima@gmail.com';
 /**
  * Where else to find her. Medium lives in WRITING, so it is not repeated here.
  * Links are the clean profile URLs, without the share-tracking parameters.
@@ -41539,4 +41539,4 @@ if (!container) {
 
 /******/ })()
 ;
-//# sourceMappingURL=index.eec3b811f779a7b175c1.js.map
+//# sourceMappingURL=index.caa7aace01b7fc78b3bb.js.map
