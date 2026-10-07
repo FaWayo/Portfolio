@@ -1832,3 +1832,7 @@ side reads as print.
 **Amended 2026-10-07:** the postcard note is Fatimah's own copy: "For work, ideas,
 questions, collaborations, or simply a hello. / I'd like to hear from you. /
 Fatimah". "Dear you," is gone.
+
+**Amended 2026-10-07:** the note is set in Fraunces (`clamp(1.3rem,…,1.95rem)`,
+leading 1.4) like a printed letter; only the signature "Fatimah" is in Beth Ellen,
+larger (`clamp(2rem,…,3rem)`), wine, tilted −3°, with the star.

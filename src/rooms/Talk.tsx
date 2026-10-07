@@ -68,12 +68,13 @@ export function Talk() {
                     className="relative w-full max-w-5xl -rotate-[1.5deg] bg-[#FBF6EF] p-6 text-noir shadow-[0_30px_70px_-30px_rgb(0_0_0/0.45),0_2px_6px_rgb(0_0_0/0.08)] ring-1 ring-black/5 transition-[rotate,translate] duration-500 ease-out motion-safe:hover:-translate-y-1 motion-safe:hover:rotate-0 sm:p-10 lg:p-14"
                 >
                     <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2">
-                        {/* Left: the note. */}
-                        <div className="font-hand text-[length:clamp(1.3rem,0.9rem+1vw,2.1rem)] leading-[1.55] md:pr-10 lg:pr-14">
+                        {/* Left: the note, set in Fraunces like a printed letter; only
+                            the signature is in her hand. */}
+                        <div className="flex flex-col font-display text-[length:clamp(1.3rem,0.9rem+0.9vw,1.95rem)] leading-[1.4] tracking-[-0.01em] md:pr-10 lg:pr-14">
                             <p>For work, ideas, questions, collaborations, or simply a hello.</p>
-                            <p className="mt-4">I&rsquo;d like to hear from you.</p>
-                            <p className="mt-8 flex items-center gap-3">
-                                <span>Fatimah</span>
+                            <p className="mt-5">I&rsquo;d like to hear from you.</p>
+                            <p className="mt-10 flex items-center gap-3 font-hand text-[length:clamp(2rem,1.4rem+1.6vw,3rem)] leading-none text-wine">
+                                <span className="-rotate-[3deg]">Fatimah</span>
                                 <TinyStar size={26} />
                             </p>
                         </div>
