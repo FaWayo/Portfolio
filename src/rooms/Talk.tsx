@@ -92,7 +92,7 @@ export function Talk() {
                                 <li className="flex flex-wrap items-baseline justify-between gap-x-4 border-b border-noir/20 pb-2 pt-3">
                                     <a
                                         href={`mailto:${EMAIL}`}
-                                        className="break-all font-display text-[length:clamp(1.15rem,0.8rem+1vw,1.9rem)] italic text-noir transition-colors hover:text-wine sm:break-normal"
+                                        className="break-all font-sans text-[length:clamp(1.1rem,0.8rem+0.8vw,1.6rem)] text-noir transition-colors hover:text-wine sm:break-normal"
                                     >
                                         {EMAIL}
                                     </a>
@@ -106,8 +106,9 @@ export function Talk() {
                                 </li>
                             </ul>
 
-                            {/* Elsewhere: an ink icon and the handle on each ruled line,
-                                two columns from `sm`. */}
+                            {/* Elsewhere: an ink icon and the handle in clean Jost on each
+                                ruled line, two columns from `sm`. The handwriting is kept
+                                for the note. */}
                             <ul aria-label="Elsewhere" className="mt-2 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
                                 {ELSEWHERE.map((link) => (
                                     <li key={link.href} className="border-b border-noir/20">
@@ -116,13 +117,13 @@ export function Talk() {
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             aria-label={`${link.name}: ${link.handle}`}
-                                            className="group flex items-center gap-3 py-3 font-display text-[length:clamp(1rem,0.8rem+0.45vw,1.3rem)] italic text-noir transition-colors hover:text-wine"
+                                            className="group flex items-center gap-3 py-3 font-sans text-[length:clamp(15px,0.35rem+0.45vw,18px)] text-noir transition-colors hover:text-wine"
                                         >
                                             <SocialIcon network={link.network} />
                                             <span className="truncate">{link.handle}</span>
                                             <span
                                                 aria-hidden="true"
-                                                className="ml-auto font-sans text-xs not-italic text-mauve transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                                className="ml-auto font-sans text-xs text-mauve transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                                             >
                                                 ↗
                                             </span>

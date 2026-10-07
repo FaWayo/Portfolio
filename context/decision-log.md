@@ -1822,3 +1822,9 @@ nav spine's edge (`ml: spine width − 6vw`) to the right edge of the screen
 corner. It draws itself in from the left (scale 0→1, 1.2s) as the room arrives,
 replaying on return; reduced motion shows it whole. On phones it sits within the
 page margins. `Reveal` children are now optional.
+
+**Amended 2026-10-07:** on the postcard, the email and the social handles are now
+clean Jost (regular; the email `clamp(1.1rem,…,1.6rem)`, handles 15–18px) instead
+of Fraunces italic. Fatimah chose it over a typewriter face and spaced caps. The
+handwriting stays for the note alone, so it reads as the hand and the address
+side reads as print.
