@@ -1883,3 +1883,12 @@ under nothing) and the empty band after it is shorter; the extra dark space
 under the footer is gone too.
 
 ---
+
+**Amended 2026-10-07:** postcard arrangement. On desktop the card is a true 3:2
+(1024×683 at 1440) split by a full-height hairline; both halves run top to
+bottom, so the message sits top-left, the signature bottom-left, the stamp and
+postmark in one fixed box at the top-right corner, and the address block flush to
+the foot. Measured: the signature's bottom and the last address rule share the
+same line (700 = 700 at 1440, 616 = 616 at 1024); every social row is 44px and the
+arrows form straight columns. Phones stack note, signature, hairline, stamp,
+address, with one social column.
