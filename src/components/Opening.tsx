@@ -67,7 +67,12 @@ export function Opening({ photo }: OpeningProps) {
                     duration={1.6}
                     className="hero-name -ml-[0.04em] font-hand text-ink"
                 >
-                    Fatimah<span className="text-accent">.</span>
+                    {/* What search engines and screen readers read: her full name.
+                        What everyone sees: the signature. decision-log.md §70. */}
+                    <span className="sr-only">Fatimah Alhassan Wayo, software engineer and product builder</span>
+                    <span aria-hidden="true">
+                        Fatimah<span className="text-accent">.</span>
+                    </span>
                 </WriteOn>
                 <div className="relative z-20 mt-3 w-[calc(var(--text-hero-name)*5.112)] max-w-full text-right">
                     <p className="font-sans text-[length:clamp(11px,1.05vw,24px)] font-semibold uppercase tracking-[0.24em] text-muted">

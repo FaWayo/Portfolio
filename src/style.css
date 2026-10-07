@@ -175,18 +175,6 @@
     }
 }
 
-@keyframes settlePhoto {
-    from {
-        transform: var(--photo-rotate, 0deg) translateY(14px);
-        opacity: 0;
-    }
-
-    to {
-        transform: var(--photo-rotate, 0deg) translateY(0);
-        opacity: 1;
-    }
-}
-
 .draw-doodle {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
@@ -282,12 +270,6 @@
     }
 }
 
-/* A rotated photograph settling into place. --photo-rotate is set inline by the
-   Photo primitive so the rotation survives the transform in the keyframes.
-   Kept under 2° per §9 — past that a photo stops reading as hand-placed. */
-.settle-photo {
-    animation: settlePhoto 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
 
 /* ============================================================================
    MOTION
@@ -295,7 +277,7 @@
    writes itself once and then stays still forever. See design-system.md §8.
 
    The doodle keyframes above are existing doodle behaviour and are deliberately
-   left untouched — stroke-draw and photo settle are not new motion.
+   left untouched — stroke-draw is not new motion.
    ========================================================================= */
 
 .reveal {

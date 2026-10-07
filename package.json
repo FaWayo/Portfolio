@@ -23,7 +23,7 @@
         "webpack-dev-server": "^4.15.2"
     },
     "scripts": {
-        "build": "webpack",
+        "build": "webpack --mode production",
         "dev": "webpack serve"
     },
     "description": "woman in tech",

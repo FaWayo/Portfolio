@@ -1892,3 +1892,37 @@ the foot. Measured: the signature's bottom and the last address rule share the
 same line (700 = 700 at 1440, 616 = 616 at 1024); every social row is 44px and the
 arrows form straight columns. Phones stack note, signature, hairline, stamp,
 address, with one social column.
+
+---
+
+## 70. Polish, tidy and SEO for faawayo.com — 2026-10-07
+
+LIFE is gone for good; the site is ME · WORK · WRITING · LET'S TALK. Domain:
+**faawayo.com** (all absolute URLs use it).
+
+**Speed.** `npm run build` is now `webpack --mode production` (minified, no source
+maps in production): the JS bundle went 1.63MB → 389KB. Portraits are WebP,
+converted in headless Chrome so the cut-out keeps its alpha: hero 2.4MB → 181KB,
+ME 476KB → 155KB. Size warnings only watch JS (limit 450KB).
+
+**Tidy.** `.DS_Store` ignored and untracked. Removed the unused primitives (Photo,
+Stamp, Barcode, MetricTable, HoverNote), `demo-frame.svg`, the settle-photo CSS,
+the old PNG/JPG portraits and the "coming soon" room fallback.
+
+**SEO.** Title "Fatimah Alhassan Wayo · Software Engineer & Product Builder"; a
+description naming her in full with fawayo/faawayo; canonical, author, robots;
+Open Graph (profile) and Twitter `summary_large_image` with a 1200×630 `og.png`
+(her name in the hand, the cut-out, FAAWAYO.COM); 32px PNG + apple-touch icons;
+JSON-LD Person (alternateName: Fatimah A. Wayo, Fatimah Wayo, Fatima Alhassan
+Wayo, fawayo, faawayo; worksFor Omaya Care; alumniOf University of Ghana and MEST;
+sameAs all her profiles) and WebSite. The h1 reads "Fatimah Alhassan Wayo,
+software engineer and product builder" to crawlers and screen readers while
+showing the signature. `robots.txt` and `sitemap.xml` at the root, emitted from
+`src/public/` under fixed names.
+
+**Checked.** One h1 then four h2s; every image has alt; no em dashes; traveller
+still lands exactly; no horizontal scroll.
+
+**For Fatimah after deploying:** add faawayo.com in Google Search Console and
+submit `https://faawayo.com/sitemap.xml`; check the link preview with LinkedIn's
+Post Inspector; eyeball Safari and Firefox (nav spine, stamp, scroll drift).

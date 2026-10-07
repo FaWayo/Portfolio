@@ -1,5 +1,5 @@
-import heroPortrait from '@/assets/hero-portrait.png';
-import mePortrait from '@/assets/me-portrait.jpg';
+import heroPortrait from '@/assets/hero-portrait.webp';
+import mePortrait from '@/assets/me-portrait.webp';
 
 /**
  * ME room content.

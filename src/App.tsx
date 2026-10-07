@@ -3,7 +3,6 @@ import Opening from '@/components/Opening';
 import TravellingPortrait from '@/components/TravellingPortrait';
 import { ROOMS } from '@/data/rooms';
 import { HERO_PHOTO } from '@/data/me';
-import Handwritten from '@/doodles/Handwritten';
 import Me from '@/rooms/Me';
 import Work from '@/rooms/Work';
 import Talk from '@/rooms/Talk';
@@ -63,14 +62,8 @@ export default function App() {
                             <Work />
                         ) : room.id === 'writing' ? (
                             <Writing />
-                        ) : room.id === 'talk' ? (
-                            <Talk />
                         ) : (
-                            <div className="mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40">
-                                <Handwritten rotate="-1.2deg">
-                                    coming soon
-                                </Handwritten>
-                            </div>
+                            <Talk />
                         )}
                     </Room>
                 ))}
