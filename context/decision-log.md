@@ -1856,8 +1856,11 @@ overshoots, mauve, 26px, tilted −8°).
 
 Fatimah: LIFE isn't needed; anyone who wants her life can find her on social
 media (linked from LET'S TALK). The room is removed from `ROOMS`, so the nav,
-anchor and section go with it. WRITING and LET'S TALK are now both paper, back
-to back; the hairline opening LET'S TALK (§69) separates them.
+anchor and section go with it. LET'S TALK turns dark so the tones still
+alternate (paper ME, dark WORK, paper WRITING, dark LET'S TALK); back to back on
+paper, the Medium pill and "Let's talk." were split by ~350px of blank paper.
+WRITING's bottom padding also drops (`pb-20 lg:pb-28`, was `pb-28 lg:pb-40`) so
+the Medium pill sits closer to the change of tone.
 
 The only email is **wayofatimah@gmail.com** (with the h), on the postcard and
 the "Say hello" button. The earlier wayofatima@ from her CV was wrong.

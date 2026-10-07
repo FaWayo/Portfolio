@@ -21,7 +21,7 @@ export function Writing() {
     const [featured, ...rest] = POSTS;
 
     return (
-        <div className="px-[6vw] pb-28 pt-24 lg:pb-40 lg:pt-32">
+        <div className="px-[6vw] pb-20 pt-24 lg:pb-28 lg:pt-32">
             {/* The room opens on a hairline that meets the nav spine: on desktop it
                 runs from the spine's edge to the right edge of the screen, same
                 weight and colour, so the two make one corner. It draws itself in

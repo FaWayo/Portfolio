@@ -29,8 +29,8 @@ export interface RoomMeta {
  * Four rooms since decision-log.md §70: LIFE is gone too — her social media is
  * where her life lives, and LET'S TALK links to it. (The journal room went in
  * §42.) Change a `label` here and it updates the nav, the anchor and the room
- * heading together. WRITING and LET'S TALK are now both paper; the hairline
- * that opens LET'S TALK separates them.
+ * heading together. LET'S TALK turned dark with it, so the tones still
+ * alternate.
  *
  * ## No `tilt`
  *
@@ -45,7 +45,7 @@ export const ROOMS: readonly RoomMeta[] = [
     { id: 'me', label: 'Me', note: 'the short version', tone: 'paper' },
     { id: 'work', label: 'Work', note: 'a few of many', tone: 'dark' },
     { id: 'writing', label: 'Writing', note: "things I've been writing about", tone: 'paper' },
-    { id: 'talk', label: "Let's talk", note: 'no reason needed', tone: 'paper' },
+    { id: 'talk', label: "Let's talk", note: 'no reason needed', tone: 'dark' },
 ] as const;
 
 export const ROOM_IDS: readonly string[] = ROOMS.map((r) => r.id);
