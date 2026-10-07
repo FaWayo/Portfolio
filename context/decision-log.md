@@ -1926,3 +1926,8 @@ still lands exactly; no horizontal scroll.
 **For Fatimah after deploying:** add faawayo.com in Google Search Console and
 submit `https://faawayo.com/sitemap.xml`; check the link preview with LinkedIn's
 Post Inspector; eyeball Safari and Firefox (nav spine, stamp, scroll drift).
+
+## 71. No browser-tab icon — 2026-10-07
+
+Fatimah removed the tab icon: `favicon.svg` and `favicon-32.png` are deleted and
+no `rel="icon"` is emitted. The apple-touch-icon stays for phones' home screens.

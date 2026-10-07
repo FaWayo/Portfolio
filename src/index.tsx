@@ -10,7 +10,6 @@ import '@/public/robots.txt';
 import '@/public/sitemap.xml';
 import '@/public/og.png';
 import '@/public/apple-touch-icon.png';
-import '@/public/favicon-32.png';
 
 const container = document.getElementById('root');
 

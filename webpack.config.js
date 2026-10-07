@@ -14,7 +14,7 @@ return {
         clean: true
     },
     plugins: [
-        new HtmlWebpackPlugin({ title: 'Fatimah Alhassan Wayo', favicon: './src/assets/favicon.svg', template: './src/index.html', filename: 'index.html', chunks: ['index'] })
+        new HtmlWebpackPlugin({ title: 'Fatimah Alhassan Wayo', template: './src/index.html', filename: 'index.html', chunks: ['index'] })
     ],
     devServer: {
         static: {
