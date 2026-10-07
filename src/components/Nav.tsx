@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { ROOMS, ROOM_IDS } from '@/data/rooms';
 import useActiveRoom from '@/hooks/useActiveRoom';
 import useBackdropRoom from '@/hooks/useBackdropRoom';
-import NavMark from './NavMark';
+import NavMark, { NavCircle } from './NavMark';
 
 const MENU_ID = 'room-menu';
 
@@ -159,11 +159,40 @@ export function Nav() {
                 belong to the room. The pill is the same element as the bare line,
                 padding and background transition in, so nothing jumps.
             */}
+            {/* Desktop: the spine. The words run down the left edge like the
+                spine of a magazine, top to bottom, "F." at its head and a
+                hairline along it, fixed while the page moves. It has no
+                background: it takes the tone of the room behind it. The page's
+                6vw margin is always wider than the spine, so nothing sits under
+                it. decision-log.md §61. */}
+            <nav
+                aria-label="Rooms"
+                data-tone={tone}
+                className={`tone-${tone} fixed inset-y-0 left-0 z-40 hidden w-[clamp(48px,3.6vw,72px)] flex-col items-center border-r border-ink/15 py-8 text-ink transition-colors duration-300 lg:flex`}
+            >
+                <a href="#opening" aria-label="Back to the top" className="font-hand text-[length:clamp(1.4rem,1.6vw,2rem)] leading-none text-ink">
+                    F<span className="text-accent">.</span>
+                </a>
+
+                <ul className="mt-auto mb-auto flex flex-col items-center gap-[clamp(1.75rem,4vh,3rem)]">
+                    {ROOMS.map((room) => (
+                        <li key={room.id}>
+                            <NavWord room={room} isActive={room.id === active} size="spine" />
+                        </li>
+                    ))}
+                </ul>
+
+                <span aria-hidden="true" className="font-sans text-[10px] font-semibold tracking-[0.2em] text-ink/50 [writing-mode:vertical-rl]">
+                    2026
+                </span>
+            </nav>
+
+            {/* Phones and tablets: "F." and "menu", top right. */}
             <nav
                 aria-label="Rooms"
                 data-tone={tone}
                 data-floating={floating ? 'true' : undefined}
-                className={`tone-${tone} pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-end px-[6vw] text-ink transition-[padding] duration-300 ease-out ${
+                className={`tone-${tone} pointer-events-none fixed inset-x-0 top-0 z-40 flex justify-end lg:hidden px-[6vw] text-ink transition-[padding] duration-300 ease-out ${
                     floating ? 'px-[4vw] pt-4' : 'pt-[clamp(1.75rem,2vw,2.75rem)]'
                 }`}
             >
@@ -181,21 +210,12 @@ export function Nav() {
                         aria-label="Back to the top"
                         tabIndex={floating ? 0 : -1}
                         aria-hidden={!floating}
-                        className={`font-hand text-xl leading-none text-ink transition-opacity duration-300 ${
+                        className={`mr-2 font-hand text-2xl leading-none text-ink transition-opacity duration-300 ${
                             floating ? 'opacity-100' : 'pointer-events-none hidden opacity-0'
                         }`}
                     >
                         F<span className="text-accent">.</span>
                     </a>
-
-                    {/* Words, desktop. */}
-                    <ul className="hidden items-center gap-[clamp(1.25rem,2.2vw,3.25rem)] md:flex">
-                        {ROOMS.map((room) => (
-                            <li key={room.id}>
-                                <NavWord room={room} isActive={room.id === active} />
-                            </li>
-                        ))}
-                    </ul>
 
                     {/* One word, mobile. */}
                     <button
@@ -205,7 +225,7 @@ export function Nav() {
                         aria-haspopup="dialog"
                         aria-expanded={open}
                         aria-controls={MENU_ID}
-                        className="font-sans text-sm font-semibold uppercase leading-none tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink md:hidden"
+                        className="font-display text-lg italic leading-none text-ink/80 transition-colors duration-300 hover:text-ink focus-visible:text-ink"
                     >
                         menu
                     </button>
@@ -219,7 +239,7 @@ export function Nav() {
                     role="dialog"
                     aria-modal="true"
                     aria-label="Rooms"
-                    className="tone-dark fixed inset-0 z-50 flex items-center justify-center bg-noir/92 px-6"
+                    className="tone-dark fixed inset-0 z-50 flex items-center justify-center bg-noir/[0.97] px-8 backdrop-blur-sm"
                 >
                     <div className="w-full max-w-3xl">
                         <ul className="flex flex-col gap-x-12 gap-y-[clamp(2rem,5vh,2.75rem)] sm:flex-row sm:flex-wrap">
@@ -238,7 +258,7 @@ export function Nav() {
                         <button
                             type="button"
                             onClick={close}
-                            className="mt-10 font-sans text-sm font-semibold uppercase tracking-[0.1em] text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink"
+                            className="mt-12 font-display text-lg italic text-ink/70 transition-colors duration-300 hover:text-ink focus-visible:text-ink"
                         >
                             close
                         </button>
@@ -258,20 +278,25 @@ interface NavWordProps {
      * the same words at 28px, because an overlay that lists 13px text is a menu
      * you have to squint at.
      */
-    size?: 'inline' | 'overlay';
+    size?: 'inline' | 'overlay' | 'spine';
 }
 
 /** One word in the nav. Every word is built the same way — see the header. */
 function NavWord({ room, isActive, onNavigate, size = 'inline' }: NavWordProps) {
     const isOverlay = size === 'overlay';
+    const isSpine = size === 'spine';
 
     return (
         <a
             href={`#${room.id}`}
             onClick={onNavigate}
             aria-current={isActive ? 'true' : undefined}
-            className={`group nav-group relative inline-block uppercase ${
-                isOverlay ? 'text-[1.75rem] font-bold tracking-[0.06em]' : 'text-[length:clamp(0.75rem,0.72vw,1.125rem)] font-semibold tracking-[0.1em]'
+            className={`group nav-group relative inline-block font-display lowercase italic ${
+                isOverlay
+                    ? 'text-[2.5rem] leading-tight'
+                    : isSpine
+                      ? 'whitespace-nowrap py-1 text-[length:clamp(1rem,1.05vw,1.35rem)] leading-none [writing-mode:vertical-rl]'
+                      : 'text-[length:clamp(1rem,1.05vw,1.35rem)] leading-none'
             }`}
         >
             {/* 70% at rest, 100% on hover, focus and current. Colour comes from
@@ -285,7 +310,8 @@ function NavWord({ room, isActive, onNavigate, size = 'inline' }: NavWordProps) 
                 {room.label}
             </span>
 
-            <NavMark active={isActive} />
+            {/* Current room: circled in pen. Any other: a pen stroke on hover. */}
+            {isActive ? <NavCircle /> : !isSpine && <NavMark active={false} />}
         </a>
     );
 }

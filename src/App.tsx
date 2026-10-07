@@ -5,6 +5,9 @@ import { ROOMS } from '@/data/rooms';
 import { HERO_PHOTO } from '@/data/me';
 import Handwritten from '@/doodles/Handwritten';
 import Me from '@/rooms/Me';
+import Work from '@/rooms/Work';
+import Talk from '@/rooms/Talk';
+import Writing from '@/rooms/Writing';
 import Room from '@/primitives/Room';
 
 /**
@@ -47,20 +50,25 @@ export default function App() {
                     <Room
                         key={room.id}
                         id={room.id}
-                        // The journal room has no title, and ME supplies its own
-                        // heading — "About me." — rather than a bare
-                        // "ME" above it. `label` names both.
-                        title={room.id === 'journal' || room.id === 'me' ? undefined : room.label}
-                        label={room.id === 'journal' || room.id === 'me' ? room.label : undefined}
+                        // ME, WORK, WRITING and LET'S TALK supply their own headings, so
+                        // `label` names them instead.
+                        title={['me', 'work', 'writing', 'talk'].includes(room.id) ? undefined : room.label}
+                        label={['me', 'work', 'writing', 'talk'].includes(room.id) ? room.label : undefined}
                         note={room.note}
                         tone={room.tone}
                     >
                         {room.id === 'me' ? (
                             <Me />
+                        ) : room.id === 'work' ? (
+                            <Work />
+                        ) : room.id === 'writing' ? (
+                            <Writing />
+                        ) : room.id === 'talk' ? (
+                            <Talk />
                         ) : (
                             <div className="mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40">
                                 <Handwritten rotate="-1.2deg">
-                                    built in Phase {ROOMS.indexOf(room) + 5}
+                                    coming soon
                                 </Handwritten>
                             </div>
                         )}

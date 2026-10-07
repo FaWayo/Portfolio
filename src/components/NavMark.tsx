@@ -54,4 +54,24 @@ export function NavMark({ active, color = ACCENT, className }: NavMarkProps) {
     );
 }
 
+/**
+ * The circle round the current room's word: a loop drawn in one go, the way a
+ * pen circles a word in a magazine's contents, overshooting where it started.
+ * It is mounted only on the current word, so arriving in a new room draws it
+ * afresh there (`navCircleDraw` in style.css). Like the underline it stretches
+ * to the word with a constant stroke weight. decision-log.md §60.
+ */
+const CIRCLE =
+    'M10 24C6 12 30 3 56 4C82 5 98 12 96 22C94 33 70 38 46 37C22 36 4 31 6 20C8 11 22 6 36 5';
+
+export function NavCircle({ color = ACCENT }: { color?: string }) {
+    return (
+        <span aria-hidden="true" className="nav-circle pointer-events-none absolute -inset-x-3 -inset-y-2">
+            <svg viewBox="0 0 100 40" preserveAspectRatio="none" fill="none" className="h-full w-full overflow-visible" focusable="false">
+                <path d={CIRCLE} {...stroke(color, false, 2.2)} vectorEffect="non-scaling-stroke" />
+            </svg>
+        </span>
+    );
+}
+
 export default NavMark;

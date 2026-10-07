@@ -16,7 +16,7 @@ export interface RoomMeta {
 }
 
 /**
- * The six rooms, in order. brand-direction §18.
+ * The five rooms, in order. brand-direction §18.
  *
  * Module-level constants so identity is stable — useActiveRoom takes ROOM_IDS
  * and re-subscribes whenever its argument changes, so an inline `.map()` here
@@ -26,9 +26,11 @@ export interface RoomMeta {
  * through slides — see brand-direction §15. The hero is dark, so ME opens on
  * cream, as in its layout reference. See decision-log.md §26.
  *
- * The fifth room's `label` is a stand-in. The room is a journal and its name is
- * undecided — change it here and it updates the nav, the anchor and the room
- * heading together. See decision-log §18.
+ * Five rooms since decision-log.md §42: the separate journal room is gone —
+ * journal-style notes belong in WRITING and a "Now" section in ME — and LIFE is
+ * the photo room. Change a `label` here and it updates the nav, the anchor and
+ * the room heading together. LIFE may yet become "Journal" (a visual diary,
+ * photos with dates and notes); that is a one-word change here.
  *
  * ## No `tilt`
  *
@@ -41,11 +43,10 @@ export interface RoomMeta {
  */
 export const ROOMS: readonly RoomMeta[] = [
     { id: 'me', label: 'Me', note: 'the short version', tone: 'paper' },
-    { id: 'work', label: 'Work', note: "things I've actually built", tone: 'dark' },
-    { id: 'writings', label: 'Writings', note: "things I've been writing about", tone: 'paper' },
+    { id: 'work', label: 'Work', note: 'so far', tone: 'dark' },
+    { id: 'writing', label: 'Writing', note: "things I've been writing about", tone: 'paper' },
     { id: 'life', label: 'Life', note: 'the other parts of me', tone: 'dark' },
-    { id: 'journal', label: 'Journal', note: 'notes, mostly', tone: 'paper' },
-    { id: 'talk', label: "Let's talk", note: 'no reason needed', tone: 'dark' },
+    { id: 'talk', label: "Let's talk", note: 'no reason needed', tone: 'paper' },
 ] as const;
 
 export const ROOM_IDS: readonly string[] = ROOMS.map((r) => r.id);

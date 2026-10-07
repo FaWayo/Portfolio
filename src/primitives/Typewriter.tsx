@@ -103,7 +103,9 @@ export function Typewriter({ text, delay = 0, returnDelay, speed = 70, replay = 
     return (
         <span ref={ref}>
             <span className="sr-only">{text}</span>
-            <span aria-hidden="true">
+            {/* `select-none`: copying should pick up the sr-only text once, not
+                both copies ("so farso far"). */}
+            <span aria-hidden="true" className="select-none">
                 {text.slice(0, shown)}
                 <span key={run} className={`typewriter-caret ${done ? 'is-done' : ''} ${reduced ? 'hidden' : ''}`} />
                 <span className="text-transparent">{text.slice(shown)}</span>

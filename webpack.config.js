@@ -32,7 +32,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'postcss-loader']
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif|webp|avif)$/i,
+                test: /\.(png|svg|jpg|jpeg|gif|webp|avif|mp4)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: 'assets/[name].[contenthash][ext]'

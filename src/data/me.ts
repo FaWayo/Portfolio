@@ -41,63 +41,55 @@ export const ME_PROSE: readonly string[] = [
 ];
 
 /**
- * Experience, from the old site's Experience timeline. PCES appears as an
- * employer here spanning 2022–2025; decision-log.md §14 item 4 flags that the
- * brand direction also lists PCES as a WORK project, which is still unresolved.
+ * Experience, from the CV (2026-10-04). PCES is both an employer here and a
+ * project in WORK — the row says where, the project says what she did there.
+ * National Service is folded into the PCES row, as on the CV.
  */
 export const EXPERIENCE: readonly TimelineEntry[] = [
+    { period: 'Sept 2026 – now', role: 'Product Lead', org: 'Omaya Care' },
+    { period: 'Jan – Aug 2026', role: 'Entrepreneur in Training', org: 'MEST Africa' },
     {
-        period: '2023 – 2025',
+        period: 'Nov 2022 – Dec 2025',
         role: 'Software Developer',
-        org: 'Process Crafting Expert Services',
+        org: 'Process Crafting Expert Services (PCES)',
+        detail: 'Joined through National Service and grew into full-time development.',
     },
-    {
-        period: '2022 – 2023',
-        role: 'National Service Personnel',
-        org: 'Process Crafting Expert Services',
-    },
-    { period: '2021', role: 'Summer Intern', org: 'Nokwary Technologies' },
-    { period: '2020', role: 'Bootcamp', org: 'MEST and Soronko Academy' },
+    { period: 'May – Aug 2021', role: 'Software Developer Intern', org: 'Nokwary Technologies' },
 ];
 
-/** Education, from the old site's Education timeline. */
+/** Education and training, from the CV (2026-10-04). Achimota kept from the old site. */
 export const EDUCATION: readonly EducationEntry[] = [
     {
         period: '2018 – 2022',
         qualification: 'BSc Mathematical Sciences',
-        detail: 'Majored in Computer Science',
+        detail: 'Computer Science',
         org: 'University of Ghana, Legon',
     },
+    { period: '2021', qualification: 'Software Development Bootcamp', org: 'MEST Africa & Soronko Academy' },
+    { period: 'Certification', qualification: 'Microsoft Azure Fundamentals (AZ-900)', org: 'Microsoft' },
     { period: '2015 – 2018', qualification: 'General Science', org: 'Achimota School' },
 ];
 
 /**
- * Skills have no room of their own in the brand direction, so they sit here
- * behind the `CV` link as pills rather than a ruled column — see decision-log.md
- * §14 item 5. Order is unchanged from the old site.
+ * Skills, grouped into columns in WORK (decision-log.md §45), from the CV's
+ * key skills plus the stack named in its experience (2026-10-04).
  */
-export const SKILLS: readonly string[] = [
-    'HTML/CSS',
-    'JavaScript',
-    'TypeScript',
-    'C#',
-    'SQL',
-    'React',
-    '.NET',
-    'Express',
-    'Node.js',
-    'Git',
-    'Figma',
-    'Azure',
-    'Problem Solving',
+export const SKILL_GROUPS: readonly { label: string; skills: readonly string[] }[] = [
+    { label: 'Languages', skills: ['TypeScript', 'JavaScript', 'C#', 'Python', 'SQL'] },
+    { label: 'Build', skills: ['React', 'Next.js', '.NET', 'FastAPI', 'Azure'] },
+    { label: 'Engineering', skills: ['REST API design', 'AI API integration', 'Bot development'] },
+    { label: 'Product', skills: ['Product development', 'Requirements gathering', 'UI/UX prototyping', 'Product pitching'] },
 ];
+
+/** Every skill, flat. */
+export const SKILLS: readonly string[] = SKILL_GROUPS.flatMap((group) => group.skills);
 
 /**
  * The résumé, as a Google Drive PDF.
  *
  * The `/preview` form links the file itself rather than Drive's viewer chrome,
- * and `target="_blank"` is why this opens in a new tab. ME keeps the facts
- * visible but small; this is where the full document lives.
+ * and `target="_blank"` is why this opens in a new tab. WORK links it as a
+ * small button; this is where the full document lives.
  */
 export const CV_URL =
     'https://drive.google.com/file/d/1QZa7OBHapcTPIZW0hVTr-EeA6Kp4PLtO/preview';

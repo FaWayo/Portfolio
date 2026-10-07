@@ -12,7 +12,7 @@ interface RoomProps {
      * deliberately no small label above it — a heading stands on its own. See
      * design-system.md §10.
      *
-     * Omit for a room with no title, as the journal room has none. `label` then
+     * Omit for a room with no title, as ME has none of its own. `label` then
      * carries the accessible name so the section is still announced properly.
      */
     title?: string;
