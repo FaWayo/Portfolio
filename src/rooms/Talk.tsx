@@ -45,7 +45,7 @@ export function Talk() {
     };
 
     return (
-        <div className="px-[6vw] pb-12 pt-24 lg:pt-32">
+        <div className="px-[6vw] pt-24 sm:pb-12 lg:pt-32">
             {/* The room opens on a hairline that meets the nav spine: on desktop it
                 runs from the spine's edge to the right edge of the screen, same
                 weight and colour, so the two make one corner. It draws itself in
@@ -153,7 +153,7 @@ export function Talk() {
 
             {/* The sign-off. */}
             <footer className="mt-24 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 border-t border-rule pt-6 font-sans text-[11px] font-semibold uppercase tracking-[0.24em] text-muted lg:mt-32">
-                <span>Fatimah Wayo · Ghana · 2026</span>
+                <span>Fatimah A. Wayo · Ghana · 2026</span>
                 <a href="#opening" className="transition-colors hover:text-ink">
                     Back to the top <span aria-hidden="true">↑</span>
                 </a>

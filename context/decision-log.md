@@ -1869,3 +1869,17 @@ WORK's handwritten line "so far" becomes "a few of many": it should read as a
 selection, not the whole record.
 
 ---
+
+## 71. "Fatimah A. Wayo"; finishing touches — 2026-10-07
+
+The browser tab title and the footer read **Fatimah A. Wayo**.
+
+Finishing pass: an "F." favicon on noir with the mauve full stop (there was
+none, and the browser's request for one 404'd); `theme-color` noir; Open Graph
+and Twitter tags so a shared link shows her name and line. **Open:** no
+`og:image` yet; it needs the live domain for an absolute URL. On phones, ME's
+floor hairline is gone (the portrait sits above the text there, so it stood
+under nothing) and the empty band after it is shorter; the extra dark space
+under the footer is gone too.
+
+---

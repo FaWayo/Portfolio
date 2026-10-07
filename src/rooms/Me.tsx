@@ -103,8 +103,9 @@ export function Me() {
             </div>
 
             {/* The floor: a full-width hairline the portrait stands on, then
-                room to breathe before WORK. */}
-            <div aria-hidden="true" className="mt-14 border-t border-rule pb-24 lg:mt-0 lg:pb-32" />
+                room to breathe before WORK. Desktop only: on phones the portrait
+                sits above the text, so the line stood under nothing. */}
+            <div aria-hidden="true" className="border-rule pb-12 lg:border-t lg:pb-32" />
         </div>
     );
 }

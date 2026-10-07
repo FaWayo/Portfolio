@@ -12,7 +12,7 @@ module.exports = {
         clean: true
     },
     plugins: [
-        new HtmlWebpackPlugin({ title: 'Fatimah Wayo', template: './src/index.html', filename: 'index.html', chunks: ['index'] })
+        new HtmlWebpackPlugin({ title: 'Fatimah A. Wayo', favicon: './src/assets/favicon.svg', template: './src/index.html', filename: 'index.html', chunks: ['index'] })
     ],
     devServer: {
         static: {
