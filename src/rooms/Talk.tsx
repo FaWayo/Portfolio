@@ -25,7 +25,7 @@ const ELSEWHERE: readonly { network: Network; name: string; handle: string; href
  * LET'S TALK — a postcard to whoever has read this far (decision-log.md §65).
  *
  * The room's title, then a large postcard lying a little crooked on the page.
- * Left half: a note in her hand, "Dear you, …", signed. Right half: a postage
+ * Left half: a note in her hand, in her words, signed. Right half: a postage
  * stamp with her "F.", an ink postmark half over it, and the address lines,
  * where her email and her links are written. On hover the card straightens and
  * lifts. Below it, the pill button to write, and the footer. On phones the two
@@ -70,10 +70,8 @@ export function Talk() {
                     <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2">
                         {/* Left: the note. */}
                         <div className="font-hand text-[length:clamp(1.3rem,0.9rem+1vw,2.1rem)] leading-[1.55] md:pr-10 lg:pr-14">
-                            <p className="text-wine">Dear you,</p>
-                            <p className="mt-4">
-                                building something, hiring, or just want to say hello? Write to me. No reason needed.
-                            </p>
+                            <p>For work, ideas, questions, collaborations, or simply a hello.</p>
+                            <p className="mt-4">I&rsquo;d like to hear from you.</p>
                             <p className="mt-8 flex items-center gap-3">
                                 <span>Fatimah</span>
                                 <TinyStar size={26} />

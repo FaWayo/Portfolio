@@ -1828,3 +1828,7 @@ clean Jost (regular; the email `clamp(1.1rem,…,1.6rem)`, handles 15–18px) in
 of Fraunces italic. Fatimah chose it over a typewriter face and spaced caps. The
 handwriting stays for the note alone, so it reads as the hand and the address
 side reads as print.
+
+**Amended 2026-10-07:** the postcard note is Fatimah's own copy: "For work, ideas,
+questions, collaborations, or simply a hello. / I'd like to hear from you. /
+Fatimah". "Dear you," is gone.
