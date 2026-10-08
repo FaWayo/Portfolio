@@ -1931,3 +1931,11 @@ Post Inspector; eyeball Safari and Firefox (nav spine, stamp, scroll drift).
 
 Fatimah removed the tab icon: `favicon.svg` and `favicon-32.png` are deleted and
 no `rel="icon"` is emitted. The apple-touch-icon stays for phones' home screens.
+
+## 72. Live at fawayo.vercel.app for now — 2026-10-08
+
+faawayo.com isn't bought yet, so every absolute URL (canonical, og:url, og:image,
+twitter:image, JSON-LD url/@id/image, sitemap, robots) is
+`https://fawayo.vercel.app`, and the share image reads FAWAYO.VERCEL.APP. When the
+domain is live: find-and-replace the URL in `src/index.html` and `src/public/`,
+regenerate `og.png`, and add the domain in Vercel.

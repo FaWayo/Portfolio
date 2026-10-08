@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://faawayo.com/sitemap.xml
+Sitemap: https://fawayo.vercel.app/sitemap.xml
