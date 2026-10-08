@@ -3,29 +3,49 @@ export type Tone = 'dark' | 'paper';
 export interface RoomMeta {
     /** Anchor target. Nav hrefs are `#${id}`. */
     id: string;
-    /** Primary navigation label, uppercase. brand-direction §18. */
+    /**
+     * The name as it is written, not shouted. brand-direction §18.
+     *
+     * Title case, not uppercase: room headings are Fraunces at display size,
+     * where caps shout. The nav uppercases it in CSS.
+     */
     label: string;
-    /** Handwritten hover note. brand-direction §18. */
+    /** Handwritten note. brand-direction §18. Fraunces italic, 18px minimum. */
     note: string;
     tone: Tone;
 }
 
 /**
- * The six rooms, in order. brand-direction §18.
+ * The five rooms, in order. brand-direction §18.
  *
  * Module-level constants so identity is stable — useActiveRoom takes ROOM_IDS
  * and re-subscribes whenever its argument changes, so an inline `.map()` here
  * would rebuild the scroll listener on every render.
  *
- * `tone` is data-driven because only LIFE is paper. See decision-log §7.
+ * `tone` alternates paper / dark down the page so scrolling feels like flipping
+ * through slides — see brand-direction §15. The hero is dark, so ME opens on
+ * cream, as in its layout reference. See decision-log.md §26.
+ *
+ * Four rooms since decision-log.md §70: LIFE is gone too — her social media is
+ * where her life lives, and LET'S TALK links to it. (The journal room went in
+ * §42.) Change a `label` here and it updates the nav, the anchor and the room
+ * heading together. LET'S TALK turned dark with it, so the tones still
+ * alternate.
+ *
+ * ## No `tilt`
+ *
+ * These words used to carry a per-word rotation, all under 2°, so the nav read
+ * as written rather than set. It was dropped when the nav moved to sans caps:
+ * at 13px with 0.1em tracking a 1° lean is far below the threshold where it
+ * reads as intentional, and the caps themselves already carry the character. A
+ * hand is in the *marks*, not in the type — see `NavMark.tsx`. Furniture should
+ * be quieter than what it points at.
  */
 export const ROOMS: readonly RoomMeta[] = [
-    { id: 'me', label: 'ME', note: 'where I come from', tone: 'dark' },
-    { id: 'work', label: 'WORK', note: "things I've actually built", tone: 'dark' },
-    { id: 'writings', label: 'WRITINGS', note: "things I've been writing about", tone: 'dark' },
-    { id: 'life', label: 'LIFE', note: 'the other parts of me', tone: 'paper' },
-    { id: 'becoming', label: 'STILL BECOMING', note: 'still, obviously.', tone: 'dark' },
-    { id: 'talk', label: "LET'S TALK", note: 'no reason needed', tone: 'dark' },
+    { id: 'me', label: 'Me', note: 'the short version', tone: 'paper' },
+    { id: 'work', label: 'Work', note: 'a few of many', tone: 'dark' },
+    { id: 'writing', label: 'Writing', note: "things I've been writing about", tone: 'paper' },
+    { id: 'talk', label: "Let's talk", note: 'no reason needed', tone: 'dark' },
 ] as const;
 
 export const ROOM_IDS: readonly string[] = ROOMS.map((r) => r.id);

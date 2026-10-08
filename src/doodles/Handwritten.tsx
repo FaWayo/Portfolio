@@ -11,23 +11,28 @@ interface HandwrittenProps {
 }
 
 /**
- * Handwritten — margin notes, annotations, doodle labels, captions.
+ * Handwritten — the site's margin notes.
  *
- * Beth Ellen is the only notebook voice now; the source component listed
- * 'Caveat' as a fallback. Single-weight 400, so weight cannot vary — size,
- * colour and rotation carry the variation instead. See design-system.md §5.
+ * Small notes are Fraunces italic. Beth Ellen, the site's one hand, is kept
+ * for the few large moments — the hero name and one overlay per room — so it
+ * stays special; set at note size everywhere it would become the body font of
+ * the margins. Large handwriting uses `font-hand` directly. See
+ * design-system.md §5.
+ *
+ * The 18px floor is enforced by the default below — the italic gets spindly
+ * under that on a dark ground. Rotation stays budgeted under 2° (§9).
  */
 export function Handwritten({
     children,
     color = 'var(--room-accent)',
-    fontSize = '1.1rem',
-    rotate = '-3deg',
+    fontSize = '1.125rem',
+    rotate = '-1.2deg',
     className,
     style,
 }: HandwrittenProps) {
     return (
         <span
-            className={`inline-block font-hand leading-snug ${className ?? ''}`}
+            className={`inline-block font-display italic leading-snug ${className ?? ''}`}
             style={{
                 color,
                 fontSize,

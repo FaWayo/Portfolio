@@ -1,162 +1,111 @@
-import { EDUCATION, EXPERIENCE, ME_PROSE, PORTRAITS, SKILLS } from '@/data/me';
-import Photo from '@/primitives/Photo';
-import Underline from '@/doodles/Underline';
+import { ME_PROSE, PORTRAITS } from '@/data/me';
 import Reveal from '@/primitives/Reveal';
+import Typewriter from '@/primitives/Typewriter';
+import WriteOn from '@/primitives/WriteOn';
 
 /**
- * ME — "A little about me". brand-direction §ME.
+ * ME — "About me." decision-log.md §37 (was "A little about me", brand-direction §ME).
  *
- * Not a biography. The prose is verbatim from the brand direction and the
- * structured facts sit below it in a ruled editorial column, so the room reads
- * as a person who happens to have a CV rather than a CV with a person stapled on.
+ * Layout is the GlamToProfit "about me." page (decision-log.md §26): a
+ * full-height portrait on the left standing on a hairline, a very large display
+ * heading on the right, a short rule, then the prose. The reference's vertical
+ * hairline down the left margin is now the nav spine's own (decision-log.md
+ * §61). The room is cream, which is why ME is `tone: 'paper'`.
+ *
+ * The room has no `ME` heading of its own — "About me." is the heading,
+ * so the generic room header is skipped and the room is named by its `label`.
+ *
+ * The handwriting is one word-group, `the short version`, laid across the
+ * heading's lower edge in Beth Ellen. It is the only handwriting in the room:
+ * used once it reads as a hand, used twice it reads as a font.
+ *
+ * The room ends on the hairline the portrait stands on — no tagline strip
+ * (decision-log.md §43). Experience, education, skills and the CV moved
+ * to WORK — ME is who she is, WORK is what she has done (decision-log.md §41).
  */
 export function Me() {
-    return (
-        <div className="mx-auto w-full max-w-6xl px-6 pb-28 md:px-12 md:pb-40">
-            {/* Prose and one portrait, asymmetric per §15. */}
-            <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
-                <div className="md:col-span-7">
-                    <h3 className="font-serif text-title leading-none uppercase text-ink">
-                        A little about me
-                    </h3>
+    const [portrait] = PORTRAITS;
 
-                    <div className="mt-8 space-y-6">
+    return (
+        <div className="relative pt-28 md:pt-36">
+            <div className="grid grid-cols-1 gap-y-14 px-[6vw] lg:grid-cols-12 lg:gap-x-10">
+                {/* The portrait stands on the room's closing hairline: no bottom padding
+                    under it on desktop, so its foot meets the rule.
+
+                    This is the *landing* slot for the hero portrait — see
+                    TravellingPortrait.tsx. 4:5 because the photograph is 4:5,
+                    so it lands without a crop. No `Reveal` and no `Photo`: both
+                    animate their own opacity or transform, and the slot has to
+                    hold still to be measured. The `<img>` is the static
+                    fallback for reduced motion and no JS. */}
+                <div className="lg:col-span-5 lg:self-end">
+                    <div
+                        data-portrait-to
+                        className="relative aspect-[4/5] w-full max-w-[min(26rem,64svh)] overflow-hidden bg-rule/40 lg:max-w-none"
+                    >
+                        {portrait.src && (
+                            <img
+                                src={portrait.src}
+                                alt={portrait.alt}
+                                loading="lazy"
+                                decoding="async"
+                                className="h-full w-full object-cover"
+                            />
+                        )}
+                    </div>
+                </div>
+
+                <div className="lg:col-span-6 lg:col-start-7 lg:self-center lg:pb-24">
+                    {/* `w-fit`, so the handwriting is placed against the heading
+                        itself rather than the column. It hangs from 12% in and runs
+                        right: "About" is narrower than the handwritten line, so
+                        right-anchoring pushed it off the left edge of a phone. */}
+                    <div className="relative w-fit pb-8">
+                        <WriteOn
+                            id="me-heading"
+                            duration={1.3}
+                            className="font-display text-[length:clamp(3.5rem,7vw,9.5rem)] leading-[0.9] tracking-[-0.02em] text-ink"
+                        >
+                            About
+                            <br />
+                            me<span className="text-accent">.</span>
+                        </WriteOn>
+
+                        {/* Typed, not faded: on every visit to ME, after the heading
+                            has mostly written itself on. decision-log.md §38. */}
+                        <span className="absolute bottom-0 left-[12%] -rotate-[3deg] whitespace-nowrap font-hand text-[length:clamp(1.25rem,1.6vw,2.25rem)] text-accent">
+                            <Typewriter text="the short version" delay={1100} returnDelay={300} speed={85} />
+                        </span>
+                    </div>
+
+                    <div aria-hidden="true" className="mt-10 h-px w-3/5 bg-rule" />
+
+                    {/* The first line is a lede — three short statements, set in
+                        Fraunces a step larger. The rest are paragraphs, so Jost.
+                        §5. */}
+                    <div className="mt-10 max-w-[34em] space-y-5 text-[length:clamp(16px,0.4rem+0.5vw,21px)]">
                         {ME_PROSE.map((line, i) => (
                             <Reveal
                                 as="p"
                                 key={line}
                                 delay={i * 100}
-                                className={`font-sans leading-relaxed ${
-                                    i === 0 ? 'text-xl text-ink' : 'text-lg text-muted'
-                                }`}
+                                className={
+                                    i === 0
+                                        ? 'font-display text-[1.2em] leading-[1.4] tracking-[-0.01em] text-ink'
+                                        : 'font-sans leading-[1.7] text-ink'
+                                }
                             >
                                 {line}
                             </Reveal>
                         ))}
                     </div>
-
-                    {/* §13: the handwritten layer adds commentary, never repeats.
-                        Underline rather than HighlightCircle — the circle is a
-                        fixed square viewBox, so it cannot sit behind a phrase
-                        without distorting. */}
-                    <Reveal delay={420} className="mt-10 flex flex-col items-end gap-1">
-                        <span className="relative inline-block">
-                            <span className="font-hand text-lg text-accent">more than my work</span>
-                            <Underline
-                                width={170}
-                                height={16}
-                                className="absolute -bottom-2 left-0"
-                            />
-                        </span>
-                    </Reveal>
-                </div>
-
-                <div className="md:col-span-4 md:col-start-9 md:pt-6">
-                    <Reveal>
-                        <Photo
-                            src={PORTRAITS[0].src}
-                            alt={PORTRAITS[0].alt}
-                            rotate={PORTRAITS[0].rotate}
-                            aspect="4 / 5"
-                        />
-                    </Reveal>
                 </div>
             </div>
 
-            {/* Second portrait, offset the other way. */}
-            <div className="mt-20 grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
-                <div className="md:col-span-3 md:col-start-2 md:pt-16">
-                    <Reveal>
-                        <Photo
-                            src={PORTRAITS[1].src}
-                            alt={PORTRAITS[1].alt}
-                            rotate={PORTRAITS[1].rotate}
-                            aspect="1 / 1"
-                        />
-                    </Reveal>
-                </div>
-
-                {/* Facts as a ruled column, not timeline dots or pill tags. */}
-                <div className="md:col-span-6 md:col-start-6">
-                    <section aria-labelledby="me-experience">
-                        <h4
-                            id="me-experience"
-                            className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted"
-                        >
-                            Experience
-                        </h4>
-                        <dl className="mt-4">
-                            {EXPERIENCE.map((entry) => (
-                                <div
-                                    key={`${entry.period}-${entry.role}`}
-                                    className="border-t border-rule py-4 last:border-b"
-                                >
-                                    <dt className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                                        <span className="font-serif text-xl leading-tight text-ink">
-                                            {entry.role}
-                                        </span>
-                                        <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted">
-                                            {entry.period}
-                                        </span>
-                                    </dt>
-                                    <dd className="mt-1 font-sans text-sm text-muted">{entry.org}</dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </section>
-
-                    <section aria-labelledby="me-education" className="mt-14">
-                        <h4
-                            id="me-education"
-                            className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted"
-                        >
-                            Education
-                        </h4>
-                        <dl className="mt-4">
-                            {EDUCATION.map((entry) => (
-                                <div
-                                    key={`${entry.period}-${entry.qualification}`}
-                                    className="border-t border-rule py-4 last:border-b"
-                                >
-                                    <dt className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                                        <span className="font-serif text-xl leading-tight text-ink">
-                                            {entry.qualification}
-                                        </span>
-                                        <span className="font-sans text-xs uppercase tracking-[0.18em] text-muted">
-                                            {entry.period}
-                                        </span>
-                                    </dt>
-                                    <dd className="mt-1 font-sans text-sm text-muted">
-                                        {entry.org}
-                                        {entry.detail && (
-                                            <span className="text-muted/70"> · {entry.detail}</span>
-                                        )}
-                                    </dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </section>
-
-                    <section aria-labelledby="me-skills" className="mt-14">
-                        <h4
-                            id="me-skills"
-                            className="font-sans text-[0.65rem] uppercase tracking-[0.25em] text-muted"
-                        >
-                            Skills
-                        </h4>
-                        <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                            {SKILLS.map((skill) => (
-                                <li
-                                    key={skill}
-                                    className="border-b border-rule pb-1 font-sans text-sm text-ink"
-                                >
-                                    {skill}
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-                </div>
-            </div>
+            {/* The floor: a full-width hairline the portrait stands on, then
+                room to breathe before WORK. Desktop only: on phones the portrait
+                sits above the text, so the line stood under nothing. */}
+            <div aria-hidden="true" className="border-rule pb-12 lg:border-t lg:pb-32" />
         </div>
     );
 }

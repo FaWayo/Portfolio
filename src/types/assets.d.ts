@@ -31,3 +31,18 @@ declare module '*.avif' {
     const url: string;
     export default url;
 }
+declare module '*.mp4' {
+    const url: string;
+    export default url;
+}
+
+/** Root files in src/public, emitted under their own names. */
+declare module '*.txt' {
+    const url: string;
+    export default url;
+}
+
+declare module '*.xml' {
+    const url: string;
+    export default url;
+}

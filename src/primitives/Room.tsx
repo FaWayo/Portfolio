@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Handwritten from '@/doodles/Handwritten';
+import WriteOn from '@/primitives/WriteOn';
 
 type Tone = 'dark' | 'paper';
 
@@ -7,24 +8,22 @@ interface RoomProps {
     /** Anchor target. Nav hrefs are `#${id}`. */
     id: string;
     /**
-     * Large Instrument Serif title, rendered uppercase. Omit for the hero,
-     * which supplies its own display type.
+     * The room's name, set large in Fraunces and written on once. There is
+     * deliberately no small label above it — a heading stands on its own. See
+     * design-system.md §10.
+     *
+     * Omit for a room with no title, as ME has none of its own. `label` then
+     * carries the accessible name so the section is still announced properly.
      */
     title?: string;
-    /** Handwritten margin note beside the title. */
-    note?: string;
-    tone?: Tone;
     /**
-     * `hero` fills the viewport under the sticky header and drops the room
-     * header treatment. Used by ME, which is the first thing after the intro
-     * gate — brand-direction §19 wants an immediate introduction.
-     */
-    variant?: 'default' | 'hero';
-    /**
-     * Accessible name for the section when there is no visible `title` to
-     * point `aria-labelledby` at, as in the hero.
+     * Accessible name for the section. Only needed when there is no visible
+     * title to point `aria-labelledby` at.
      */
     label?: string;
+    /** Handwritten note beside the title. */
+    note?: string;
+    tone?: Tone;
     className?: string;
     children: ReactNode;
 }
@@ -36,44 +35,40 @@ interface RoomProps {
  * the semantic tokens — see design-system.md §1. Components inside must use
  * bg-surface / text-ink / text-muted / text-accent / border-rule rather than the
  * fixed palette, or they will not follow.
+ *
+ * Each room is one full-width slide, alternating dark and paper down the page.
+ *
+ * There is no per-room signature. It used to sit at `top-5 left-6` and scroll to
+ * the top, and landed directly underneath the fixed nav in every room. The nav
+ * has no `Fatimah` wordmark either — it is on screen at all times, so it already
+ * tells you whose site this is. See Nav.tsx.
  */
-export function Room({
-    id,
-    title,
-    note,
-    tone = 'dark',
-    variant = 'default',
-    label,
-    className,
-    children,
-}: RoomProps) {
-    const isHero = variant === 'hero';
-
+export function Room({ id, title, label, note, tone = 'dark', className, children }: RoomProps) {
     return (
         <section
             id={id}
             tabIndex={-1}
-            aria-labelledby={title && !isHero ? `${id}-heading` : undefined}
-            aria-label={!title || isHero ? label : undefined}
-            className={`tone-${tone} bg-surface text-ink relative focus:outline-none ${
-                isHero ? '' : 'scroll-mt-16 md:scroll-mt-20'
-            } ${className ?? ''}`}
+            aria-labelledby={title ? `${id}-heading` : undefined}
+            aria-label={!title ? label : undefined}
+            className={`tone-${tone} bg-surface text-ink relative scroll-mt-8 pb-16 focus:outline-none sm:pb-0 ${
+                className ?? ''
+            }`}
         >
-            {title && !isHero && (
-                <header className="mx-auto w-full max-w-6xl px-6 pt-24 pb-10 md:px-12">
+            {title && (
+                <header className="mx-auto w-full max-w-6xl px-6 pt-24 pb-10 md:px-12 md:pt-32">
                     <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
-                        <h2 id={`${id}-heading`} className="font-serif text-title leading-none uppercase">
+                        <WriteOn
+                            id={`${id}-heading`}
+                            duration={1.3}
+                            className="font-display text-title leading-[0.95]"
+                        >
                             {title}
-                        </h2>
-                        {note && (
-                            <Handwritten className="text-lg" rotate="-2deg">
-                                {note}
-                            </Handwritten>
-                        )}
+                        </WriteOn>
+                        {note && <Handwritten rotate="-1.2deg">{note}</Handwritten>}
                     </div>
-                    <div className="mt-8 h-px w-full bg-rule" />
                 </header>
             )}
+
             {children}
         </section>
     );
