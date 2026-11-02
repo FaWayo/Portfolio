@@ -15,10 +15,10 @@ type Network = 'linkedin' | 'github' | 'instagram' | 'x' | 'snapchat';
 const ELSEWHERE: readonly { network: Network; name: string; handle: string; href: string }[] = [
     { network: 'linkedin', name: 'LinkedIn', handle: 'Fatimah Wayo', href: 'https://www.linkedin.com/in/fatima-alhassan-wayo/' },
     { network: 'github', name: 'GitHub', handle: '@FaWayo', href: 'https://github.com/FaWayo' },
-    { network: 'instagram', name: 'Instagram', handle: '@faawayo', href: 'https://www.instagram.com/faawayo/' },
+    // { network: 'instagram', name: 'Instagram', handle: '@faawayo', href: 'https://www.instagram.com/faawayo/' },
     { network: 'instagram', name: 'Instagram', handle: '@daviina._', href: 'https://www.instagram.com/daviina._/' },
     { network: 'x', name: 'X (Twitter)', handle: '@faawayo', href: 'https://x.com/faawayo' },
-    { network: 'snapchat', name: 'Snapchat', handle: '@fawayo', href: 'https://www.snapchat.com/@fawayo' },
+    // { network: 'snapchat', name: 'Snapchat', handle: '@fawayo', href: 'https://www.snapchat.com/@fawayo' },
 ];
 
 /**
@@ -74,8 +74,7 @@ export function Talk() {
                             top; her signature, the only thing in her hand, at the foot. */}
                         <div className="flex flex-col justify-between gap-y-8 pb-10 font-display text-[length:clamp(1.25rem,0.95rem+0.6vw,1.75rem)] leading-[1.4] tracking-[-0.01em] md:pb-0 md:pr-12">
                             <div className="max-w-[18em]">
-                                <p>For work, ideas, questions, collaborations, or simply a hello.</p>
-                                <p className="mt-5">I&rsquo;d like to hear from you.</p>
+                                <p>For work, collaborations, or a conversation, feel free to reach out.</p>
                             </div>
                             <p className="flex items-end gap-2 font-hand text-[length:clamp(1.5rem,1.1rem+0.9vw,2.1rem)] leading-none text-wine">
                                 <span className="-rotate-[3deg]">Fatimah</span>
